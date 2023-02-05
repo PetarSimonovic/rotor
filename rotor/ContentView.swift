@@ -6,16 +6,25 @@
 //
 
 import SwiftUI
+import WatchConnectivity
 
 struct ContentView: View {
+    
+    
+    @ObservedObject private var iosConnector = iOSConnector()
+    
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Button("Click to send", action: {
+                iosConnector.send("Hello World!\n\(Date().ISO8601Format())")
+            })
         }
         .padding()
+        .alert(item: $iosConnector.notificationMessage) { message in
+            Alert(title: Text(message.text),
+                  dismissButton: .default(Text("Dismiss")))
+        }
     }
 }
 

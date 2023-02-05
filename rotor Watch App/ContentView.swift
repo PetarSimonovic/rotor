@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    var watchConnector = WatchConnector()
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Button("Click to send!", action: {
+              watchConnector.send("Hello World!\n\(Date().ISO8601Format())")
+            })
         }
         .padding()
     }
