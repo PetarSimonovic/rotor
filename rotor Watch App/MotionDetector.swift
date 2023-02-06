@@ -12,6 +12,7 @@ class MotionDetector : ObservableObject {
     
     let watchConnecter = WatchConnector()
     
+    var gravity = 0.0
     
 
     
@@ -19,18 +20,31 @@ class MotionDetector : ObservableObject {
     
     private var motionManager = CMMotionManager();
     
-    func getData()
-    {
+    func getData() -> Double    {
             if let accelerometerData = motionManager.accelerometerData {
-                let gravityFloat = accelerometerData.acceleration.x * 50
-                watchConnecter.send("\(String(gravityFloat))")
-        }
+               return accelerometerData.acceleration.x * 50
+            } else {
+                return 0.0
+            }
     }
     
     func start() {
         
-        motionManager.startAccelerometerUpdates()
-        }
+        motionManager.accelerometerUpdateInterval = 0.2
+        let queue = OperationQueue()
+        motionManager.startAccelerometerUpdates(to: queue, withHandler: {accelerometerData, error in
+            guard let accelerometerData = accelerometerData else {
+                return
+            }
+            let accelerationY = accelerometerData.acceleration.gr
+            self.watchConnecter.send("\(String(accelerationY))")
+                
+            
+            })
+
+    }
+    
+
     
    
 }
