@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D821517299191E300267EF8 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D821516299191E300267EF8 /* MotionDetector.swift */; };
 		0D8D1460298E9A8800396783 /* rotorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D145F298E9A8800396783 /* rotorApp.swift */; };
 		0D8D1462298E9A8800396783 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D1461298E9A8800396783 /* ContentView.swift */; };
 		0D8D1464298E9A8900396783 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8D1463298E9A8900396783 /* Assets.xcassets */; };
@@ -79,6 +80,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D821512299182AE00267EF8 /* rotor-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "rotor-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		0D8215132991844B00267EF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0D821516299191E300267EF8 /* MotionDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
 		0D8D145C298E9A8800396783 /* rotor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rotor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8D145F298E9A8800396783 /* rotorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rotorApp.swift; sourceTree = "<group>"; };
 		0D8D1461298E9A8800396783 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 		0D8D145E298E9A8800396783 /* rotor */ = {
 			isa = PBXGroup;
 			children = (
+				0D8215132991844B00267EF8 /* Info.plist */,
 				0D8D14BB298E9BFE00396783 /* iOSConnector.swift */,
 				0D8D145F298E9A8800396783 /* rotorApp.swift */,
 				0D8D1461298E9A8800396783 /* ContentView.swift */,
@@ -216,6 +221,8 @@
 		0D8D1486298E9A8900396783 /* rotor Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				0D821516299191E300267EF8 /* MotionDetector.swift */,
+				0D821512299182AE00267EF8 /* rotor-Watch-App-Info.plist */,
 				0D8D14BD298EA6CE00396783 /* WatchConnector.swift */,
 				0D8D1487298E9A8900396783 /* rotorApp.swift */,
 				0D8D1489298E9A8900396783 /* ContentView.swift */,
@@ -509,6 +516,7 @@
 				0D8D14BE298EA6CE00396783 /* WatchConnector.swift in Sources */,
 				0D8D148A298E9A8900396783 /* ContentView.swift in Sources */,
 				0D8D1488298E9A8900396783 /* rotorApp.swift in Sources */,
+				0D821517299191E300267EF8 /* MotionDetector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,6 +618,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSMotionUsageDescription = "rotor uses Watch motion data to track skips";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -662,6 +671,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSMotionUsageDescription = "rotor uses Watch motion data to track skips";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -680,6 +690,7 @@
 				DEVELOPMENT_TEAM = 6TPWY3BLL8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "rotor-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = rotor;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.simonovic.rotor;
@@ -710,6 +721,7 @@
 				DEVELOPMENT_TEAM = 6TPWY3BLL8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "rotor-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = rotor;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.simonovic.rotor;
@@ -743,6 +755,7 @@
 				DEVELOPMENT_TEAM = 6TPWY3BLL8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = rotor/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = rotor;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -778,6 +791,7 @@
 				DEVELOPMENT_TEAM = 6TPWY3BLL8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = rotor/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = rotor;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

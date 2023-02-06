@@ -6,18 +6,32 @@
 //
 
 import SwiftUI
+import CoreMotion
 
 struct ContentView: View {
     
+    
     var watchConnector = WatchConnector()
+    
+    @ObservedObject private var motionDetector = MotionDetector()
+
+    @State private var gravity = "No reading"
+    
+   
+  
     var body: some View {
         VStack {
-            Button("Click to send!", action: {
-              watchConnector.send("Hello World!\n\(Date().ISO8601Format())")
-            })
+            Button("Send data") {
+                motionDetector.getData()
+            }
         }
         .padding()
+        .onAppear{
+            motionDetector.start()
+            
+        }
     }
+   
 }
 
 struct ContentView_Previews: PreviewProvider {

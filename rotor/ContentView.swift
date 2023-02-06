@@ -16,15 +16,9 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Button("Click to send", action: {
-                iosConnector.send("Hello World!\n\(Date().ISO8601Format())")
-            })
+            Text(self.iosConnector.notificationMessage?.text ?? "0")
         }
         .padding()
-        .alert(item: $iosConnector.notificationMessage) { message in
-            Alert(title: Text(message.text),
-                  dismissButton: .default(Text("Dismiss")))
-        }
     }
 }
 

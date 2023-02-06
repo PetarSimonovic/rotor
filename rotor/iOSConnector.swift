@@ -45,17 +45,6 @@ class iOSConnector : NSObject,  WCSessionDelegate, ObservableObject {
         
     }
     
-    func send(_ message: String) {
-        guard WCSession.default.activationState == .activated else {
-            return
-        }
-        guard WCSession.default.isWatchAppInstalled else {
-            return
-        }
-        WCSession.default.sendMessage([kMessageKey : message], replyHandler: nil) { error in
-            print("Cannot send message: \(String(describing: error))")
-        }
-    }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         if let notificationText = message[kMessageKey] as? String {
