@@ -30,10 +30,13 @@ class WatchConnector : NSObject,  WCSessionDelegate, ObservableObject {
     }
     
     func send(_ message: String) {
+            print("In send!")
             guard WCSession.default.activationState == .activated else {
+              print("No session activated")
               return
             }
             guard WCSession.default.isCompanionAppInstalled else {
+                print("no companion installed")
                 return
             }
             WCSession.default.sendMessage([kMessageKey : message], replyHandler: nil) { error in

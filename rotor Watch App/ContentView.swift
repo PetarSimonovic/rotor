@@ -17,12 +17,19 @@ struct ContentView: View {
 
     @State private var gravity = "No reading"
     
+    func increment() {
+        print("Increment!")
+        self.motionDetector.incrementGravity()
+        gravity = String(motionDetector.jumps)
+        
+    }
    
   
     var body: some View {
         VStack {
-            Button("Send data") {
-                motionDetector.getData()
+            Text(gravity)
+            Button(action: increment) {
+                Text("Increment")
             }
         }
         .padding()

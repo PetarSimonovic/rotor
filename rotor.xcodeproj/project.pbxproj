@@ -25,6 +25,7 @@
 		0D8D14A5298E9A8B00396783 /* rotor_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14A4298E9A8B00396783 /* rotor_Watch_AppUITestsLaunchTests.swift */; };
 		0D8D14BC298E9BFE00396783 /* iOSConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14BB298E9BFE00396783 /* iOSConnector.swift */; };
 		0D8D14BE298EA6CE00396783 /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14BD298EA6CE00396783 /* WatchConnector.swift */; };
+		0DC3468B29ED8F2A00E14EC1 /* PatternCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC3468A29ED8F2A00E14EC1 /* PatternCreator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		0D8D14A4298E9A8B00396783 /* rotor_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rotor_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0D8D14BB298E9BFE00396783 /* iOSConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSConnector.swift; sourceTree = "<group>"; };
 		0D8D14BD298EA6CE00396783 /* WatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnector.swift; sourceTree = "<group>"; };
+		0DC3468A29ED8F2A00E14EC1 /* PatternCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternCreator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 				0D8D1461298E9A8800396783 /* ContentView.swift */,
 				0D8D1463298E9A8900396783 /* Assets.xcassets */,
 				0D8D1465298E9A8900396783 /* Preview Content */,
+				0DC3468A29ED8F2A00E14EC1 /* PatternCreator.swift */,
 			);
 			path = rotor;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D8D1462298E9A8800396783 /* ContentView.swift in Sources */,
+				0DC3468B29ED8F2A00E14EC1 /* PatternCreator.swift in Sources */,
 				0D8D14BC298E9BFE00396783 /* iOSConnector.swift in Sources */,
 				0D8D1460298E9A8800396783 /* rotorApp.swift in Sources */,
 			);

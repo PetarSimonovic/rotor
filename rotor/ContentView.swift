@@ -16,7 +16,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text(self.iosConnector.notificationMessage?.text ?? "0")
+            Text(self.iosConnector.notificationMessage?.text ?? "No data")
         }
         .padding()
     }

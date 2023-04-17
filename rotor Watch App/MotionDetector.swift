@@ -12,7 +12,7 @@ class MotionDetector : ObservableObject {
     
     let watchConnecter = WatchConnector()
     
-    var gravity = 0.0
+    var jumps: Int = 0
     
 
     
@@ -22,11 +22,13 @@ class MotionDetector : ObservableObject {
     
     func getData() -> Double    {
             if let accelerometerData = motionManager.accelerometerData {
-               return accelerometerData.acceleration.x * 50
+               return accelerometerData.acceleration.x
             } else {
-                return 0.0
+                return 0
             }
     }
+    
+    
     
     func start() {
         
@@ -36,15 +38,23 @@ class MotionDetector : ObservableObject {
             guard let accelerometerData = accelerometerData else {
                 return
             }
-            let accelerationY = accelerometerData.acceleration.gr
-            self.watchConnecter.send("\(String(accelerationY))")
-                
+            let accelerationY = accelerometerData.acceleration.y
+         //   self.watchConnecter.send("\(String(accelerationY))")
+            self.watchConnecter.send("\(String(self.jumps))")
+
             
             })
 
     }
     
+    
+    func incrementGravity() {
+        print(jumps)
+        jumps += 1
+        self.watchConnecter.send("\(String(self.jumps))")
 
+    }
+    
     
    
 }
