@@ -22,21 +22,27 @@ struct SceneKitView : UIViewRepresentable {
         
         // add the box to the node.
          scene.rootNode.addChildNode(boxNode)
-           
-        // attach the scene to the SceneView?
-    
+               
+                
+        // Create Lights
+        
+        createAmbientLight()
+        createOmniLight()
+        
+        // Create Camera
+        
+        createCamera()
+
         
         let scnView = SCNView()
-        scnView.autoenablesDefaultLighting = true
-        scene.rootNode.addChildNode(createAmbientLigths())
-        scene.rootNode.addChildNode(createOmniLight())
-
         return scnView
 
        
     }
 
     func updateUIView(_ scnView: SCNView, context: Context) {
+        
+        // updates the scnView with the scene
         scnView.scene = scene
 
         // allows the user to manipulate the camera
@@ -51,21 +57,30 @@ struct SceneKitView : UIViewRepresentable {
     
     // LIGHTING METHODS
     
-    func createAmbientLigths() -> SCNNode {
+    func createAmbientLight() {
         
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
         ambientLightNode.light!.type = SCNLight.LightType.ambient
         ambientLightNode.light!.color = UIColor(white: 0.67, alpha: 1.0)
-        return ambientLightNode
+        scene.rootNode.addChildNode(ambientLightNode)
     }
     
-    func createOmniLight() -> SCNNode {
+    func createOmniLight() {
         let omniLightNode = SCNNode()
         omniLightNode.light = SCNLight()
         omniLightNode.light!.type = SCNLight.LightType.omni
         omniLightNode.light!.color = UIColor(white: 0.75, alpha: 1.0)
         omniLightNode.position = SCNVector3Make(0, 50, 50)
-        return omniLightNode
+        scene.rootNode.addChildNode(omniLightNode)
+    }
+    
+    // CAMERA METHODS
+    
+    func createCamera() {
+        let cameraNode = SCNNode()
+        cameraNode.camera = SCNCamera()
+        cameraNode.position = SCNVector3Make(0, 0, 25)
+        scene.rootNode.addChildNode(cameraNode)
     }
 }
