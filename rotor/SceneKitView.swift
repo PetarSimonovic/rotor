@@ -28,7 +28,9 @@ struct SceneKitView : UIViewRepresentable {
         
         let scnView = SCNView()
         scnView.autoenablesDefaultLighting = true
-        scene.rootNode.addChildNode(setAmbientLigths())
+        scene.rootNode.addChildNode(createAmbientLigths())
+        scene.rootNode.addChildNode(createOmniLight())
+
         return scnView
 
        
@@ -47,14 +49,23 @@ struct SceneKitView : UIViewRepresentable {
         scnView.backgroundColor = UIColor.black
     }
     
-    // custom methods
+    // LIGHTING METHODS
     
-    func setAmbientLigths() -> SCNNode {
+    func createAmbientLigths() -> SCNNode {
         
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
         ambientLightNode.light!.type = SCNLight.LightType.ambient
-        ambientLightNode.light!.color = UIColor(red: 1.2, green: 0.3, blue: 0.4, alpha: 1.0)
+        ambientLightNode.light!.color = UIColor(white: 0.67, alpha: 1.0)
         return ambientLightNode
+    }
+    
+    func createOmniLight() -> SCNNode {
+        let omniLightNode = SCNNode()
+        omniLightNode.light = SCNLight()
+        omniLightNode.light!.type = SCNLight.LightType.omni
+        omniLightNode.light!.color = UIColor(white: 0.75, alpha: 1.0)
+        omniLightNode.position = SCNVector3Make(0, 50, 50)
+        return omniLightNode
     }
 }
