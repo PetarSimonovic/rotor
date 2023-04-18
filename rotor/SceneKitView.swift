@@ -8,9 +8,11 @@
 import SwiftUI
 import SceneKit
 
-struct SceneKitView : UIViewRepresentable { // makeUIVIew and updateUIView are required to conform to the UIViewRepresentable protocol
+struct SceneKitView : UIViewRepresentable {
     // Base Node
     let scene = SCNScene()
+    
+    // makeUIVIew and updateUIView are required to conform to the UIViewRepresentable protocol
 
     func makeUIView(context: Context) -> SCNView {
            
@@ -22,10 +24,11 @@ struct SceneKitView : UIViewRepresentable { // makeUIVIew and updateUIView are r
          scene.rootNode.addChildNode(boxNode)
            
         // attach the scene to the SceneView?
+    
         
         let scnView = SCNView()
-        scnView.scene = scene
         scnView.autoenablesDefaultLighting = true
+        scene.rootNode.addChildNode(setAmbientLigths())
         return scnView
 
        
@@ -42,5 +45,16 @@ struct SceneKitView : UIViewRepresentable { // makeUIVIew and updateUIView are r
 
         // configure the view
         scnView.backgroundColor = UIColor.black
+    }
+    
+    // custom methods
+    
+    func setAmbientLigths() -> SCNNode {
+        
+        let ambientLightNode = SCNNode()
+        ambientLightNode.light = SCNLight()
+        ambientLightNode.light!.type = SCNLight.LightType.ambient
+        ambientLightNode.light!.color = UIColor(red: 1.2, green: 0.3, blue: 0.4, alpha: 1.0)
+        return ambientLightNode
     }
 }
