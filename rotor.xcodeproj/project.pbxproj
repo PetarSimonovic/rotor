@@ -25,7 +25,6 @@
 		0D8D14A5298E9A8B00396783 /* rotor_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14A4298E9A8B00396783 /* rotor_Watch_AppUITestsLaunchTests.swift */; };
 		0D8D14BC298E9BFE00396783 /* iOSConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14BB298E9BFE00396783 /* iOSConnector.swift */; };
 		0D8D14BE298EA6CE00396783 /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14BD298EA6CE00396783 /* WatchConnector.swift */; };
-		0DC3468B29ED8F2A00E14EC1 /* PatternCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC3468A29ED8F2A00E14EC1 /* PatternCreator.swift */; };
 		0DC38E3629EE764B007B4AC5 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DC38E3529EE764B007B4AC5 /* art.scnassets */; };
 		0DC38E3829EE7671007B4AC5 /* SceneKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */; };
 /* End PBXBuildFile section */
@@ -108,7 +107,6 @@
 		0D8D14A4298E9A8B00396783 /* rotor_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rotor_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0D8D14BB298E9BFE00396783 /* iOSConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSConnector.swift; sourceTree = "<group>"; };
 		0D8D14BD298EA6CE00396783 /* WatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnector.swift; sourceTree = "<group>"; };
-		0DC3468A29ED8F2A00E14EC1 /* PatternCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternCreator.swift; sourceTree = "<group>"; };
 		0DC38E3529EE764B007B4AC5 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,7 +194,6 @@
 				0D8D1461298E9A8800396783 /* ContentView.swift */,
 				0D8D1463298E9A8900396783 /* Assets.xcassets */,
 				0D8D1465298E9A8900396783 /* Preview Content */,
-				0DC3468A29ED8F2A00E14EC1 /* PatternCreator.swift */,
 				0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */,
 			);
 			path = rotor;
@@ -497,7 +494,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D8D1462298E9A8800396783 /* ContentView.swift in Sources */,
-				0DC3468B29ED8F2A00E14EC1 /* PatternCreator.swift in Sources */,
 				0D8D14BC298E9BFE00396783 /* iOSConnector.swift in Sources */,
 				0D8D1460298E9A8800396783 /* rotorApp.swift in Sources */,
 				0DC38E3829EE7671007B4AC5 /* SceneKitView.swift in Sources */,
@@ -769,11 +765,13 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = rotor/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = rotor;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSMotionUsageDescription = "rotor uses Watch motion data to track skips";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -805,11 +803,13 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = rotor/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = rotor;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSMotionUsageDescription = "rotor uses Watch motion data to track skips";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

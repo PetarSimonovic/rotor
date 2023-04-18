@@ -8,41 +8,27 @@
 import SwiftUI
 import SceneKit
 
-struct SceneKitView : UIViewRepresentable {
-    let scene = SCNScene(named: "art.scnassets/ship.scn")!
+struct SceneKitView : UIViewRepresentable { // makeUIVIew and updateUIView are required to conform to the UIViewRepresentable protocol
+    // Base Node
+    let scene = SCNScene()
 
     func makeUIView(context: Context) -> SCNView {
-        // create and add a camera to the scene
-        let cameraNode = SCNNode()
-        cameraNode.camera = SCNCamera()
-        scene.rootNode.addChildNode(cameraNode)
-
-        // place the camera
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
-
-        // create and add a light to the scene
-        let lightNode = SCNNode()
-        lightNode.light = SCNLight()
-        lightNode.light!.type = .omni
-        lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
-        scene.rootNode.addChildNode(lightNode)
-
-        // create and add an ambient light to the scene
-        let ambientLightNode = SCNNode()
-        ambientLightNode.light = SCNLight()
-        ambientLightNode.light!.type = .ambient
-        ambientLightNode.light!.color = UIColor.darkGray
-        scene.rootNode.addChildNode(ambientLightNode)
-
-        // retrieve the ship node
-        let ship = scene.rootNode.childNode(withName: "ship", recursively: true)!
-
-        // animate the 3d object
-        ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
-
-        // retrieve the SCNView
+           
+         // Create a box
+         let boxGeometry = SCNBox(width: 5.0, height: 5.0, length: 5.0, chamferRadius: 1.0)
+         let boxNode = SCNNode(geometry: boxGeometry)
+        
+        // add the box to the node.
+         scene.rootNode.addChildNode(boxNode)
+           
+        // attach the scene to the SceneView?
+        
         let scnView = SCNView()
+        scnView.scene = scene
+        scnView.autoenablesDefaultLighting = true
         return scnView
+
+       
     }
 
     func updateUIView(_ scnView: SCNView, context: Context) {
