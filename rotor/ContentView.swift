@@ -12,9 +12,10 @@ struct ContentView: View {
     
     
     @ObservedObject private var iosConnector = iOSConnector()
-    
+    var sceneKitView = SceneKitView()
     
     var body: some View {
+        sceneKitView
         VStack {
             Text(self.iosConnector.notificationMessage?.text ?? "No data")
         }

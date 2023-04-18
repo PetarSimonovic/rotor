@@ -26,6 +26,8 @@
 		0D8D14BC298E9BFE00396783 /* iOSConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14BB298E9BFE00396783 /* iOSConnector.swift */; };
 		0D8D14BE298EA6CE00396783 /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14BD298EA6CE00396783 /* WatchConnector.swift */; };
 		0DC3468B29ED8F2A00E14EC1 /* PatternCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC3468A29ED8F2A00E14EC1 /* PatternCreator.swift */; };
+		0DC38E3629EE764B007B4AC5 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DC38E3529EE764B007B4AC5 /* art.scnassets */; };
+		0DC38E3829EE7671007B4AC5 /* SceneKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +109,8 @@
 		0D8D14BB298E9BFE00396783 /* iOSConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSConnector.swift; sourceTree = "<group>"; };
 		0D8D14BD298EA6CE00396783 /* WatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnector.swift; sourceTree = "<group>"; };
 		0DC3468A29ED8F2A00E14EC1 /* PatternCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternCreator.swift; sourceTree = "<group>"; };
+		0DC38E3529EE764B007B4AC5 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +189,7 @@
 		0D8D145E298E9A8800396783 /* rotor */ = {
 			isa = PBXGroup;
 			children = (
+				0DC38E3529EE764B007B4AC5 /* art.scnassets */,
 				0D8215132991844B00267EF8 /* Info.plist */,
 				0D8D14BB298E9BFE00396783 /* iOSConnector.swift */,
 				0D8D145F298E9A8800396783 /* rotorApp.swift */,
@@ -192,6 +197,7 @@
 				0D8D1463298E9A8900396783 /* Assets.xcassets */,
 				0D8D1465298E9A8900396783 /* Preview Content */,
 				0DC3468A29ED8F2A00E14EC1 /* PatternCreator.swift */,
+				0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */,
 			);
 			path = rotor;
 			sourceTree = "<group>";
@@ -441,6 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D8D1467298E9A8900396783 /* Preview Assets.xcassets in Resources */,
+				0DC38E3629EE764B007B4AC5 /* art.scnassets in Resources */,
 				0D8D1464298E9A8900396783 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,6 +500,7 @@
 				0DC3468B29ED8F2A00E14EC1 /* PatternCreator.swift in Sources */,
 				0D8D14BC298E9BFE00396783 /* iOSConnector.swift in Sources */,
 				0D8D1460298E9A8800396783 /* rotorApp.swift in Sources */,
+				0DC38E3829EE7671007B4AC5 /* SceneKitView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
