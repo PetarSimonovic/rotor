@@ -12,16 +12,15 @@ struct SceneKitView : UIViewRepresentable {
     // Base Node
     let scene = SCNScene()
     
+    let landscapeGenerator = LandscapeGenerator()
+    
     // makeUIVIew and updateUIView are required to conform to the UIViewRepresentable protocol
 
     func makeUIView(context: Context) -> SCNView {
            
-         // Create a box
-         let boxGeometry = SCNBox(width: 5.0, height: 5.0, length: 5.0, chamferRadius: 1.0)
-         let boxNode = SCNNode(geometry: boxGeometry)
-        
+//
         // add the box to the node.
-         scene.rootNode.addChildNode(boxNode)
+        scene.rootNode.addChildNode(landscapeGenerator.generate())
                
                 
         // Create Lights
@@ -32,6 +31,7 @@ struct SceneKitView : UIViewRepresentable {
         // Create Camera
         
         createCamera()
+        
 
         
         let scnView = SCNView()
@@ -80,7 +80,70 @@ struct SceneKitView : UIViewRepresentable {
     func createCamera() {
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3Make(0, 0, 25)
+        cameraNode.position = SCNVector3Make(0, 0, 5)
         scene.rootNode.addChildNode(cameraNode)
+    }
+    
+    
+    
+    
+    
+    // EXPERIMENTS
+    
+    // cribbed from https://movingparts.io/gradient-meshes
+    
+    func grassTile() -> SCNNode {
+        
+        let vertexList: [SCNVector3] = [
+            SCNVector3(-1, -1, 1), // p00
+            SCNVector3( 1, -1, 1), // p10
+            SCNVector3( 1, 1, 1),  // p11
+
+    
+        ]
+
+        let colorList: [SCNVector3] = [
+            SCNVector3(0.846, 0.035, 0.708), // magenta
+            SCNVector3(0.001, 1.000, 0.603), // cyan
+            SCNVector3(0.006, 0.023, 0.846), // blue
+
+    ]
+
+        let vertices = SCNGeometrySource(vertices: vertexList)
+        let indices = vertexList.indices.map(Int32.init)
+        let colors = SCNGeometrySource(colors: colorList)
+        let elements = SCNGeometryElement(
+            indices: indices,
+            primitiveType: .triangles
+        )
+
+        return SCNNode(
+            geometry: SCNGeometry(
+                sources: [vertices],
+                elements: [elements]
+            )
+        )
+
+    }
+}
+
+// CRIBBED FROM
+
+public extension SCNGeometrySource {
+    /// Initializes a `SCNGeometrySource` with a list of colors as
+    /// `SCNVector3`s`.
+    convenience init(colors: [SCNVector3]) {
+        let colorData = Data(bytes: colors, count: MemoryLayout<SCNVector3>.size * colors.count)
+
+        self.init(
+            data: colorData,
+            semantic: .color,
+            vectorCount: colors.count,
+            usesFloatComponents: true,
+            componentsPerVector: 3,
+            bytesPerComponent: MemoryLayout<Float>.size,
+            dataOffset: 0,
+            dataStride: MemoryLayout<SCNVector3>.size
+        )
     }
 }
