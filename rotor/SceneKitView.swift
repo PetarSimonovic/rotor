@@ -52,7 +52,7 @@ struct SceneKitView : UIViewRepresentable {
        // scnView.showsStatistics = true
 
         // configure the view
-        scnView.backgroundColor = UIColor.black
+        scnView.backgroundColor = UIColor.lightGray
         
     
     }
@@ -82,7 +82,7 @@ struct SceneKitView : UIViewRepresentable {
     func createCamera() {
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3Make(5, 0, 10)
+        cameraNode.position = SCNVector3Make(30, 5, 80)
         scene.rootNode.addChildNode(cameraNode)
     }
     
