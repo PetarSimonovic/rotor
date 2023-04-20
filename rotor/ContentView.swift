@@ -16,9 +16,9 @@ struct ContentView: View {
     
     var body: some View {
         sceneKitView
-        VStack {
-            Text(self.iosConnector.notificationMessage?.text ?? "No data")
-        }
+//        VStack {
+//            Text(self.iosConnector.notificationMessage?.text ?? "No data")
+//        }
         .padding()
     }
 }
