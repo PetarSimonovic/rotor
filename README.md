@@ -1,6 +1,6 @@
 # rotor
 
-Skipping rope fitness game for Apple Watch and iPhone
+Skipping rope fitness game in development for Apple Watch and iPhone
 
 ![image](https://user-images.githubusercontent.com/69108995/233451621-0a3db5fc-1090-4e26-b08c-eef1313a34f9.png)
 
