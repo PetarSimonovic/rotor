@@ -52,9 +52,7 @@ struct SceneKitView : UIViewRepresentable {
        // scnView.showsStatistics = true
 
         // configure the view
-        scnView.backgroundColor = UIColor.lightGray
-        
-    
+        scnView.backgroundColor = UIColor(red: 0.1, green: 0.3, blue: 0.56, alpha: 0.61)
     }
     
     // LIGHTING METHODS
