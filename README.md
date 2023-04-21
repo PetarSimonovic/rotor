@@ -13,7 +13,7 @@ Stop jumping and you'll drop.
 
 Rotor is in the early stages of development. It currently:
 
-  - generates a 3D landscape using Perlin noise;  
+  - creates a Perlin noise map and uses that to generate a 3D landscape;  
   - establishes the iPhone-Watch connection;
   - reads the Y-axis of the Watch accelerometer.
   
