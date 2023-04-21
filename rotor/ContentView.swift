@@ -15,11 +15,22 @@ struct ContentView: View {
     var sceneKitView = SceneKitView()
     
     var body: some View {
-        sceneKitView
-//        VStack {
-//            Text(self.iosConnector.notificationMessage?.text ?? "No data")
-//        }
-        .padding()
+        ZStack {
+            sceneKitView
+                .zIndex(1)
+            Text("r   o   t   o   r")
+                .zIndex(2)
+                .font(.system(size: 56, design: .default))
+                .foregroundColor(.white)
+                .frame(height: 300, alignment: .topLeading)
+            Spacer()
+
+            Spacer()
+            Spacer()
+
+        }
+        
+
     }
 }
 
