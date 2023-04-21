@@ -55,7 +55,21 @@ struct LandscapeGenerator {
         var vertexList: [SCNVector3] = []
         for x in 1 ... xLength {
             for z in 1 ... zLength {
-                let yPos = map.value(at: [Int32(x), Int32(z)])
+                var yPos = map.value(at: [Int32(x), Int32(z)])
+                if (yPos > -0.7 && yPos < 0.3) {
+                    yPos = yPos/6
+                }
+                if (yPos > 0.3 && yPos < 0.6) {
+                    yPos = yPos/4
+                }
+            
+                    
+                if yPos < -0.95 {
+                    yPos = -0.7
+                }
+                if yPos > 0.7 {
+                    yPos = yPos * 1.5
+                }
                 print(yPos)
                 let xPos = Float(x)
                 let zPos = Float(z)
@@ -133,11 +147,11 @@ struct LandscapeGenerator {
         var colorList: [SCNVector3] = []
         
         for vertex in vertexList {
-            if vertex.y < -0.8
+            if vertex.y <= -0.7
             {
-                colorList.append(SCNVector3(0.046, vertex.y, 0.308))
+                colorList.append(SCNVector3(0.026, vertex.y, 0.408))
             }
-            else if vertex.y > 0.8
+            else if vertex.y > 1.3
             {
                 colorList.append(SCNVector3(vertex.y, vertex.y, vertex.y))
 
