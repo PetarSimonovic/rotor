@@ -15,6 +15,7 @@ class iOSConnector : NSObject,  WCSessionDelegate, ObservableObject {
     struct NotificationMessage: Identifiable {
         let id = UUID()
         let text: String
+        
     }
     
     @Published var notificationMessage: NotificationMessage? = nil
@@ -50,6 +51,7 @@ class iOSConnector : NSObject,  WCSessionDelegate, ObservableObject {
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         if let notificationText = message[kMessageKey] as? String {
+            print(notificationText)
             DispatchQueue.main.async { [weak self] in
                 self?.notificationMessage = NotificationMessage(text: notificationText)
             }

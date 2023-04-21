@@ -19,7 +19,14 @@ struct ContentView: View {
     
     func increment() {
         print("Increment!")
-        self.motionDetector.incrementGravity()
+        self.motionDetector.incrementJumps()
+        gravity = String(motionDetector.jumps)
+        
+    }
+    
+    func reset() {
+        print("Increment!")
+        self.motionDetector.resetJumps()
         gravity = String(motionDetector.jumps)
         
     }
@@ -31,6 +38,10 @@ struct ContentView: View {
             Button(action: increment) {
                 Text("Increment")
             }
+            Button(action: reset) {
+                Text("Reset")
+            }
+
         }
         .padding()
         .onAppear{

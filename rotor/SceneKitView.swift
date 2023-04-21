@@ -9,10 +9,17 @@ import SwiftUI
 import SceneKit
 
 struct SceneKitView : UIViewRepresentable {
+    
+    @EnvironmentObject var iosConnector: iOSConnector
     // Base Node
     let scene = SCNScene()
     
+  //  @Binding var jumpCount: Int
+    
     let landscapeGenerator = LandscapeGenerator()
+    
+    let cameraNode = SCNNode()
+
     
     // makeUIVIew and updateUIView are required to conform to the UIViewRepresentable protocol
 
@@ -46,7 +53,10 @@ struct SceneKitView : UIViewRepresentable {
         scnView.scene = scene
 
         // allows the user to manipulate the camera
-        scnView.allowsCameraControl = true
+//        scnView.allowsCameraControl = false
+        let yPos: Float = (Float(self.iosConnector.notificationMessage?.text ?? "0.0") ?? 0.0)/10
+        cameraNode.position = SCNVector3Make(30, yPos, 80)
+
 
         // show statistics such as fps and timing information
        // scnView.showsStatistics = true
@@ -78,9 +88,8 @@ struct SceneKitView : UIViewRepresentable {
     // CAMERA METHODS
     
     func createCamera() {
-        let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3Make(30, 5, 80)
+        cameraNode.position = SCNVector3Make(30, 1, 80)
         scene.rootNode.addChildNode(cameraNode)
     }
     

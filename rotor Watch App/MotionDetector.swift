@@ -48,9 +48,15 @@ class MotionDetector : ObservableObject {
     }
     
     
-    func incrementGravity() {
-        print(jumps)
+    func incrementJumps() {
         jumps += 1
+        self.watchConnecter.send("\(String(self.jumps))")
+
+    }
+    
+    
+    func resetJumps() {
+        jumps  = 0
         self.watchConnecter.send("\(String(self.jumps))")
 
     }

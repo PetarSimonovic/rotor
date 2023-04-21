@@ -30,7 +30,6 @@ class WatchConnector : NSObject,  WCSessionDelegate, ObservableObject {
     }
     
     func send(_ message: String) {
-            print("In send!")
             guard WCSession.default.activationState == .activated else {
               print("No session activated")
               return
