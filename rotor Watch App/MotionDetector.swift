@@ -18,17 +18,11 @@ class MotionDetector : ObservableObject {
     
     var started = false
     
+    @Published var gravityY: Double = 0.0
+    
     private var motionManager = CMMotionManager();
     
-    func getData() -> String   {
-        if let deviceMotionData = motionManager.deviceMotion {
-                let x = String(deviceMotionData.gravity.x)
-                let y = String(deviceMotionData.gravity.y)
-                let z = String(deviceMotionData.gravity.z)
-                return x + y + z
-            } else {
-                return "static"            }
-    }
+  
     
     
     
@@ -36,9 +30,11 @@ class MotionDetector : ObservableObject {
         
         motionManager.deviceMotionUpdateInterval = 0.2
         let queue = OperationQueue()
-        motionManager.startDeviceMotionUpdates(to: queue, withHandler: {deviceMotionData, error in
-        
-         //   self.watchConnecter.send("\(String(accelerationY))")
+        motionManager.startDeviceMotionUpdates(to: queue, withHandler: {data, error in
+            guard let motionData = data else {
+                return
+            }
+            self.gravityY = Double(round(1000 * motionData.gravity.y) / 1000) //   self.watchConnecter.send("\(String(accelerationY))")
             self.watchConnecter.send("\(String(self.jumps))")
 
             
