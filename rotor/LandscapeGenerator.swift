@@ -147,6 +147,7 @@ struct LandscapeGenerator {
         var colorList: [SCNVector3] = []
         
         for vertex in vertexList {
+            
             if vertex.y <= -0.7
             {
                 colorList.append(SCNVector3(0.026, vertex.y, 0.408))
@@ -171,8 +172,8 @@ struct LandscapeGenerator {
         source.persistence = 0.7 // determines how smooth the noise, ie how likely it is to change. Higher values create rougher terrain. Keep values below 1.0
 
         let noise = GKNoise(source)
-        let size = vector2(50.0, 50.0)
-        let origin = vector2(20.0, 0.0)
+        let size = vector2(30.0, 30.0)
+        let origin = vector2(10.0, 10.0)
         let sampleCount = vector2(Int32(x), Int32(z))
 
         return GKNoiseMap(noise, size: size, origin: origin, sampleCount: sampleCount, seamless: true)
