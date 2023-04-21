@@ -20,25 +20,24 @@ class MotionDetector : ObservableObject {
     
     private var motionManager = CMMotionManager();
     
-    func getData() -> Double    {
-            if let accelerometerData = motionManager.accelerometerData {
-               return accelerometerData.acceleration.x
+    func getData() -> String   {
+        if let deviceMotionData = motionManager.deviceMotion {
+                let x = String(deviceMotionData.gravity.x)
+                let y = String(deviceMotionData.gravity.y)
+                let z = String(deviceMotionData.gravity.z)
+                return x + y + z
             } else {
-                return 0
-            }
+                return "static"            }
     }
     
     
     
     func start() {
         
-        motionManager.accelerometerUpdateInterval = 0.2
+        motionManager.deviceMotionUpdateInterval = 0.2
         let queue = OperationQueue()
-        motionManager.startAccelerometerUpdates(to: queue, withHandler: {accelerometerData, error in
-            guard let accelerometerData = accelerometerData else {
-                return
-            }
-            let accelerationY = accelerometerData.acceleration.y
+        motionManager.startDeviceMotionUpdates(to: queue, withHandler: {deviceMotionData, error in
+        
          //   self.watchConnecter.send("\(String(accelerationY))")
             self.watchConnecter.send("\(String(self.jumps))")
 

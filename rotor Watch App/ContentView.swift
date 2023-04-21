@@ -34,7 +34,7 @@ struct ContentView: View {
   
     var body: some View {
         VStack {
-            Text(gravity)
+            Text(motionDetector.getData())
             Button(action: increment) {
                 Text("Increment")
             }

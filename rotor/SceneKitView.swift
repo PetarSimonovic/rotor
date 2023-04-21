@@ -53,9 +53,10 @@ struct SceneKitView : UIViewRepresentable {
         scnView.scene = scene
 
         // allows the user to manipulate the camera
-//        scnView.allowsCameraControl = false
+        scnView.allowsCameraControl = false
         let yPos: Float = (Float(self.iosConnector.notificationMessage?.text ?? "0.0") ?? 0.0)/10
-        cameraNode.position = SCNVector3Make(30, yPos, 80)
+        let xPos: Float = yPos/2
+        cameraNode.position = SCNVector3Make(30 + xPos, yPos, 80)
 
 
         // show statistics such as fps and timing information
@@ -89,8 +90,13 @@ struct SceneKitView : UIViewRepresentable {
     
     func createCamera() {
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3Make(30, 1, 80)
+        let groundPoint = SCNNode()
+        groundPoint.position = SCNVector3Make(80, 1, 80)
+        cameraNode.position = SCNVector3Make(80, 1, 80)
+        var lookAtConstraint = SCNLookAtConstraint(target: groundPoint)
+        cameraNode.constraints = [lookAtConstraint] // this isn't doing anything?
         scene.rootNode.addChildNode(cameraNode)
+        
     }
     
     

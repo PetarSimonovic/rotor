@@ -70,7 +70,6 @@ struct LandscapeGenerator {
                 if yPos > 0.7 {
                     yPos = yPos * 1.5
                 }
-                print(yPos)
                 let xPos = Float(x)
                 let zPos = Float(z)
                 vertexList.append(SCNVector3(xPos, yPos, zPos))
