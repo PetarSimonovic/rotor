@@ -22,7 +22,6 @@ class iOSConnector : NSObject,  WCSessionDelegate, ObservableObject {
     
     public override init() {
         super.init()
-        print("HERE")
         if WCSession.isSupported() {
             print("Supported in iOS")
             WCSession.default.delegate = self
