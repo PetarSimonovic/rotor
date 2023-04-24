@@ -27,7 +27,7 @@
 		0D8D14BE298EA6CE00396783 /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14BD298EA6CE00396783 /* WatchConnector.swift */; };
 		0DC0E47229EE9F7A00089EDB /* LandscapeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47129EE9F7A00089EDB /* LandscapeGenerator.swift */; };
 		0DC0E47429F3DD4200089EDB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47329F3DD4200089EDB /* Extensions.swift */; };
-		0DC0E47A29F6D56200089EDB /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47929F6D56200089EDB /* WorkoutManager.swift */; };
+		0DC0E47B29F6F45D00089EDB /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47929F6D56200089EDB /* WorkoutManager.swift */; };
 		0DC38E3829EE7671007B4AC5 /* SceneKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */; };
 /* End PBXBuildFile section */
 
@@ -202,6 +202,7 @@
 				0D8D1465298E9A8900396783 /* Preview Content */,
 				0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */,
 				0DC0E47129EE9F7A00089EDB /* LandscapeGenerator.swift */,
+				0DC0E47929F6D56200089EDB /* WorkoutManager.swift */,
 			);
 			path = rotor;
 			sourceTree = "<group>";
@@ -243,7 +244,6 @@
 				0D8D148B298E9A8A00396783 /* Assets.xcassets */,
 				0D8D148D298E9A8A00396783 /* Preview Content */,
 				0DC0E47329F3DD4200089EDB /* Extensions.swift */,
-				0DC0E47929F6D56200089EDB /* WorkoutManager.swift */,
 			);
 			path = "rotor Watch App";
 			sourceTree = "<group>";
@@ -507,6 +507,7 @@
 				0D8D14BC298E9BFE00396783 /* iOSConnector.swift in Sources */,
 				0D8D1460298E9A8800396783 /* rotorApp.swift in Sources */,
 				0DC38E3829EE7671007B4AC5 /* SceneKitView.swift in Sources */,
+				0DC0E47B29F6F45D00089EDB /* WorkoutManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,7 +537,6 @@
 				0D8D148A298E9A8900396783 /* ContentView.swift in Sources */,
 				0D8D1488298E9A8900396783 /* rotorApp.swift in Sources */,
 				0D821517299191E300267EF8 /* MotionDetector.swift in Sources */,
-				0DC0E47A29F6D56200089EDB /* WorkoutManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

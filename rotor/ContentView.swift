@@ -10,9 +10,10 @@ import WatchConnectivity
 
 struct ContentView: View {
     
-    
+    @ObservedObject private var workoutManager = WorkoutManager()
     @StateObject private var iosConnector = iOSConnector()
     @State private var jumpCount: Int = 0;
+    
     var sceneKitView = SceneKitView()
     
     var body: some View {
@@ -22,9 +23,9 @@ struct ContentView: View {
                 Counter(jumpCount: self.iosConnector.notificationMessage?.text ?? "r o t o r")
         }
         .environmentObject(iosConnector)
-        
-
+        .onAppear{workoutManager.start()}
     }
+        
 }
 
 struct Title: View {

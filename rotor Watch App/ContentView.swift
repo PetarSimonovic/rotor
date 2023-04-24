@@ -15,7 +15,6 @@ struct ContentView: View {
     
     @ObservedObject private var motionDetector = MotionDetector()
     
-    @ObservedObject private var workoutManager = WorkoutManager()
 
     @State private var gravity = "No reading"
     
@@ -36,7 +35,6 @@ struct ContentView: View {
   
     var body: some View {
         VStack {
-            Text(String(workoutManager.healthText))
             Button(action: increment) {
                 Text("Increment")
             }
@@ -47,7 +45,6 @@ struct ContentView: View {
         }
         .padding()
         .onAppear{
-            workoutManager.start()
             motionDetector.start()
             
         }
