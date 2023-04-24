@@ -26,6 +26,8 @@
 		0D8D14BC298E9BFE00396783 /* iOSConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14BB298E9BFE00396783 /* iOSConnector.swift */; };
 		0D8D14BE298EA6CE00396783 /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14BD298EA6CE00396783 /* WatchConnector.swift */; };
 		0DC0E47229EE9F7A00089EDB /* LandscapeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47129EE9F7A00089EDB /* LandscapeGenerator.swift */; };
+		0DC0E47429F3DD4200089EDB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47329F3DD4200089EDB /* Extensions.swift */; };
+		0DC0E47A29F6D56200089EDB /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47929F6D56200089EDB /* WorkoutManager.swift */; };
 		0DC38E3829EE7671007B4AC5 /* SceneKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +110,10 @@
 		0D8D14BB298E9BFE00396783 /* iOSConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSConnector.swift; sourceTree = "<group>"; };
 		0D8D14BD298EA6CE00396783 /* WatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnector.swift; sourceTree = "<group>"; };
 		0DC0E47129EE9F7A00089EDB /* LandscapeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeGenerator.swift; sourceTree = "<group>"; };
+		0DC0E47329F3DD4200089EDB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0DC0E47529F6CEB200089EDB /* rotor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rotor.entitlements; sourceTree = "<group>"; };
+		0DC0E47629F6CEED00089EDB /* rotor Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "rotor Watch App.entitlements"; sourceTree = "<group>"; };
+		0DC0E47929F6D56200089EDB /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 		0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +193,7 @@
 		0D8D145E298E9A8800396783 /* rotor */ = {
 			isa = PBXGroup;
 			children = (
+				0DC0E47529F6CEB200089EDB /* rotor.entitlements */,
 				0D8215132991844B00267EF8 /* Info.plist */,
 				0D8D14BB298E9BFE00396783 /* iOSConnector.swift */,
 				0D8D145F298E9A8800396783 /* rotorApp.swift */,
@@ -227,6 +234,7 @@
 		0D8D1486298E9A8900396783 /* rotor Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				0DC0E47629F6CEED00089EDB /* rotor Watch App.entitlements */,
 				0D821516299191E300267EF8 /* MotionDetector.swift */,
 				0D821512299182AE00267EF8 /* rotor-Watch-App-Info.plist */,
 				0D8D14BD298EA6CE00396783 /* WatchConnector.swift */,
@@ -234,6 +242,8 @@
 				0D8D1489298E9A8900396783 /* ContentView.swift */,
 				0D8D148B298E9A8A00396783 /* Assets.xcassets */,
 				0D8D148D298E9A8A00396783 /* Preview Content */,
+				0DC0E47329F3DD4200089EDB /* Extensions.swift */,
+				0DC0E47929F6D56200089EDB /* WorkoutManager.swift */,
 			);
 			path = "rotor Watch App";
 			sourceTree = "<group>";
@@ -521,10 +531,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DC0E47429F3DD4200089EDB /* Extensions.swift in Sources */,
 				0D8D14BE298EA6CE00396783 /* WatchConnector.swift in Sources */,
 				0D8D148A298E9A8900396783 /* ContentView.swift in Sources */,
 				0D8D1488298E9A8900396783 /* rotorApp.swift in Sources */,
 				0D821517299191E300267EF8 /* MotionDetector.swift in Sources */,
+				0DC0E47A29F6D56200089EDB /* WorkoutManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,6 +704,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "rotor Watch App/rotor Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"rotor Watch App/Preview Content\"";
@@ -700,6 +713,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "rotor-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = rotor;
+				INFOPLIST_KEY_NSMotionUsageDescription = "rotor uses Watch motion data to track skips";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.simonovic.rotor;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -723,6 +737,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "rotor Watch App/rotor Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"rotor Watch App/Preview Content\"";
@@ -731,6 +746,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "rotor-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = rotor;
+				INFOPLIST_KEY_NSMotionUsageDescription = "rotor uses Watch motion data to track skips";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.simonovic.rotor;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -756,6 +772,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = rotor/rotor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -795,6 +812,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = rotor/rotor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

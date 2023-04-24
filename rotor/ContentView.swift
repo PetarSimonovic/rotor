@@ -19,7 +19,7 @@ struct ContentView: View {
         ZStack {
             sceneKitView
                 .zIndex(1)
-                Counter(jumpCount: self.iosConnector.notificationMessage?.text ?? "r  o  t  o  r")
+                Counter(jumpCount: self.iosConnector.notificationMessage?.text ?? "r o t o r")
         }
         .environmentObject(iosConnector)
         

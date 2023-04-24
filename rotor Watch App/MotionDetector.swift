@@ -14,30 +14,44 @@ class MotionDetector : ObservableObject {
     
     var jumps: Int = 0
     
-
+    
     
     var started = false
     
-    @Published var gravityY: Double = 0.0
+    @Published var jumpMotionData: Double = 0.0
+    @Published var rateOfChange: Double = 0.0
+    @Published var jump: String = ""
+
     
-    private var motionManager = CMMotionManager();
+    var motionManager: CMMotionManager!
     
   
     
     
     
     func start() {
-        
-        motionManager.deviceMotionUpdateInterval = 0.2
+        motionManager = CMMotionManager()
+
+        motionManager.accelerometerUpdateInterval = 0.2
         let queue = OperationQueue()
-        motionManager.startDeviceMotionUpdates(to: queue, withHandler: {data, error in
+        motionManager.startAccelerometerUpdates(to: queue, withHandler: {data, error in
+            if !self.motionManager.isAccelerometerAvailable {
+                return
+            }
+
             guard let motionData = data else {
                 return
             }
-            self.gravityY = Double(round(1000 * motionData.gravity.y) / 1000) //   self.watchConnecter.send("\(String(accelerationY))")
-            self.watchConnecter.send("\(String(self.jumps))")
-
             
+            self.rateOfChange = self.jumpMotionData.calculateRateOfChange(newValue: motionData.acceleration.y)
+            if self.rateOfChange > 200.00 {
+                self.incrementJumps()
+                self.jump = "jump"
+                
+            } else {
+                self.jump = ""
+            }
+            self.jumpMotionData = motionData.acceleration.y
             })
 
     }
@@ -45,6 +59,7 @@ class MotionDetector : ObservableObject {
     
     func incrementJumps() {
         jumps += 1
+        print("JUMP!")
         self.watchConnecter.send("\(String(self.jumps))")
 
     }
@@ -55,6 +70,8 @@ class MotionDetector : ObservableObject {
         self.watchConnecter.send("\(String(self.jumps))")
 
     }
+    
+    
     
     
    
