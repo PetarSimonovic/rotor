@@ -18,9 +18,9 @@ class MotionDetector : ObservableObject {
     
     var started = false
     
-    @Published var jumpMotionData: Double = 0.0
-    @Published var rateOfChange: Double = 0.0
-    @Published var jump: String = ""
+    var jumpMotionData: Double = 0.0
+    var rateOfChange: Double = 0.0
+    var jump: String = ""
 
     
     var motionManager: CMMotionManager!
@@ -29,7 +29,7 @@ class MotionDetector : ObservableObject {
     
     
     
-    func start() {
+    func startAccelerometer() {
         motionManager = CMMotionManager()
 
         motionManager.accelerometerUpdateInterval = 0.2
@@ -44,7 +44,7 @@ class MotionDetector : ObservableObject {
             }
             
             self.rateOfChange = self.jumpMotionData.calculateRateOfChange(newValue: motionData.acceleration.y)
-            if self.rateOfChange > 200.00 {
+            if self.rateOfChange > 150.00 {
                 self.incrementJumps()
                 self.jump = "jump"
                 
@@ -68,11 +68,12 @@ class MotionDetector : ObservableObject {
     func resetJumps() {
         jumps  = 0
         self.watchConnecter.send("\(String(self.jumps))")
-
     }
     
     
-    
+    func stopAccelerometer() {
+        motionManager?.stopAccelerometerUpdates();
+    }
     
    
 }

@@ -9,7 +9,7 @@ import Foundation
 import HealthKit
 
 
-class WorkoutManager : ObservableObject {
+class PhoneWorkoutManager : ObservableObject {
     
     @Published var healthText: String = ""
     

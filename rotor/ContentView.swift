@@ -10,7 +10,7 @@ import WatchConnectivity
 
 struct ContentView: View {
     
-    @ObservedObject private var workoutManager = WorkoutManager()
+    @ObservedObject private var workoutManager = PhoneWorkoutManager()
     @StateObject private var iosConnector = iOSConnector()
     @State private var jumpCount: Int = 0;
     

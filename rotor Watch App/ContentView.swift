@@ -14,39 +14,58 @@ struct ContentView: View {
     var watchConnector = WatchConnector()
     
     @ObservedObject private var motionDetector = MotionDetector()
+    @ObservedObject private var watchWorkoutManager = WatchWorkoutManager()
     
+    @State private var workoutHasStarted: Bool = false;
 
-    @State private var gravity = "No reading"
     
     func increment() {
         print("Increment!")
         self.motionDetector.incrementJumps()
-        gravity = String(motionDetector.jumps)
         
     }
     
     func reset() {
         print("Increment!")
         self.motionDetector.resetJumps()
-        gravity = String(motionDetector.jumps)
         
+    }
+    
+     func toggleStartWorkout() {
+        if workoutHasStarted {
+            workoutHasStarted = false
+            watchWorkoutManager.stopWorkoutSession()
+            motionDetector.stopAccelerometer()
+            
+        } else {
+            workoutHasStarted = true
+            watchWorkoutManager.startWorkoutSession()
+            motionDetector.startAccelerometer()
+
+        }
+
     }
    
   
     var body: some View {
         VStack {
+            Text(motionDetector.jump)
+            Text("Version 1")
             Button(action: increment) {
                 Text("Increment")
             }
             Button(action: reset) {
                 Text("Reset")
             }
+            
+            Button(action: self.toggleStartWorkout) {
+                Text(self.workoutHasStarted ? "End" : "Start")
+            }
 
         }
         .padding()
         .onAppear{
-            motionDetector.start()
-            
+            watchWorkoutManager.start()
         }
     }
    
