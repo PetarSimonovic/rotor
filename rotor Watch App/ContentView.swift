@@ -35,7 +35,7 @@ struct ContentView: View {
         if workoutHasStarted {
             workoutHasStarted = false
             watchWorkoutManager.stopWorkoutSession()
-            motionDetector.stopAccelerometer()
+            motionDetector.stopMotionUpdates()
             
         } else {
             workoutHasStarted = true

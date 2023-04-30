@@ -20,6 +20,9 @@ import CoreMotion
     
     var jumpMotionData: Double = 0.0
     var rateOfChange: Double = 0.0
+    var forwardAxisTurned: Bool = false
+    var backwardAxisTurned: Bool = false
+    var turnComplete = true
 
     
     var motionManager: CMMotionManager!
@@ -54,8 +57,7 @@ import CoreMotion
             
             self.rateOfChange = self.jumpMotionData.calculateRateOfChange(newValue: motionData.acceleration.y)
             if self.rateOfChange > 200.00 {
-                print("Incrementing jump!")
-                self.incrementJumps()
+                self.checkJump()
                 
             }
             self.jumpMotionData = motionData.acceleration.y
@@ -78,11 +80,18 @@ import CoreMotion
                 return
             }
             
-            print("Motion Data")
-            print(motionData.rotationRate.z)
+            self.processTurn(zPosition: motionData.rotationRate.z.round(to: 2));
             
         })
         
+    }
+    
+    func checkJump() {
+        if turnComplete {
+            print("Valid jump!")
+            incrementJumps()
+            resetTurn()
+        }
     }
     
     
@@ -98,10 +107,29 @@ import CoreMotion
         self.watchConnecter.send("\(String(self.jumps))")
     }
     
-    
-    func stopAccelerometer() {
-        motionManager?.stopAccelerometerUpdates()
+    func resetTurn() {
+        forwardAxisTurned = false
+        backwardAxisTurned = false
+        turnComplete = false
     }
+    
+    func processTurn(zPosition: Double) {
+        if zPosition > 1 {forwardAxisTurned = true}
+        if zPosition < -1 {backwardAxisTurned = true}
+        if forwardAxisTurned && backwardAxisTurned {
+            print("Turn complete")
+            turnComplete = true;
+            resetTurn()
+        }
+    }
+    
+    
+    func stopMotionUpdates() {
+        motionManager?.stopAccelerometerUpdates()
+        motionManager?.stopDeviceMotionUpdates()
+
+    }
+
     
    
 }
