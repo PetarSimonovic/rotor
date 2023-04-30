@@ -23,6 +23,7 @@ import CoreMotion
     var forwardAxisTurned: Bool = false
     var backwardAxisTurned: Bool = false
     var turnComplete = true
+    let jumpThreshold: Double = 250
 
     
     var motionManager: CMMotionManager!
@@ -43,7 +44,7 @@ import CoreMotion
     }
     
     func startAccelerometer() {
-        motionManager.accelerometerUpdateInterval = 0.2
+        motionManager.accelerometerUpdateInterval = 0.1
         print(motionManager.isAccelerometerAvailable)
 
         motionManager.startAccelerometerUpdates(to: queue, withHandler: {data, error in
@@ -55,8 +56,10 @@ import CoreMotion
                 return
             }
             
-            self.rateOfChange = self.jumpMotionData.calculateRateOfChange(newValue: motionData.acceleration.y)
-            if self.rateOfChange > 200.00 {
+            
+            self.rateOfChange = abs(self.jumpMotionData.calculateRateOfChange(newValue: motionData.acceleration.y))
+
+            if self.rateOfChange > self.jumpThreshold {
                 self.checkJump()
                 
             }
@@ -67,7 +70,7 @@ import CoreMotion
     func startGyroScope() {
         print("starting gyroscope")
         print(motionManager.isDeviceMotionAvailable)
-        motionManager.deviceMotionUpdateInterval = 0.2
+        motionManager.deviceMotionUpdateInterval = 0.1
         motionManager.startDeviceMotionUpdates(to: queue, withHandler: { data, error in
             
             if !self.motionManager.isDeviceMotionAvailable {
@@ -80,7 +83,8 @@ import CoreMotion
                 return
             }
             
-            self.processTurn(zPosition: motionData.rotationRate.z.round(to: 2));
+            
+            self.processTurn(gyroPosition: motionData.rotationRate.z.round(to: 2));
             
         })
         
@@ -88,14 +92,15 @@ import CoreMotion
     
     func checkJump() {
         if turnComplete {
-            print("Valid jump!")
             incrementJumps()
-            resetTurn()
         }
+        resetTurn()
+
     }
     
     
     func incrementJumps() {
+        print("Valid skip!")
         jumps += 1
         self.watchConnecter.send("\(String(self.jumps))")
 
@@ -113,13 +118,12 @@ import CoreMotion
         turnComplete = false
     }
     
-    func processTurn(zPosition: Double) {
-        if zPosition > 1 {forwardAxisTurned = true}
-        if zPosition < -1 {backwardAxisTurned = true}
+    func processTurn(gyroPosition: Double) {
+        if gyroPosition > 1 {forwardAxisTurned = true}
+        if gyroPosition < -1 {backwardAxisTurned = true}
         if forwardAxisTurned && backwardAxisTurned {
-            print("Turn complete")
+            print("Turn")
             turnComplete = true;
-            resetTurn()
         }
     }
     
