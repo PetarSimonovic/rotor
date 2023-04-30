@@ -8,7 +8,7 @@
 import Foundation
 import HealthKit
 
-
+@MainActor
 class WatchWorkoutManager : NSObject, ObservableObject {
     
     @Published var healthText: String = ""

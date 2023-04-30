@@ -35,7 +35,6 @@ class PhoneWorkoutManager : ObservableObject {
         healthStore!.requestAuthorization(toShare: dataToAccess, read: dataToAccess, completion: { (success, error) in
               if (!success) {
                 //  request was not successful, handle user denial
-                  print(error)
                   return
               }
         })

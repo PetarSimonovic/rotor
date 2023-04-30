@@ -40,7 +40,7 @@ struct ContentView: View {
         } else {
             workoutHasStarted = true
             watchWorkoutManager.startWorkoutSession()
-            motionDetector.startAccelerometer()
+            motionDetector.startMotionDetection()
 
         }
 
@@ -49,7 +49,6 @@ struct ContentView: View {
   
     var body: some View {
         VStack {
-            Text(motionDetector.jump)
             Text("Version 1")
             Button(action: increment) {
                 Text("Increment")

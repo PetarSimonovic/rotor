@@ -8,7 +8,7 @@
 import Foundation
 import CoreMotion
 
-class MotionDetector : ObservableObject {
+@MainActor class MotionDetector : ObservableObject {
     
     let watchConnecter = WatchConnector()
     
@@ -20,20 +20,29 @@ class MotionDetector : ObservableObject {
     
     var jumpMotionData: Double = 0.0
     var rateOfChange: Double = 0.0
-    var jump: String = ""
 
     
     var motionManager: CMMotionManager!
+    var queue: OperationQueue!
     
   
     
     
     
-    func startAccelerometer() {
+    func startMotionDetection() {
         motionManager = CMMotionManager()
+        queue = OperationQueue()
 
+
+        startAccelerometer()
+        startGyroScope()
+
+    }
+    
+    func startAccelerometer() {
         motionManager.accelerometerUpdateInterval = 0.2
-        let queue = OperationQueue()
+        print(motionManager.isAccelerometerAvailable)
+
         motionManager.startAccelerometerUpdates(to: queue, withHandler: {data, error in
             if !self.motionManager.isAccelerometerAvailable {
                 return
@@ -44,22 +53,41 @@ class MotionDetector : ObservableObject {
             }
             
             self.rateOfChange = self.jumpMotionData.calculateRateOfChange(newValue: motionData.acceleration.y)
-            if self.rateOfChange > 150.00 {
+            if self.rateOfChange > 200.00 {
+                print("Incrementing jump!")
                 self.incrementJumps()
-                self.jump = "jump"
                 
-            } else {
-                self.jump = ""
             }
             self.jumpMotionData = motionData.acceleration.y
             })
-
+    }
+    
+    func startGyroScope() {
+        print("starting gyroscope")
+        print(motionManager.isDeviceMotionAvailable)
+        motionManager.deviceMotionUpdateInterval = 0.2
+        motionManager.startDeviceMotionUpdates(to: queue, withHandler: { data, error in
+            
+            if !self.motionManager.isDeviceMotionAvailable {
+                print("No gyroscope")
+                return
+            }
+            
+            guard let motionData = data else {
+                print("No motuondata for gyroscope")
+                return
+            }
+            
+            print("Motion Data")
+            print(motionData.rotationRate.z)
+            
+        })
+        
     }
     
     
     func incrementJumps() {
         jumps += 1
-        print("JUMP!")
         self.watchConnecter.send("\(String(self.jumps))")
 
     }
@@ -72,7 +100,7 @@ class MotionDetector : ObservableObject {
     
     
     func stopAccelerometer() {
-        motionManager?.stopAccelerometerUpdates();
+        motionManager?.stopAccelerometerUpdates()
     }
     
    
