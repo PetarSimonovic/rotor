@@ -12,11 +12,15 @@ struct ContentView: View {
     
     @ObservedObject private var workoutManager = PhoneWorkoutManager()
     @StateObject private var iosConnector = iOSConnector()
-    @State private var jumpCount: Int = 0;
     
     var sceneKitView = SceneKitView()
     
+    func checkJumps() {
+        print(self.iosConnector.notificationMessage?.text ?? "no message")
+    }
+    
     var body: some View {
+ 
         ZStack {
             sceneKitView
                 .zIndex(1)
@@ -24,6 +28,9 @@ struct ContentView: View {
         }
         .environmentObject(iosConnector)
         .onAppear{workoutManager.start()}
+        .onChange(of: self.iosConnector.notificationMessage?.text, perform: {newValue in
+            sceneKitView.applyThrust()
+        })
     }
         
 }

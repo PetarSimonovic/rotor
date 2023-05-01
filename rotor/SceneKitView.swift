@@ -14,11 +14,11 @@ struct SceneKitView : UIViewRepresentable {
     @EnvironmentObject var iosConnector: iOSConnector
     // Base Node
     let scene = SCNScene()
+    var playerNode = SCNNode()
     
   //  @Binding var jumpCount: Int
     
     let landscapeGenerator = LandscapeGenerator()
-    let playerNode = SCNNode()
     
     
     // makeUIVIew and updateUIView are required to conform to the UIViewRepresentable protocol
@@ -27,7 +27,8 @@ struct SceneKitView : UIViewRepresentable {
            
 //
         configurePlayerNode()
-  
+        playerNode.position = SCNVector3Make(40, 12, 30)
+
         let landscapeNode: SCNNode = landscapeGenerator.generate()
         
         let constraint = SCNLookAtConstraint(target: landscapeNode)
@@ -35,7 +36,6 @@ struct SceneKitView : UIViewRepresentable {
         playerNode.constraints = [constraint]
         
         scene.rootNode.addChildNode(landscapeNode)
-        playerNode.position = SCNVector3Make(40, 2, 30)
 
 
         scene.rootNode.addChildNode(playerNode)
@@ -64,14 +64,8 @@ struct SceneKitView : UIViewRepresentable {
         scnView.scene = scene
 
         // allows the user to manipulate the camera
-        scnView.allowsCameraControl = true
-//        let yPos: Float = (Float(self.iosConnector.notificationMessage?.text ?? "0.0") ?? 0.0)/10
-//        let xPos: Float = yPos/2
-//        playerNode.position = SCNVector3Make(30 + xPos, yPos, 80)
+     //   scnView.allowsCameraControl = true
 
-
-        // show statistics such as fps and timing information
-       // scnView.showsStatistics = true
 
         // configure the view
         scnView.backgroundColor = UIColor(red: 0.1, green: 0.3, blue: 0.56, alpha: 0.61)
@@ -101,20 +95,22 @@ struct SceneKitView : UIViewRepresentable {
     
     
     func configurePlayerNode() {
-        let sphereGeometry: SCNGeometry = SCNSphere(radius: 5)
         
-        let playerNode: SCNNode = SCNNode()
-            
-        let nodePhysicsShape = SCNPhysicsShape(geometry: sphereGeometry, options: nil)
-        let nodePhysicsBody = SCNPhysicsBody(type: .static, shape: nodePhysicsShape)
         
-
-        playerNode.physicsBody = nodePhysicsBody
-        playerNode.position = SCNVector3Make(10, 2, 10)
+        let sphereGeometry = SCNSphere(radius: 2)
+        let shape = SCNPhysicsShape(geometry: sphereGeometry, options: nil)
+        let physicsBody = SCNPhysicsBody(type: .dynamic, shape: shape)
         playerNode.camera = SCNCamera()
-
-
-
+        playerNode.physicsBody = physicsBody
+    }
+    
+    func applyThrust() {
+       // print(playerNode.physicsBody)
+//        let force = SCNVector3(x: 10, y: 10 , z: 0)
+//
+//                // 4
+//        playerNode.physicsBody?.applyForce(force,
+//                                           at: playerNode.position, asImpulse: true)
 
     }
     

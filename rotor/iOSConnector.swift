@@ -7,6 +7,7 @@
 
 import Foundation
 import WatchConnectivity
+import SceneKit
 
 class iOSConnector : NSObject,  WCSessionDelegate, ObservableObject {
     
@@ -17,6 +18,7 @@ class iOSConnector : NSObject,  WCSessionDelegate, ObservableObject {
         let text: String
         
     }
+    
     
     @Published var notificationMessage: NotificationMessage? = nil
     
@@ -53,10 +55,13 @@ class iOSConnector : NSObject,  WCSessionDelegate, ObservableObject {
         if let notificationText = message[kMessageKey] as? String {
             DispatchQueue.main.async { [weak self] in
                 self?.notificationMessage = NotificationMessage(text: notificationText)
+
             }
         }
         
         
     }
+    
+ 
     
 }
