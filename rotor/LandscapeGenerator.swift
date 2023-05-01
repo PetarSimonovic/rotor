@@ -40,13 +40,23 @@ struct LandscapeGenerator {
             primitiveType: .triangles
         )
         
-        return SCNNode(
-            geometry: SCNGeometry(
-                sources: [vertices, colors],
-                elements: [elements] // COLOURS HERE!!!
-            )
+        let landscapeGeometry: SCNGeometry = SCNGeometry(
+            sources: [vertices, colors],
+            elements: [elements] // COLOURS HERE!!!
         )
 
+        
+        let landscapeNode: SCNNode = SCNNode(
+            geometry: landscapeGeometry
+        )
+            
+        let landscapePhysicsShape = SCNPhysicsShape(geometry: landscapeGeometry, options: nil)
+        let landscapePhysicsBody = SCNPhysicsBody(type: .kinematic, shape: landscapePhysicsShape)
+        
+        landscapeNode.physicsBody = landscapePhysicsBody
+        
+        return landscapeNode
+        
         
     }
 
