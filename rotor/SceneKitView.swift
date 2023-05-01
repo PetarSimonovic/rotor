@@ -105,12 +105,10 @@ struct SceneKitView : UIViewRepresentable {
     }
     
     func applyThrust() {
-       // print(playerNode.physicsBody)
-//        let force = SCNVector3(x: 10, y: 10 , z: 0)
-//
-//                // 4
-//        playerNode.physicsBody?.applyForce(force,
-//                                           at: playerNode.position, asImpulse: true)
+        let force = SCNVector3(x: 0, y: 0.5 , z: 0)
+
+        playerNode.physicsBody?.applyForce(force,
+                                           at: playerNode.position, asImpulse: true)
 
     }
     
