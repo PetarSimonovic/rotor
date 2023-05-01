@@ -51,7 +51,7 @@ struct LandscapeGenerator {
         )
             
         let landscapePhysicsShape = SCNPhysicsShape(geometry: landscapeGeometry, options: nil)
-        let landscapePhysicsBody = SCNPhysicsBody(type: .kinematic, shape: landscapePhysicsShape)
+        let landscapePhysicsBody = SCNPhysicsBody(type: .static, shape: landscapePhysicsShape)
         
         landscapeNode.physicsBody = landscapePhysicsBody
         

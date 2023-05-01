@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SceneKit
+import CoreGraphics
 
 struct SceneKitView : UIViewRepresentable {
     
@@ -17,17 +18,28 @@ struct SceneKitView : UIViewRepresentable {
   //  @Binding var jumpCount: Int
     
     let landscapeGenerator = LandscapeGenerator()
+    let playerNode = SCNNode()
     
-    let cameraNode = SCNNode()
-
     
     // makeUIVIew and updateUIView are required to conform to the UIViewRepresentable protocol
 
     func makeUIView(context: Context) -> SCNView {
            
 //
-        // add the box to the node.
-        scene.rootNode.addChildNode(landscapeGenerator.generate())
+        configurePlayerNode()
+  
+        let landscapeNode: SCNNode = landscapeGenerator.generate()
+        
+        let constraint = SCNLookAtConstraint(target: landscapeNode)
+        constraint.isGimbalLockEnabled = true
+        playerNode.constraints = [constraint]
+        
+        scene.rootNode.addChildNode(landscapeNode)
+        playerNode.position = SCNVector3Make(40, 2, 30)
+
+
+        scene.rootNode.addChildNode(playerNode)
+
                
                 
         // Create Lights
@@ -35,13 +47,12 @@ struct SceneKitView : UIViewRepresentable {
         createAmbientLight()
         createOmniLight()
         
-        // Create Camera
-        
-        createCamera()
-        
+        // Configure Camera
+     
 
         
         let scnView = SCNView()
+        scnView.pointOfView = playerNode
         return scnView
 
        
@@ -53,10 +64,10 @@ struct SceneKitView : UIViewRepresentable {
         scnView.scene = scene
 
         // allows the user to manipulate the camera
-        scnView.allowsCameraControl = false
-        let yPos: Float = (Float(self.iosConnector.notificationMessage?.text ?? "0.0") ?? 0.0)/10
-        let xPos: Float = yPos/2
-        cameraNode.position = SCNVector3Make(30 + xPos, yPos, 80)
+        scnView.allowsCameraControl = true
+//        let yPos: Float = (Float(self.iosConnector.notificationMessage?.text ?? "0.0") ?? 0.0)/10
+//        let xPos: Float = yPos/2
+//        playerNode.position = SCNVector3Make(30 + xPos, yPos, 80)
 
 
         // show statistics such as fps and timing information
@@ -86,17 +97,25 @@ struct SceneKitView : UIViewRepresentable {
         scene.rootNode.addChildNode(omniLightNode)
     }
     
-    // CAMERA METHODS
+    // PLAYER METHODS
     
-    func createCamera() {
-        cameraNode.camera = SCNCamera()
-        let groundPoint = SCNNode()
-        groundPoint.position = SCNVector3Make(80, 1, 80)
-        cameraNode.position = SCNVector3Make(80, 1, 80)
-        var lookAtConstraint = SCNLookAtConstraint(target: groundPoint)
-        cameraNode.constraints = [lookAtConstraint] // this isn't doing anything?
-        scene.rootNode.addChildNode(cameraNode)
+    
+    func configurePlayerNode() {
+        let sphereGeometry: SCNGeometry = SCNSphere(radius: 5)
         
+        let playerNode: SCNNode = SCNNode()
+            
+        let nodePhysicsShape = SCNPhysicsShape(geometry: sphereGeometry, options: nil)
+        let nodePhysicsBody = SCNPhysicsBody(type: .static, shape: nodePhysicsShape)
+        
+
+        playerNode.physicsBody = nodePhysicsBody
+        playerNode.position = SCNVector3Make(10, 2, 10)
+        playerNode.camera = SCNCamera()
+
+
+
+
     }
     
     
@@ -160,5 +179,12 @@ public extension SCNGeometrySource {
             dataOffset: 0,
             dataStride: MemoryLayout<SCNVector3>.size
         )
+    }
+    
+    func sceneSpacePosition(inFrontOf node: SCNNode, atDistance distance: Float) -> SCNVector3 {
+        let localPosition = SCNVector3(x: 0, y: 0, z: Float(CGFloat(-distance)))
+        let scenePosition = node.convertPosition(localPosition, to: nil)
+             // to: nil is automatically scene space
+        return scenePosition
     }
 }

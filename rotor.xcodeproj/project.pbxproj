@@ -30,6 +30,7 @@
 		0DC0E47B29F6F45D00089EDB /* PhoneWorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47929F6D56200089EDB /* PhoneWorkoutManager.swift */; };
 		0DC0E47D29F81D9800089EDB /* WatchWorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47C29F81D9800089EDB /* WatchWorkoutManager.swift */; };
 		0DC38E3829EE7671007B4AC5 /* SceneKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */; };
+		0DDF1C1629FFED4800B29171 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDF1C1529FFED4800B29171 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		0DC0E47929F6D56200089EDB /* PhoneWorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneWorkoutManager.swift; sourceTree = "<group>"; };
 		0DC0E47C29F81D9800089EDB /* WatchWorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWorkoutManager.swift; sourceTree = "<group>"; };
 		0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitView.swift; sourceTree = "<group>"; };
+		0DDF1C1529FFED4800B29171 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 				0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */,
 				0DC0E47129EE9F7A00089EDB /* LandscapeGenerator.swift */,
 				0DC0E47929F6D56200089EDB /* PhoneWorkoutManager.swift */,
+				0DDF1C1529FFED4800B29171 /* Extensions.swift */,
 			);
 			path = rotor;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				0D8D1460298E9A8800396783 /* rotorApp.swift in Sources */,
 				0DC38E3829EE7671007B4AC5 /* SceneKitView.swift in Sources */,
 				0DC0E47B29F6F45D00089EDB /* PhoneWorkoutManager.swift in Sources */,
+				0DDF1C1629FFED4800B29171 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
