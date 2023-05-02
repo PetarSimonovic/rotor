@@ -34,6 +34,7 @@ import CoreMotion
     
     
     func startMotionDetection() {
+        jumps = 0
         motionManager = CMMotionManager()
         queue = OperationQueue()
 

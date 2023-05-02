@@ -13,8 +13,8 @@ import GameKit
 struct LandscapeGenerator {
     
     
-    var xLength = 100
-    var zLength = 100
+    var xLength = 500
+    var zLength = 500
     
     func generate() -> SCNNode {
         let map: GKNoiseMap = makeNoiseMap(x: xLength, z: zLength)
@@ -61,27 +61,31 @@ struct LandscapeGenerator {
     }
 
     func createVertices(_ map: GKNoiseMap) ->  [SCNVector3] {
-        
+        //   The general equation of a sphere is: (x - a)² + (y - b)² + (z - c)² = r², where (a, b, c) represents the center of the sphere, r represents the radius, and x, y, and z are the coordinates of the points on the surface of the sphere.
+
+//        let radius = 5
+//        let a = 0
+//        let b = 0
+//        let c = 0
+//
         var vertexList: [SCNVector3] = []
         for x in 1 ... xLength {
             for z in 1 ... zLength {
                 var yPos = map.value(at: [Int32(x), Int32(z)])
-                if (yPos > -0.7 && yPos < 0.3) {
-                    yPos = yPos/6
+                if (yPos >= -0.3 && yPos <= 0.3) {
+                    yPos = yPos/Float.random(in: 2 ... 4)
+                } else if (yPos >= 0.3 && yPos <= 0.6) {
+                    yPos = yPos/Float.random(in: 1 ... 2)
+                } else if yPos <= -0.9 {
+                    yPos = -0.9
                 }
-                if (yPos > 0.3 && yPos < 0.6) {
-                    yPos = yPos/4
+                else if yPos > 0.7 {
+                    yPos = yPos * Float.random(in: 2 ... 3.7)
+
                 }
-            
-                    
-                if yPos < -0.95 {
-                    yPos = -0.7
-                }
-                if yPos > 0.7 {
-                    yPos = yPos * 1.5
-                }
-                let xPos = Float(x)
-                let zPos = Float(z)
+                let xPos = Float(x) + Float.random(in: -0.7 ... 0.7)
+                let zPos = Float(z) + Float.random(in: -0.7 ... 0.7)
+
                 vertexList.append(SCNVector3(xPos, yPos, zPos))
             }
         }
@@ -157,7 +161,7 @@ struct LandscapeGenerator {
         
         for vertex in vertexList {
             
-            if vertex.y <= -0.7
+            if vertex.y <= -0.9
             {
                 colorList.append(SCNVector3(0.026, vertex.y, 0.408))
             }
@@ -167,7 +171,7 @@ struct LandscapeGenerator {
 
             }
             else {
-                colorList.append(SCNVector3(0.046, vertex.y + 0.5, 0.308))
+                colorList.append(SCNVector3(0.046, vertex.y + Float.random(in: 0.3 ... 0.9), Float.random(in: 0.3 ... 0.39)))
 
             }
         }
@@ -179,9 +183,9 @@ struct LandscapeGenerator {
     func makeNoiseMap(x: Int, z: Int) -> GKNoiseMap {
         let source = GKPerlinNoiseSource()
         source.persistence = 0.7 // determines how smooth the noise, ie how likely it is to change. Higher values create rougher terrain. Keep values below 1.0
-
         let noise = GKNoise(source)
-        let size = vector2(30.0, 30.0)
+        
+        let size = vector2(0.1, 0.1)
         let origin = vector2(10.0, 10.0)
         let sampleCount = vector2(Int32(x), Int32(z))
 
