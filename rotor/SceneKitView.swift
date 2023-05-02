@@ -20,6 +20,8 @@ struct SceneKitView : UIViewRepresentable {
     
     let landscapeGenerator = LandscapeGenerator()
     
+    let test = false
+    
     
     // makeUIVIew and updateUIView are required to conform to the UIViewRepresentable protocol
 
@@ -51,7 +53,9 @@ struct SceneKitView : UIViewRepresentable {
 
         
         let scnView = SCNView()
-        scnView.pointOfView = playerNode
+        if !test {
+            scnView.pointOfView = playerNode
+        }
         return scnView
 
        
@@ -63,7 +67,8 @@ struct SceneKitView : UIViewRepresentable {
         scnView.scene = scene
 
         // allows the user to manipulate the camera
-     //   scnView.allowsCameraControl = true
+        
+        scnView.allowsCameraControl = test
 
 
         // configure the view
@@ -99,10 +104,12 @@ struct SceneKitView : UIViewRepresentable {
         let nodeGeometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.1)
         let shape = SCNPhysicsShape(geometry: nodeGeometry, options: nil)
         let physicsBody = SCNPhysicsBody(type: .dynamic, shape: shape)
-        playerNode.camera = SCNCamera()
-        playerNode.camera?.zFar = 1000.00
+        if !test {
+            playerNode.camera = SCNCamera()
+            playerNode.camera?.zFar = 1000.00
+        }
         playerNode.physicsBody = physicsBody
-        playerNode.position = SCNVector3Make(40, 12, 30)
+        playerNode.position = SCNVector3Make(0, 52, 0)
         playerNode.simdScale = simd_float3(0.02, 0.02, 0.02)
         
     }

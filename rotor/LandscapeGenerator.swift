@@ -13,17 +13,19 @@ import GameKit
 struct LandscapeGenerator {
     
     
-    var xLength = 500
-    var zLength = 500
+    var xLength = 100
+    var zLength = 100
     
     func generate() -> SCNNode {
         let map: GKNoiseMap = makeNoiseMap(x: xLength, z: zLength)
         let vertexList: [SCNVector3] = createVertices(map)
-        let vertices = SCNGeometrySource(vertices: vertexList)
         
-        let indices: [Int32] = calculateIndices(vertexList)
         let colorList: [SCNVector3] = calculateColors(vertexList)
-        
+        let vertexSpheres: [SCNVector3] = mapToSphere(vertexList: vertexList)
+        let vertices = SCNGeometrySource(vertices: vertexSpheres)
+
+        let indices: [Int32] = calculateIndices(vertexSpheres)
+
         
         
         
@@ -61,13 +63,7 @@ struct LandscapeGenerator {
     }
 
     func createVertices(_ map: GKNoiseMap) ->  [SCNVector3] {
-        //   The general equation of a sphere is: (x - a)² + (y - b)² + (z - c)² = r², where (a, b, c) represents the center of the sphere, r represents the radius, and x, y, and z are the coordinates of the points on the surface of the sphere.
-
-//        let radius = 5
-//        let a = 0
-//        let b = 0
-//        let c = 0
-//
+        
         var vertexList: [SCNVector3] = []
         for x in 1 ... xLength {
             for z in 1 ... zLength {
@@ -81,16 +77,64 @@ struct LandscapeGenerator {
                 }
                 else if yPos > 0.7 {
                     yPos = yPos * Float.random(in: 2 ... 3.7)
-
+                    
                 }
                 let xPos = Float(x) + Float.random(in: -0.7 ... 0.7)
                 let zPos = Float(z) + Float.random(in: -0.7 ... 0.7)
-
+                
                 vertexList.append(SCNVector3(xPos, yPos, zPos))
             }
         }
         
         return vertexList
+    }
+    
+    
+    func mapToSphere(vertexList: [SCNVector3]) -> [SCNVector3] {
+        
+        // To map grid coordinates onto a sphere using the equirectangular projection, you can follow these steps:
+        
+
+//        Choose a radius for your sphere, which will determine the size of your final mapping.
+        let radius:Float = 10.00
+        var sphereVertices: [SCNVector3] = []
+        let longitudeMultiplier: Float = 360.00/Float(xLength)
+        let latitudeMultiplier: Float = (180.00/Float(zLength) - 90)
+        for coordinates in vertexList {
+            //  Convert the X-coordinate of each grid point to a longitude value by multiplying it by 360/W.
+            
+            let longitude = coordinates.x * longitudeMultiplier
+            
+            //  Convert the Z-coordinate of each grid point to a latitude value by multiplying it by 180/H and subtracting 90.
+            
+            let latitude = coordinates.z * latitudeMultiplier
+            
+//  Convert the longitude and latitude values of each grid point to Cartesian coordinates (x,y,z) using the following formulas:
+            
+            let x = cos(longitude) * cos(latitude)
+            
+            let z = sin(longitude) * cos(latitude)
+            
+            let y = sin(latitude)
+            
+            //   Scale the Cartesian coordinates so that they lie on the surface of the sphere with the chosen radius. To do this, divide each coordinate by the square root of the sum of their squares, and then multiply them by the radius.
+            
+            let sqrtValue = Float(sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2)))
+            let sphereXRadius: Float = Float(x * radius)
+            let sphereYRadius: Float = Float(y * radius)
+            let sphereZRadius: Float = Float(z * radius)
+            
+            let sphereX: Float = sphereXRadius / sqrtValue
+            let sphereY: Float = sphereYRadius / sqrtValue
+            let sphereZ: Float = sphereZRadius / sqrtValue
+         
+            sphereVertices.append(SCNVector3(sphereX, sphereY, sphereZ))
+
+            
+        }
+
+        
+        return sphereVertices
     }
     
     func calculateIndices(_ vertexList: [SCNVector3]) -> [Int32] {
@@ -186,7 +230,7 @@ struct LandscapeGenerator {
         source.octaveCount = 12
         let noise = GKNoise(source)
         
-        let size = vector2(40.0, 40.0)
+        let size = vector2(0.1, 0.1)
         let origin = vector2(10.0, 10.0)
         let sampleCount = vector2(Int32(x), Int32(z))
 
