@@ -54,6 +54,7 @@ struct LandscapeGenerator {
         let landscapePhysicsBody = SCNPhysicsBody(type: .static, shape: landscapePhysicsShape)
         
         landscapeNode.physicsBody = landscapePhysicsBody
+        landscapeNode.scale = SCNVector3(10, 10, 10)
         
         return landscapeNode
         
@@ -185,7 +186,7 @@ struct LandscapeGenerator {
         source.persistence = 0.7 // determines how smooth the noise, ie how likely it is to change. Higher values create rougher terrain. Keep values below 1.0
         let noise = GKNoise(source)
         
-        let size = vector2(0.1, 0.1)
+        let size = vector2(40.0, 40.0)
         let origin = vector2(10.0, 10.0)
         let sampleCount = vector2(Int32(x), Int32(z))
 
