@@ -27,7 +27,6 @@ struct SceneKitView : UIViewRepresentable {
            
 //
         configurePlayerNode()
-        playerNode.position = SCNVector3Make(40, 12, 30)
 
         let landscapeNode: SCNNode = landscapeGenerator.generate()
         
@@ -97,15 +96,19 @@ struct SceneKitView : UIViewRepresentable {
     func configurePlayerNode() {
         
         
-        let sphereGeometry = SCNSphere(radius: 2)
-        let shape = SCNPhysicsShape(geometry: sphereGeometry, options: nil)
+        let nodeGeometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.1)
+        let shape = SCNPhysicsShape(geometry: nodeGeometry, options: nil)
         let physicsBody = SCNPhysicsBody(type: .dynamic, shape: shape)
         playerNode.camera = SCNCamera()
+        playerNode.camera?.zFar = 1000.00
         playerNode.physicsBody = physicsBody
+        playerNode.position = SCNVector3Make(40, 12, 30)
+        playerNode.simdScale = simd_float3(0.02, 0.02, 0.02)
+        
     }
     
     func applyThrust() {
-        let force = SCNVector3(x: 0, y: 1.5 , z: 0)
+        let force = SCNVector3(x: 0, y: 0.008 , z: 0)
 
         playerNode.physicsBody?.applyForce(force,
                                            at: playerNode.position, asImpulse: true)
