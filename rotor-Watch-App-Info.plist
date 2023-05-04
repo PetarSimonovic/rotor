@@ -8,9 +8,5 @@
 	<array>
 		<string>workout-processing</string>
 	</array>
-	<key>NSHealthShareUsageDescription</key>
-	<string>Rotor uses HealthKit to access heart rate and calorie burn data</string>
-	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
-	<string>Rotor uses HealthKit to access heart rate and calorie burn data</string>
 </dict>
 </plist>

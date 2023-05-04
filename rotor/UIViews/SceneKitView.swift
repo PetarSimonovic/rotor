@@ -9,6 +9,7 @@ import SwiftUI
 import SceneKit
 import CoreGraphics
 
+
 struct SceneKitView : UIViewRepresentable {
     
     @EnvironmentObject var iosConnector: iOSConnector
@@ -18,9 +19,9 @@ struct SceneKitView : UIViewRepresentable {
     
   //  @Binding var jumpCount: Int
     
-    let landscapeGenerator = LandscapeGenerator()
-    
-    let test = false
+  //  let landscapeGenerator = LandscapeGenerator()
+    let icosphereGenerator: IcosphereGenerator = IcosphereGenerator()
+    let test = true
     
     
     // makeUIVIew and updateUIView are required to conform to the UIViewRepresentable protocol
@@ -30,7 +31,7 @@ struct SceneKitView : UIViewRepresentable {
 //
         configurePlayerNode()
 
-        let landscapeNode: SCNNode = landscapeGenerator.generate()
+        let landscapeNode: SCNNode = icosphereGenerator.generate()
         
         let constraint = SCNLookAtConstraint(target: landscapeNode)
         constraint.isGimbalLockEnabled = true
@@ -39,7 +40,6 @@ struct SceneKitView : UIViewRepresentable {
         scene.rootNode.addChildNode(landscapeNode)
 
 
-        scene.rootNode.addChildNode(playerNode)
 
                
                 
@@ -104,14 +104,14 @@ struct SceneKitView : UIViewRepresentable {
         let nodeGeometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.1)
         let shape = SCNPhysicsShape(geometry: nodeGeometry, options: nil)
         let physicsBody = SCNPhysicsBody(type: .dynamic, shape: shape)
-        if !test {
             playerNode.camera = SCNCamera()
             playerNode.camera?.zFar = 1000.00
+        if !test {
+            playerNode.physicsBody = physicsBody
+            playerNode.simdScale = simd_float3(0.02, 0.02, 0.02)
         }
-        playerNode.physicsBody = physicsBody
-        playerNode.position = SCNVector3Make(0, 52, 0)
-        playerNode.simdScale = simd_float3(0.02, 0.02, 0.02)
-        
+        playerNode.position = SCNVector3Make(0, 5, 0)
+
     }
     
     func applyThrust() {
