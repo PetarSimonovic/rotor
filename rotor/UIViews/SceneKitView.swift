@@ -9,6 +9,7 @@ import SwiftUI
 import SceneKit
 import CoreGraphics
 
+
 struct SceneKitView : UIViewRepresentable {
     
     @EnvironmentObject var iosConnector: iOSConnector
@@ -19,8 +20,7 @@ struct SceneKitView : UIViewRepresentable {
   //  @Binding var jumpCount: Int
     
     let landscapeGenerator = LandscapeGenerator()
-    
-    let test = false
+    let test = true
     
     
     // makeUIVIew and updateUIView are required to conform to the UIViewRepresentable protocol
@@ -31,7 +31,6 @@ struct SceneKitView : UIViewRepresentable {
         configurePlayerNode()
 
         let landscapeNode: SCNNode = landscapeGenerator.generate()
-        
         let constraint = SCNLookAtConstraint(target: landscapeNode)
         constraint.isGimbalLockEnabled = true
         playerNode.constraints = [constraint]
@@ -39,7 +38,6 @@ struct SceneKitView : UIViewRepresentable {
         scene.rootNode.addChildNode(landscapeNode)
 
 
-        scene.rootNode.addChildNode(playerNode)
 
                
                 
@@ -104,14 +102,14 @@ struct SceneKitView : UIViewRepresentable {
         let nodeGeometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.1)
         let shape = SCNPhysicsShape(geometry: nodeGeometry, options: nil)
         let physicsBody = SCNPhysicsBody(type: .dynamic, shape: shape)
-        if !test {
             playerNode.camera = SCNCamera()
             playerNode.camera?.zFar = 1000.00
+        if !test {
+            playerNode.physicsBody = physicsBody
+            playerNode.simdScale = simd_float3(0.02, 0.02, 0.02)
         }
-        playerNode.physicsBody = physicsBody
-        playerNode.position = SCNVector3Make(0, 52, 0)
-        playerNode.simdScale = simd_float3(0.02, 0.02, 0.02)
-        
+        playerNode.position = SCNVector3Make(0, 5, 0)
+
     }
     
     func applyThrust() {
@@ -123,6 +121,9 @@ struct SceneKitView : UIViewRepresentable {
     }
     
     
+    
+    
+   
     
     
     
@@ -165,30 +166,4 @@ struct SceneKitView : UIViewRepresentable {
     }
 }
 
-// CRIBBED FROM
 
-public extension SCNGeometrySource {
-    /// Initializes a `SCNGeometrySource` with a list of colors as
-    /// `SCNVector3`s`.
-    convenience init(colors: [SCNVector3]) {
-        let colorData = Data(bytes: colors, count: MemoryLayout<SCNVector3>.size * colors.count)
-
-        self.init(
-            data: colorData,
-            semantic: .color,
-            vectorCount: colors.count,
-            usesFloatComponents: true,
-            componentsPerVector: 3,
-            bytesPerComponent: MemoryLayout<Float>.size,
-            dataOffset: 0,
-            dataStride: MemoryLayout<SCNVector3>.size
-        )
-    }
-    
-    func sceneSpacePosition(inFrontOf node: SCNNode, atDistance distance: Float) -> SCNVector3 {
-        let localPosition = SCNVector3(x: 0, y: 0, z: Float(CGFloat(-distance)))
-        let scenePosition = node.convertPosition(localPosition, to: nil)
-             // to: nil is automatically scene space
-        return scenePosition
-    }
-}
