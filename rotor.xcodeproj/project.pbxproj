@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D80748B2A04F64C0071EC62 /* Ico.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80748A2A04F64C0071EC62 /* Ico.swift */; };
+		0D80748E2A0504630071EC62 /* SCNGeometryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80748D2A0504630071EC62 /* SCNGeometryExtension.swift */; };
+		0D8074902A0530C60071EC62 /* GKNoiseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80748F2A0530C60071EC62 /* GKNoiseExtension.swift */; };
 		0D821517299191E300267EF8 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D821516299191E300267EF8 /* MotionDetector.swift */; };
 		0D8D1460298E9A8800396783 /* rotorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D145F298E9A8800396783 /* rotorApp.swift */; };
 		0D8D1462298E9A8800396783 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D1461298E9A8800396783 /* ContentView.swift */; };
@@ -25,13 +28,11 @@
 		0D8D14A5298E9A8B00396783 /* rotor_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14A4298E9A8B00396783 /* rotor_Watch_AppUITestsLaunchTests.swift */; };
 		0D8D14BC298E9BFE00396783 /* iOSConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14BB298E9BFE00396783 /* iOSConnector.swift */; };
 		0D8D14BE298EA6CE00396783 /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14BD298EA6CE00396783 /* WatchConnector.swift */; };
-		0D99A8D12A03947A00595434 /* IcosphereGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D99A8D02A03947A00595434 /* IcosphereGenerator.swift */; };
 		0DC0E47229EE9F7A00089EDB /* LandscapeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47129EE9F7A00089EDB /* LandscapeGenerator.swift */; };
 		0DC0E47429F3DD4200089EDB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47329F3DD4200089EDB /* Extensions.swift */; };
 		0DC0E47B29F6F45D00089EDB /* PhoneWorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47929F6D56200089EDB /* PhoneWorkoutManager.swift */; };
 		0DC0E47D29F81D9800089EDB /* WatchWorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47C29F81D9800089EDB /* WatchWorkoutManager.swift */; };
 		0DC38E3829EE7671007B4AC5 /* SceneKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */; };
-		0DDF1C1629FFED4800B29171 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDF1C1529FFED4800B29171 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D80748A2A04F64C0071EC62 /* Ico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ico.swift; sourceTree = "<group>"; };
+		0D80748D2A0504630071EC62 /* SCNGeometryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNGeometryExtension.swift; sourceTree = "<group>"; };
+		0D80748F2A0530C60071EC62 /* GKNoiseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKNoiseExtension.swift; sourceTree = "<group>"; };
 		0D821512299182AE00267EF8 /* rotor-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "rotor-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0D8215132991844B00267EF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0D821516299191E300267EF8 /* MotionDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
@@ -112,14 +116,12 @@
 		0D8D14A4298E9A8B00396783 /* rotor_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rotor_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0D8D14BB298E9BFE00396783 /* iOSConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSConnector.swift; sourceTree = "<group>"; };
 		0D8D14BD298EA6CE00396783 /* WatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnector.swift; sourceTree = "<group>"; };
-		0D99A8D02A03947A00595434 /* IcosphereGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IcosphereGenerator.swift; sourceTree = "<group>"; };
 		0DC0E47129EE9F7A00089EDB /* LandscapeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeGenerator.swift; sourceTree = "<group>"; };
 		0DC0E47329F3DD4200089EDB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0DC0E47529F6CEB200089EDB /* rotor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rotor.entitlements; sourceTree = "<group>"; };
 		0DC0E47929F6D56200089EDB /* PhoneWorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneWorkoutManager.swift; sourceTree = "<group>"; };
 		0DC0E47C29F81D9800089EDB /* WatchWorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWorkoutManager.swift; sourceTree = "<group>"; };
 		0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitView.swift; sourceTree = "<group>"; };
-		0DDF1C1529FFED4800B29171 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D80748C2A0504470071EC62 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0D80748D2A0504630071EC62 /* SCNGeometryExtension.swift */,
+				0D80748F2A0530C60071EC62 /* GKNoiseExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		0D8D1453298E9A8800396783 = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +209,7 @@
 		0D8D145E298E9A8800396783 /* rotor */ = {
 			isa = PBXGroup;
 			children = (
+				0D80748C2A0504470071EC62 /* Extensions */,
 				0D99A8D52A0394CE00595434 /* UIViews */,
 				0D99A8D42A0394BF00595434 /* WatchConnectivity */,
 				0D99A8D32A0394AC00595434 /* HealthTools */,
@@ -207,7 +219,6 @@
 				0D8D145F298E9A8800396783 /* rotorApp.swift */,
 				0D8D1463298E9A8900396783 /* Assets.xcassets */,
 				0D8D1465298E9A8900396783 /* Preview Content */,
-				0DDF1C1529FFED4800B29171 /* Extensions.swift */,
 			);
 			path = rotor;
 			sourceTree = "<group>";
@@ -289,7 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				0DC0E47129EE9F7A00089EDB /* LandscapeGenerator.swift */,
-				0D99A8D02A03947A00595434 /* IcosphereGenerator.swift */,
+				0D80748A2A04F64C0071EC62 /* Ico.swift */,
 			);
 			path = LandscapeGeneration;
 			sourceTree = "<group>";
@@ -541,14 +552,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D8074902A0530C60071EC62 /* GKNoiseExtension.swift in Sources */,
 				0D8D1462298E9A8800396783 /* ContentView.swift in Sources */,
 				0DC0E47229EE9F7A00089EDB /* LandscapeGenerator.swift in Sources */,
 				0D8D14BC298E9BFE00396783 /* iOSConnector.swift in Sources */,
 				0D8D1460298E9A8800396783 /* rotorApp.swift in Sources */,
-				0D99A8D12A03947A00595434 /* IcosphereGenerator.swift in Sources */,
 				0DC38E3829EE7671007B4AC5 /* SceneKitView.swift in Sources */,
 				0DC0E47B29F6F45D00089EDB /* PhoneWorkoutManager.swift in Sources */,
-				0DDF1C1629FFED4800B29171 /* Extensions.swift in Sources */,
+				0D80748B2A04F64C0071EC62 /* Ico.swift in Sources */,
+				0D80748E2A0504630071EC62 /* SCNGeometryExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

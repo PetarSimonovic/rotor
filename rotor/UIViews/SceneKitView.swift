@@ -19,8 +19,7 @@ struct SceneKitView : UIViewRepresentable {
     
   //  @Binding var jumpCount: Int
     
-  //  let landscapeGenerator = LandscapeGenerator()
-    let icosphereGenerator: IcosphereGenerator = IcosphereGenerator()
+    let landscapeGenerator = LandscapeGenerator()
     let test = true
     
     
@@ -31,8 +30,7 @@ struct SceneKitView : UIViewRepresentable {
 //
         configurePlayerNode()
 
-        let landscapeNode: SCNNode = icosphereGenerator.generate()
-        
+        let landscapeNode: SCNNode = landscapeGenerator.generate()
         let constraint = SCNLookAtConstraint(target: landscapeNode)
         constraint.isGimbalLockEnabled = true
         playerNode.constraints = [constraint]
@@ -125,6 +123,9 @@ struct SceneKitView : UIViewRepresentable {
     
     
     
+   
+    
+    
     
     // EXPERIMENTS
     
@@ -165,30 +166,4 @@ struct SceneKitView : UIViewRepresentable {
     }
 }
 
-// CRIBBED FROM
 
-public extension SCNGeometrySource {
-    /// Initializes a `SCNGeometrySource` with a list of colors as
-    /// `SCNVector3`s`.
-    convenience init(colors: [SCNVector3]) {
-        let colorData = Data(bytes: colors, count: MemoryLayout<SCNVector3>.size * colors.count)
-
-        self.init(
-            data: colorData,
-            semantic: .color,
-            vectorCount: colors.count,
-            usesFloatComponents: true,
-            componentsPerVector: 3,
-            bytesPerComponent: MemoryLayout<Float>.size,
-            dataOffset: 0,
-            dataStride: MemoryLayout<SCNVector3>.size
-        )
-    }
-    
-    func sceneSpacePosition(inFrontOf node: SCNNode, atDistance distance: Float) -> SCNVector3 {
-        let localPosition = SCNVector3(x: 0, y: 0, z: Float(CGFloat(-distance)))
-        let scenePosition = node.convertPosition(localPosition, to: nil)
-             // to: nil is automatically scene space
-        return scenePosition
-    }
-}
