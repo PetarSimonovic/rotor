@@ -18,7 +18,7 @@ class Ico {
     
     var indices: [Int32] = []
     var vertices: [SCNVector3] = []
-    var indexDictionary: [Int32 : Int32] = [:]
+    var cantorDictionary: CantorDictionary = CantorDictionary()
     
     func generateIcoSphere(recursions: Int = 0) -> Icosphere {
         
@@ -99,8 +99,7 @@ class Ico {
         // Subdivide the icosahedron faces recursively to create an icosphere
         for _ in 1...recursions {
             var newIndices: [Int32] = []
-            indexDictionary = [:]
-            
+            cantorDictionary = CantorDictionary()
             // Stride through the indices in batches of 3 to pick out individual vertices that form each triangle
             
             for i in stride(from: 0, to: indices.count, by: 3) {
@@ -134,9 +133,8 @@ class Ico {
         func createNewVertex(a: Int32, b: Int32) -> Int32 {
             
             // check if this vertex has already been created
-            let key: Int32 = getKey(a: a, b: b)
-            
-            if let existingVertex = indexDictionary[key] {
+            let key: Int32 = cantorDictionary.getKey(a: a, b: b)
+            if let existingVertex = cantorDictionary.getValueFor(key: key) {
                 // We already have this one so return it index
                 return existingVertex
             }
@@ -156,7 +154,7 @@ class Ico {
             // Store the new vertex, update the dictionary and return the index
             vertices.append(vertex3)
             let index: Int32 = Int32(vertices.count - 1)
-            indexDictionary[key] = index
+            cantorDictionary.set(key: key, value: index)
             return index
         }
         
