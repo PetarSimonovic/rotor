@@ -10,6 +10,7 @@
 		0D80748B2A04F64C0071EC62 /* Ico.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80748A2A04F64C0071EC62 /* Ico.swift */; };
 		0D80748E2A0504630071EC62 /* SCNGeometryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80748D2A0504630071EC62 /* SCNGeometryExtension.swift */; };
 		0D8074902A0530C60071EC62 /* GKNoiseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80748F2A0530C60071EC62 /* GKNoiseExtension.swift */; };
+		0D8074932A09417C0071EC62 /* CantorDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8074922A09417C0071EC62 /* CantorDictionary.swift */; };
 		0D821517299191E300267EF8 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D821516299191E300267EF8 /* MotionDetector.swift */; };
 		0D8D1460298E9A8800396783 /* rotorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D145F298E9A8800396783 /* rotorApp.swift */; };
 		0D8D1462298E9A8800396783 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D1461298E9A8800396783 /* ContentView.swift */; };
@@ -91,6 +92,7 @@
 		0D80748A2A04F64C0071EC62 /* Ico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ico.swift; sourceTree = "<group>"; };
 		0D80748D2A0504630071EC62 /* SCNGeometryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNGeometryExtension.swift; sourceTree = "<group>"; };
 		0D80748F2A0530C60071EC62 /* GKNoiseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKNoiseExtension.swift; sourceTree = "<group>"; };
+		0D8074922A09417C0071EC62 /* CantorDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CantorDictionary.swift; sourceTree = "<group>"; };
 		0D821512299182AE00267EF8 /* rotor-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "rotor-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0D8215132991844B00267EF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0D821516299191E300267EF8 /* MotionDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
@@ -179,6 +181,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		0D8074912A054E3C0071EC62 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				0D8074922A09417C0071EC62 /* CantorDictionary.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		0D8D1453298E9A8800396783 = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +219,7 @@
 		0D8D145E298E9A8800396783 /* rotor */ = {
 			isa = PBXGroup;
 			children = (
+				0D8074912A054E3C0071EC62 /* Tools */,
 				0D80748C2A0504470071EC62 /* Extensions */,
 				0D99A8D52A0394CE00595434 /* UIViews */,
 				0D99A8D42A0394BF00595434 /* WatchConnectivity */,
@@ -558,6 +569,7 @@
 				0D8D14BC298E9BFE00396783 /* iOSConnector.swift in Sources */,
 				0D8D1460298E9A8800396783 /* rotorApp.swift in Sources */,
 				0DC38E3829EE7671007B4AC5 /* SceneKitView.swift in Sources */,
+				0D8074932A09417C0071EC62 /* CantorDictionary.swift in Sources */,
 				0DC0E47B29F6F45D00089EDB /* PhoneWorkoutManager.swift in Sources */,
 				0D80748B2A04F64C0071EC62 /* Ico.swift in Sources */,
 				0D80748E2A0504630071EC62 /* SCNGeometryExtension.swift in Sources */,
