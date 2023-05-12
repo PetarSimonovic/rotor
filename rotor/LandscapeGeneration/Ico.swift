@@ -35,9 +35,13 @@ class Ico {
     func generateIcosahedron() {
         
         indices = createIcosahedronIndices()
-        vertices = createIcosahedronVertices()
+        vertices = createTwistedIcosahedronVertices()
         
         
+    }
+    
+    func chooseRandomPoint() -> CGFloat {
+        Double.random(in: 1...2)
     }
     
     func createIcosahedronVertices() -> [SCNVector3] {
@@ -45,8 +49,10 @@ class Ico {
         
         var vertices: [SCNVector3] = []
         
-        let goldenRatio: CGFloat = (1.0 + sqrt(5.0)) / 2.0
+        // messing with ratios produces interesting effects
         
+        let goldenRatio: CGFloat = (3.0 + sqrt(7.0)) / 4.0
+
         vertices.append(SCNVector3(-1,  goldenRatio,  0))
         vertices.append(SCNVector3( 1,  goldenRatio,  0))
         vertices.append(SCNVector3(-1, -goldenRatio,  0))
@@ -61,6 +67,33 @@ class Ico {
         vertices.append(SCNVector3(goldenRatio,  0,  1));
         vertices.append(SCNVector3(-goldenRatio,  0, -1));
         vertices.append(SCNVector3(-goldenRatio,  0,  1));
+        
+        return vertices
+    }
+    
+    func createTwistedIcosahedronVertices() -> [SCNVector3] {
+        
+        
+        var vertices: [SCNVector3] = []
+        
+        // messing with ratios produces interesting effects
+        
+        let goldenRatio: CGFloat = (3.0 + sqrt(7.0)) / 4.0
+
+        vertices.append(SCNVector3(-chooseRandomPoint(),  goldenRatio,  0))
+        vertices.append(SCNVector3( chooseRandomPoint(),  goldenRatio,  0))
+        vertices.append(SCNVector3(-chooseRandomPoint(), -goldenRatio,  0))
+        vertices.append(SCNVector3( chooseRandomPoint(), -goldenRatio,  0));
+        
+        vertices.append(SCNVector3(0, -chooseRandomPoint(),  goldenRatio));
+        vertices.append(SCNVector3( 0,  chooseRandomPoint(),  goldenRatio));
+        vertices.append(SCNVector3(0, -chooseRandomPoint(), -goldenRatio));
+        vertices.append(SCNVector3( 0,  chooseRandomPoint(), -goldenRatio));
+        
+        vertices.append(SCNVector3(goldenRatio,  0, -chooseRandomPoint()));
+        vertices.append(SCNVector3(goldenRatio,  0,  chooseRandomPoint()));
+        vertices.append(SCNVector3(-goldenRatio,  0, -chooseRandomPoint()));
+        vertices.append(SCNVector3(-goldenRatio,  0,  chooseRandomPoint()));
         
         return vertices
     }

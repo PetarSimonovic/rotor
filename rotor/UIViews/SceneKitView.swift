@@ -9,12 +9,7 @@ import SwiftUI
 import SceneKit
 import CoreGraphics
 
-
 struct SceneKitView : UIViewRepresentable {
-    
-    var persistence: Double = 0.1
-    var size: Double = 0.001
-    var origin: Double = 0.01
     
     @EnvironmentObject var iosConnector: iOSConnector
     // Base Node
@@ -22,9 +17,11 @@ struct SceneKitView : UIViewRepresentable {
     var playerNode = SCNNode()
     
   //  @Binding var jumpCount: Int
+
     
     let landscapeGenerator = LandscapeGenerator()
-    let test = true
+    
+    let test: Bool = true
     
     
     // makeUIVIew and updateUIView are required to conform to the UIViewRepresentable protocol
@@ -33,14 +30,18 @@ struct SceneKitView : UIViewRepresentable {
            
 //
         configurePlayerNode()
+        playerNode.position = SCNVector3Make(40, 12, 30)
 
-        let landscapeNode: SCNNode = generateLandscape()
+        let landscapeNode: SCNNode = landscapeGenerator.generate()
+        
         let constraint = SCNLookAtConstraint(target: landscapeNode)
         constraint.isGimbalLockEnabled = true
         playerNode.constraints = [constraint]
+        
+        scene.rootNode.addChildNode(landscapeNode)
+
+
         scene.rootNode.addChildNode(playerNode)
-
-
 
                
                 
@@ -54,9 +55,7 @@ struct SceneKitView : UIViewRepresentable {
 
         
         let scnView = SCNView()
-        if !test {
-            scnView.pointOfView = playerNode
-        }
+        scnView.pointOfView = playerNode
         return scnView
 
        
@@ -96,45 +95,24 @@ struct SceneKitView : UIViewRepresentable {
         scene.rootNode.addChildNode(omniLightNode)
     }
     
-    // LANDSCAPE GENERATION
-    
-    
-    func generateLandscape(persistence: Double = 0.0015,  size: Double = 0.07,  origin: Double = 0.18, wireframe: Bool = false, recursions: Int = 3, radius: Float = 70.00) -> SCNNode {
-        
-        
-        if let node = scene.rootNode.childNode(withName: "landscape", recursively: false) {
-            node.removeFromParentNode()
-        }
-        let landscape = landscapeGenerator.generate(persistence: persistence, size: size, origin: origin, radius: radius, recursions: recursions)
-        landscape.name = "landscape"
-        if wireframe {
-            landscape.geometry?.firstMaterial?.fillMode = .lines
-        }
-        scene.rootNode.addChildNode(landscape)
-        return landscape
-    }
-    
     // PLAYER METHODS
     
     
     func configurePlayerNode() {
         
         
-        let nodeGeometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.1)
-        let shape = SCNPhysicsShape(geometry: nodeGeometry, options: nil)
-        let physicsBody = SCNPhysicsBody(type: .dynamic, shape: shape)
-            playerNode.camera = SCNCamera()
-        if !test {
+        let sphereGeometry = SCNSphere(radius: 1)
+        let shape = SCNPhysicsShape(geometry: sphereGeometry, options: nil)
+        if (!test) {
+            let physicsBody = SCNPhysicsBody(type: .dynamic, shape: shape)
             playerNode.physicsBody = physicsBody
-         //   playerNode.simdScale = simd_float3(0.02, 0.02, 0.02)
         }
-        playerNode.position = SCNVector3Make(0, 3, 0)
-        
+        playerNode.camera = SCNCamera()
 
     }
     
     func applyThrust() {
-        let force = SCNVector3(x: 0, y: 0.008 , z: 0)
+        let force = SCNVector3(x: 0, y: 0.5 , z: 0)
 
         playerNode.physicsBody?.applyForce(force,
                                            at: playerNode.position, asImpulse: true)
@@ -142,9 +120,6 @@ struct SceneKitView : UIViewRepresentable {
     }
     
     
-    
-    
-   
     
     
     
