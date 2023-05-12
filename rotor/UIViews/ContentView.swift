@@ -12,6 +12,8 @@ struct ContentView: View {
     
     @ObservedObject private var workoutManager = PhoneWorkoutManager()
     @StateObject private var iosConnector = iOSConnector()
+
+
     
     var sceneKitView = SceneKitView()
     
@@ -19,12 +21,16 @@ struct ContentView: View {
         print(self.iosConnector.notificationMessage?.text ?? "no message")
     }
     
+
     var body: some View {
  
         ZStack {
-            sceneKitView
-                .zIndex(1)
-                Counter(jumpCount: self.iosConnector.notificationMessage?.text ?? "r o t o r")
+            HStack{
+            HStack {
+                sceneKitView
+            }
+            .zIndex(1)
+        }
         }
         .environmentObject(iosConnector)
         .onAppear{workoutManager.start()}
@@ -34,6 +40,8 @@ struct ContentView: View {
     }
         
 }
+
+
 
 struct Title: View {
     var body: some View {

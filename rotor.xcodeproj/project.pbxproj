@@ -29,6 +29,7 @@
 		0D8D14A5298E9A8B00396783 /* rotor_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14A4298E9A8B00396783 /* rotor_Watch_AppUITestsLaunchTests.swift */; };
 		0D8D14BC298E9BFE00396783 /* iOSConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14BB298E9BFE00396783 /* iOSConnector.swift */; };
 		0D8D14BE298EA6CE00396783 /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14BD298EA6CE00396783 /* WatchConnector.swift */; };
+		0D944C1F2A0E2A6F00610724 /* AsteroidDesignerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D944C1E2A0E2A6F00610724 /* AsteroidDesignerView.swift */; };
 		0DC0E47229EE9F7A00089EDB /* LandscapeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47129EE9F7A00089EDB /* LandscapeGenerator.swift */; };
 		0DC0E47429F3DD4200089EDB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47329F3DD4200089EDB /* Extensions.swift */; };
 		0DC0E47B29F6F45D00089EDB /* PhoneWorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47929F6D56200089EDB /* PhoneWorkoutManager.swift */; };
@@ -118,6 +119,7 @@
 		0D8D14A4298E9A8B00396783 /* rotor_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rotor_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0D8D14BB298E9BFE00396783 /* iOSConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSConnector.swift; sourceTree = "<group>"; };
 		0D8D14BD298EA6CE00396783 /* WatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnector.swift; sourceTree = "<group>"; };
+		0D944C1E2A0E2A6F00610724 /* AsteroidDesignerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidDesignerView.swift; sourceTree = "<group>"; };
 		0DC0E47129EE9F7A00089EDB /* LandscapeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeGenerator.swift; sourceTree = "<group>"; };
 		0DC0E47329F3DD4200089EDB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0DC0E47529F6CEB200089EDB /* rotor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rotor.entitlements; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 			children = (
 				0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */,
 				0D8D1461298E9A8800396783 /* ContentView.swift */,
+				0D944C1E2A0E2A6F00610724 /* AsteroidDesignerView.swift */,
 			);
 			path = UIViews;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D8074902A0530C60071EC62 /* GKNoiseExtension.swift in Sources */,
+				0D944C1F2A0E2A6F00610724 /* AsteroidDesignerView.swift in Sources */,
 				0D8D1462298E9A8800396783 /* ContentView.swift in Sources */,
 				0DC0E47229EE9F7A00089EDB /* LandscapeGenerator.swift in Sources */,
 				0D8D14BC298E9BFE00396783 /* iOSConnector.swift in Sources */,

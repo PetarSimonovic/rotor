@@ -10,12 +10,21 @@ import SceneKit
 import GameKit
 
 
-struct LandscapeGenerator {
+class LandscapeGenerator: ObservableObject {
     
+    // Values for asteriods:
+    // Persistence
+    
+    
+    let mountainRange: Float = 0.1
+    var ico: Ico = Ico()
+    
+    
+    // Default values will create asteroid-like shapes (imperfect spheres with mountains)
+    func generate(persistence: Double = 0.0015,  size: Double = 0.07,  origin: Double = 0.18, radius: Float = 70.00, recursions: Int = 3) -> SCNNode {
         
-    func generate() -> SCNNode {
         
-        let icosphere: Icosphere = generateIcosphere(recursions: 4)
+        let icosphere: Icosphere = generateIcosphere(recursions: recursions)
         
         
         
@@ -27,13 +36,15 @@ struct LandscapeGenerator {
         
 
         let mapSize: Int32 = Int32(sqrt(Double(icosphere.vertices.count)))
-        let map: GKNoiseMap = makeNoiseMap(mapSize: mapSize)
+        let map: GKNoiseMap = makeNoiseMap(mapSize: mapSize, persistence: persistence, size: size, origin: origin)
 
         
-        let sphericalNoise = mapToSphere(map: map, radius: 0.06)
+        let sphericalNoise = mapNoiseToSphere(map: map, radius: radius)
+//        let sphericalNoise = mapToSphereEquiProjection(vertexList: icosphere.vertices, map: map, radius: radius, mapSize: mapSize)
+        
         let distortedVertices = distortVertices(sphericalNoise: sphericalNoise, icosphere: icosphere)
         
-        let colors = SCNGeometrySource(colors: calculateColors(distortedVertices))
+        let colors = SCNGeometrySource(colors: calculateColors(map: map, mapSize: mapSize))
 
 
         
@@ -70,7 +81,6 @@ struct LandscapeGenerator {
     }
     
     func generateIcosphere(recursions: Int = 5) -> Icosphere {
-        let ico = Ico()
         return ico.generateIcoSphere(recursions: recursions)
     }
     
@@ -80,19 +90,18 @@ struct LandscapeGenerator {
         let indices = icosphere.indices
         
         for i in 0...vertices.count - 1 {
-            print("Distortion")
             let originalVector = vertices[i]
-            print(originalVector)
             let noiseVector = sphericalNoise[i]
-            print(noiseVector)
-            print("")
-            let disortedVector = SCNVector3(
-                x: originalVector.x + noiseVector.x,
-                y: originalVector.y + noiseVector.y,
+            
+            
+     
+            let distortedVector = SCNVector3(
+                x: originalVector.x + noiseVector.z,
+                y: originalVector.y + noiseVector.z,
                 z: originalVector.z + noiseVector.z
                 )
             
-            distortedVertices.append(disortedVector)
+            distortedVertices.append(distortedVector)
             
         }
         return distortedVertices
@@ -102,24 +111,30 @@ struct LandscapeGenerator {
     
     
     
-    func calculateColors(_ vertexList: [SCNVector3]) -> [SCNVector3] {
+    func calculateColors(map: GKNoiseMap, mapSize: Int32) -> [SCNVector3] {
         
         var colorList: [SCNVector3] = []
         
-        for vertex in vertexList {
-            
-            if abs(vertex.y) <= 0.2
-            {
-                colorList.append(SCNVector3(0.026, abs(vertex.y), 0.408))
-            }
-            else if abs(vertex.y) >= 0.5
-            {
-                colorList.append(SCNVector3(abs(vertex.y), abs(vertex.y), abs(vertex.y)))
-                
-            }
-            else {
-                colorList.append(SCNVector3(0.046, abs(vertex.y) + Float.random(in: 0.3 ... 0.9), Float.random(in: 0.3 ... 0.39)))
-                
+        for x in 0...mapSize {
+            for y in 0...mapSize {
+                let noise: Float = map.value(at: [x, y])
+                print(noise)
+                if noise <= 0
+                {
+                    print("water")
+                    colorList.append(SCNVector3(0.026, abs(noise), 0.408))
+                }
+                else if abs(noise) >= mountainRange
+                {
+                    print("Mountain")
+                    colorList.append(SCNVector3(abs(noise * 2), abs(noise * 2), abs(noise * 2)))
+
+                }
+                else {
+                    print("grass")
+                    colorList.append(SCNVector3(0.046, abs(noise) + Float.random(in: 0.3 ... 0.9), Float.random(in: 0.3 ... 0.39)))
+                    
+                }
             }
         }
         
@@ -130,13 +145,12 @@ struct LandscapeGenerator {
     
     
     
-    func makeNoiseMap(mapSize: Int32) -> GKNoiseMap {
+    func makeNoiseMap(mapSize: Int32, persistence: Double = 0.01, size: Double = 0.001, origin: Double = 0.01) -> GKNoiseMap {
         let source = GKPerlinNoiseSource()
-        source.persistence = 0.01 // determines how smooth the noise, ie how likely it is to change. Higher values create rougher terrain. Keep values below 1.0
+        source.persistence = persistence // determines how smooth the noise, ie how likely it is to change. Higher values create rougher terrain. Keep values below 1.0
         let noise = GKNoise(source)
-        
-        let size = vector2(1.6, 1.6)
-        let origin = vector2(10.0, 10.0)
+        let size = vector2(size, size)
+        let origin = vector2(origin, origin)
         let sampleCount = vector2(mapSize, mapSize)
         
         
@@ -144,7 +158,7 @@ struct LandscapeGenerator {
         return map
     }
     
-    func mapToSphere(map: GKNoiseMap, radius: Float) -> [SCNVector3] {
+    func mapNoiseToSphere(map: GKNoiseMap, radius: Float) -> [SCNVector3] {
         
         let mapWidth: Int = Int(map.sampleCount[0])
         let mapHeight: Int = Int(map.sampleCount[1])
@@ -155,11 +169,11 @@ struct LandscapeGenerator {
         for x in 0...mapWidth {
             for y in 0...mapHeight {
                 let noise: Float = map.value(at: [Int32(x), Int32(y)])
-                let theta = Float(2.0 * Double.pi) * Float(noise) / radius
-                let phi = Float(Double.pi) * Float(noise) / radius
-                let x_prime = radius * cos(theta) * sin(phi)
-                let z_prime = radius * sin(theta) * sin(phi)
-                let y_prime = radius * cos(phi)
+                let theta = Float(Double(2.0) * Double.pi) * Float(radius) / noise
+                let phi = Float(Double.pi) * Float(radius) / noise
+                let x_prime = noise * cos(theta) * sin(phi)
+                let y_prime = noise * sin(theta) * sin(phi)
+                let z_prime = noise * cos(phi)
                 let mappedCoordinates = SCNVector3 (Float(x_prime),Float(y_prime), Float(z_prime))
                 sphereCoordinates.append(mappedCoordinates)
                 
@@ -167,4 +181,53 @@ struct LandscapeGenerator {
         }
         return sphereCoordinates
     }
+    
+    func mapToSphereEquiProjection(vertexList: [SCNVector3], map: GKNoiseMap, radius: Float, mapSize: Int32) -> [SCNVector3] {
+
+             // To map grid coordinates onto a sphere using the equirectangular projection, you can follow these steps:
+             
+
+     //        Choose a radius for your sphere, which will determine the size of your final mapping.
+             var sphereVertices: [SCNVector3] = []
+        //  Convert the X-coordinate of each grid point to a longitude value by multiplying it by 360/W.
+
+            let longitudeMultiplier: Float = 360.00/Float(mapSize)
+        //  Convert the Z-coordinate of each grid point to a latitude value by multiplying it by 180/H and subtracting 90.
+
+             let latitudeMultiplier: Float = (180.00/Float(mapSize) - 90)
+             for coordinates in vertexList {
+                 
+                 let longitude = coordinates.x * longitudeMultiplier
+
+                 
+                 let latitude = coordinates.z * latitudeMultiplier
+
+     //  Convert the longitude and latitude values of each grid point to Cartesian coordinates (x,y,z) using the following formulas:
+                 
+                 let x = cos(longitude) * cos(latitude)
+
+                 let z = sin(longitude) * cos(latitude)
+
+                 let y = sin(latitude)
+
+                 //   Scale the Cartesian coordinates so that they lie on the surface of the sphere with the chosen radius. To do this, divide each coordinate by the square root of the sum of their squares, and then multiply them by the radius.
+                 
+                 let sqrtValue = Float(sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2)))
+                 let sphereXRadius: Float = Float(x * radius)
+                 let sphereYRadius: Float = Float(y * radius)
+                 let sphereZRadius: Float = Float(z * radius)
+
+                 let sphereX: Float = sphereXRadius / sqrtValue
+                 let sphereY: Float = sphereYRadius / sqrtValue
+                 let sphereZ: Float = sphereZRadius / sqrtValue
+
+                 sphereVertices.append(SCNVector3(sphereX, sphereY, sphereZ))
+
+
+             }
+
+
+             return sphereVertices
+         }
+
 }

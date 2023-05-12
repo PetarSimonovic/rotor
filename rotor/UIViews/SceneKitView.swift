@@ -12,6 +12,10 @@ import CoreGraphics
 
 struct SceneKitView : UIViewRepresentable {
     
+    var persistence: Double = 0.1
+    var size: Double = 0.001
+    var origin: Double = 0.01
+    
     @EnvironmentObject var iosConnector: iOSConnector
     // Base Node
     let scene = SCNScene()
@@ -30,12 +34,11 @@ struct SceneKitView : UIViewRepresentable {
 //
         configurePlayerNode()
 
-        let landscapeNode: SCNNode = landscapeGenerator.generate()
+        let landscapeNode: SCNNode = generateLandscape()
         let constraint = SCNLookAtConstraint(target: landscapeNode)
         constraint.isGimbalLockEnabled = true
         playerNode.constraints = [constraint]
-        
-        scene.rootNode.addChildNode(landscapeNode)
+        scene.rootNode.addChildNode(playerNode)
 
 
 
@@ -93,6 +96,24 @@ struct SceneKitView : UIViewRepresentable {
         scene.rootNode.addChildNode(omniLightNode)
     }
     
+    // LANDSCAPE GENERATION
+    
+    
+    func generateLandscape(persistence: Double = 0.0015,  size: Double = 0.07,  origin: Double = 0.18, wireframe: Bool = false, recursions: Int = 3, radius: Float = 70.00) -> SCNNode {
+        
+        
+        if let node = scene.rootNode.childNode(withName: "landscape", recursively: false) {
+            node.removeFromParentNode()
+        }
+        let landscape = landscapeGenerator.generate(persistence: persistence, size: size, origin: origin, radius: radius, recursions: recursions)
+        landscape.name = "landscape"
+        if wireframe {
+            landscape.geometry?.firstMaterial?.fillMode = .lines
+        }
+        scene.rootNode.addChildNode(landscape)
+        return landscape
+    }
+    
     // PLAYER METHODS
     
     
@@ -103,12 +124,12 @@ struct SceneKitView : UIViewRepresentable {
         let shape = SCNPhysicsShape(geometry: nodeGeometry, options: nil)
         let physicsBody = SCNPhysicsBody(type: .dynamic, shape: shape)
             playerNode.camera = SCNCamera()
-            playerNode.camera?.zFar = 1000.00
         if !test {
             playerNode.physicsBody = physicsBody
-            playerNode.simdScale = simd_float3(0.02, 0.02, 0.02)
+         //   playerNode.simdScale = simd_float3(0.02, 0.02, 0.02)
         }
-        playerNode.position = SCNVector3Make(0, 5, 0)
+        playerNode.position = SCNVector3Make(0, 3, 0)
+        
 
     }
     

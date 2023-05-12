@@ -26,7 +26,7 @@ class Ico {
         if recursions > 0 {
             refineIcoSphere(recursions: recursions)
         }
-        vertices = normaliseVertices()
+        vertices = normaliseVertices(originalVertices: vertices)
 
         return Icosphere(indices: indices, vertices: vertices)
         
@@ -135,7 +135,7 @@ class Ico {
             // check if this vertex has already been created
             let key: Int32 = cantorDictionary.getKey(a: a, b: b)
             if let existingVertex = cantorDictionary.getValueFor(key: key) {
-                // We already have this one so return it index
+                // We already have this one so return its index
                 return existingVertex
             }
             
@@ -158,12 +158,12 @@ class Ico {
             return index
         }
         
-        func normaliseVertices() -> [SCNVector3] {
+    func normaliseVertices(originalVertices: [SCNVector3]) -> [SCNVector3] {
             
             // Normalise the vertices so they are on the surface of the sphere
             
             var normalisedVertices: [SCNVector3] = []
-            for vertex in vertices {
+            for vertex in originalVertices {
                 
                 let length: Float = sqrt(
                     vertex.x * vertex.x +

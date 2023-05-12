@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct rotorApp: App {
+    
+    private var designer = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if designer { AsteroidDesignerView() } else { ContentView() }
         }
     }
 }
