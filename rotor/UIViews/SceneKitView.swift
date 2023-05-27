@@ -30,7 +30,7 @@ struct SceneKitView : UIViewRepresentable {
            
 //
         configurePlayerNode()
-        playerNode.position = SCNVector3Make(40, 12, 30)
+        playerNode.position = SCNVector3Make(20, 2, 10)
 
         let landscapeNode: SCNNode = landscapeGenerator.generate()
         
@@ -39,6 +39,7 @@ struct SceneKitView : UIViewRepresentable {
         playerNode.constraints = [constraint]
         
         scene.rootNode.addChildNode(landscapeNode)
+        print(landscapeNode.position)
 
 
         scene.rootNode.addChildNode(playerNode)

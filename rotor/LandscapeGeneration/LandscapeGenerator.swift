@@ -14,8 +14,11 @@ import GameKit
 struct LandscapeGenerator {
     
     
-    var xLength = 100
-    var zLength = 100
+    var xLength = 500
+    var zLength = 500
+    var num_vertices_x = 200
+    var num_vertices_z = 200
+    
     
     func generate() -> SCNNode {
         let map: GKNoiseMap = makeNoiseMap(x: xLength, z: zLength)
@@ -65,29 +68,58 @@ struct LandscapeGenerator {
     func createVertices(_ map: GKNoiseMap) ->  [SCNVector3] {
         
         var vertexList: [SCNVector3] = []
+        
         for x in 1 ... xLength {
             for z in 1 ... zLength {
                 var yPos = map.value(at: [Int32(x), Int32(z)])
-                if (yPos > -0.7 && yPos < 0.3) {
-                    yPos = yPos/6
+                var step_x = Float(100 / (199))
+                var step_z = Float(zLength / (num_vertices_z - 1))
+
+//                if (yPos > -0.7 && yPos < 0.3) {
+//                    yPos = yPos/6
+//                }
+//                if (yPos > 0.3 && yPos < 0.6) {
+//                    yPos = yPos/4
+//                }
+//
+//
+//                if yPos < -0.95 {
+//                    yPos = -0.7
+//                }
+//                if yPos > 0.7 {
+//                    yPos = yPos * 0.05
+//                }
+                
+                // Height shaping
+                var W: Float = 0.6; // width of terracing bands
+                var k = floor(yPos / W);
+                var f = (yPos - k*W) / W;
+                var s = min(9 * f, 1.0);
+                let shapedYPos = (k+s) * W;
+                
+                if yPos > 0 {
+                    yPos = yPos * shapedYPos
                 }
-                if (yPos > 0.3 && yPos < 0.6) {
-                    yPos = yPos/4
-                }
-            
-                    
-                if yPos < -0.95 {
-                    yPos = -0.7
-                }
-                if yPos > 0.7 {
-                    yPos = yPos * 1.5
-                }
+                                
+                // X shaping
+                
+                
+                //let amplifiedX = Float(roundedX + round(x))
+                
+
+
+
                 let xPos = Float(x)
                 let zPos = Float(z)
-                vertexList.append(SCNVector3(xPos, yPos, zPos))
+                vertexList.append(SCNVector3(xPos * 0.08, yPos, zPos * 0.08))
             }
         }
-        
+        print(vertexList.count)
+        print(vertexList[0])
+
+        print(vertexList[1])
+        print(vertexList[2])
+
         return vertexList
     }
     
@@ -148,7 +180,7 @@ struct LandscapeGenerator {
                 indices.append(contentsOf: [Int32(index), Int32(west), Int32(north)])
             }
         }
-        
+        print(indices[51], indices[52], indices[53])
         return indices
 
     }
@@ -159,11 +191,15 @@ struct LandscapeGenerator {
         
         for vertex in vertexList {
             
-            if vertex.y <= -0.7
+            if vertex.y <= -3
             {
                 colorList.append(SCNVector3(0.026, vertex.y, 0.408))
             }
-            else if vertex.y > 1.3
+//            else if vertex.y <= -0.6
+//            {
+//                colorList.append(SCNVector3(0.94, 0.78, 0.28))
+//            }
+            else if vertex.y > 1
             {
                 colorList.append(SCNVector3(vertex.y, vertex.y, vertex.y))
 
@@ -180,12 +216,13 @@ struct LandscapeGenerator {
     
     func makeNoiseMap(x: Int, z: Int) -> GKNoiseMap {
         let source = GKPerlinNoiseSource()
-        source.persistence = 0.7 // determines how smooth the noise, ie how likely it is to change. Higher values create rougher terrain. Keep values below 1.0
+        source.persistence = 0.05 // determines how smooth the noise, ie how likely it is to change. Higher values create rougher terrain. Keep values below 1.0
 
         let noise = GKNoise(source)
-        let size = vector2(30.0, 30.0)
-        let origin = vector2(10.0, 10.0)
+        let size = vector2(15.0, 15.0)
+        let origin = vector2(5.0, 5.0)
         let sampleCount = vector2(Int32(x), Int32(z))
+        
 
         return GKNoiseMap(noise, size: size, origin: origin, sampleCount: sampleCount, seamless: true)
     }
