@@ -15,7 +15,7 @@ Rotor is in the early stages of development. It currently:
 
   - creates a Perlin noise map and uses that to generate a 3D landscape;  
   - establishes the iPhone-Watch connection;
-  - reads the Y-axis of the Watch accelerometer.
+  - reads a 'skip' from the watch (a jump and a turn of the wrist), albeit somewhat inaccurately.
   
   
   
