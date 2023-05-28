@@ -85,18 +85,28 @@ struct LandscapeGenerator {
 //                if yPos < -0.95 {
 //                    yPos = -0.7
 //                }
-//                if yPos > 0.7 {
-//                    yPos = yPos * 0.05
-//                }
                 
-                // Height shaping
-                var W: Float = 0.6; // width of terracing bands
-                var k = floor(yPos / W);
-                var f = (yPos - k*W) / W;
-                var s = min(9 * f, 1.0);
-                let shapedYPos = (k+s) * W;
+                // Cliff-like features
+               
+
+                if yPos > 0.35 {
+                    
+                    yPos = yPos / Float.random(in: 0.89...0.92)
+                }
                 
-              //      yPos = yPos * shapedYPos
+                else if yPos > 0.3 {
+                        
+                        yPos = yPos / Float.random(in: 0.89...0.9)
+                }
+                
+                // Canyons shaping
+//                var W: Float = 0.6; // width of terracing bands
+//                var k = floor(yPos / W);
+//                var f = (yPos - k*W) / W;
+//                var s = min(9 * f, 1.0);
+//                let shapedYPos = (k+s) * W;
+                
+//                yPos = yPos * shapedYPos
                 
                                 
                 // X shaping
@@ -192,9 +202,9 @@ struct LandscapeGenerator {
 //            if vertex.y <= -0.6
 //            {
 //                colorList.append(SCNVector3(0.026, vertex.y, 0.408))
+
             
-            
-             if vertex.y > 0.2
+             if vertex.y > 0.3
             {
                 colorList.append(SCNVector3(vertex.y, vertex.y, vertex.y))
 

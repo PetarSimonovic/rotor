@@ -27,8 +27,8 @@ struct ContentView: View {
         VStack {
             ZStack {
                 sceneKitView
+                Title()
             }
-            .zIndex(1)
             ZStack {
                 Button(action: sceneKitView.applyThrust) {
                     Text("Jump")
