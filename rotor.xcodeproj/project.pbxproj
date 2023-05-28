@@ -30,7 +30,8 @@
 		0D8D14BC298E9BFE00396783 /* iOSConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14BB298E9BFE00396783 /* iOSConnector.swift */; };
 		0D8D14BE298EA6CE00396783 /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14BD298EA6CE00396783 /* WatchConnector.swift */; };
 		0D944C1F2A0E2A6F00610724 /* AsteroidDesignerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D944C1E2A0E2A6F00610724 /* AsteroidDesignerView.swift */; };
-		0DC0E47229EE9F7A00089EDB /* LandscapeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47129EE9F7A00089EDB /* LandscapeGenerator.swift */; };
+		0D944C212A0E7E4300610724 /* LandscapeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D944C202A0E7E4300610724 /* LandscapeGenerator.swift */; };
+		0DC0E47229EE9F7A00089EDB /* AsteroidGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47129EE9F7A00089EDB /* AsteroidGenerator.swift */; };
 		0DC0E47429F3DD4200089EDB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47329F3DD4200089EDB /* Extensions.swift */; };
 		0DC0E47B29F6F45D00089EDB /* PhoneWorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47929F6D56200089EDB /* PhoneWorkoutManager.swift */; };
 		0DC0E47D29F81D9800089EDB /* WatchWorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47C29F81D9800089EDB /* WatchWorkoutManager.swift */; };
@@ -120,7 +121,8 @@
 		0D8D14BB298E9BFE00396783 /* iOSConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSConnector.swift; sourceTree = "<group>"; };
 		0D8D14BD298EA6CE00396783 /* WatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnector.swift; sourceTree = "<group>"; };
 		0D944C1E2A0E2A6F00610724 /* AsteroidDesignerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidDesignerView.swift; sourceTree = "<group>"; };
-		0DC0E47129EE9F7A00089EDB /* LandscapeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeGenerator.swift; sourceTree = "<group>"; };
+		0D944C202A0E7E4300610724 /* LandscapeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeGenerator.swift; sourceTree = "<group>"; };
+		0DC0E47129EE9F7A00089EDB /* AsteroidGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidGenerator.swift; sourceTree = "<group>"; };
 		0DC0E47329F3DD4200089EDB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0DC0E47529F6CEB200089EDB /* rotor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rotor.entitlements; sourceTree = "<group>"; };
 		0DC0E47929F6D56200089EDB /* PhoneWorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneWorkoutManager.swift; sourceTree = "<group>"; };
@@ -312,8 +314,9 @@
 		0D99A8D22A03949500595434 /* LandscapeGeneration */ = {
 			isa = PBXGroup;
 			children = (
-				0DC0E47129EE9F7A00089EDB /* LandscapeGenerator.swift */,
+				0DC0E47129EE9F7A00089EDB /* AsteroidGenerator.swift */,
 				0D80748A2A04F64C0071EC62 /* Ico.swift */,
+				0D944C202A0E7E4300610724 /* LandscapeGenerator.swift */,
 			);
 			path = LandscapeGeneration;
 			sourceTree = "<group>";
@@ -569,8 +572,9 @@
 				0D8074902A0530C60071EC62 /* GKNoiseExtension.swift in Sources */,
 				0D944C1F2A0E2A6F00610724 /* AsteroidDesignerView.swift in Sources */,
 				0D8D1462298E9A8800396783 /* ContentView.swift in Sources */,
-				0DC0E47229EE9F7A00089EDB /* LandscapeGenerator.swift in Sources */,
+				0DC0E47229EE9F7A00089EDB /* AsteroidGenerator.swift in Sources */,
 				0D8D14BC298E9BFE00396783 /* iOSConnector.swift in Sources */,
+				0D944C212A0E7E4300610724 /* LandscapeGenerator.swift in Sources */,
 				0D8D1460298E9A8800396783 /* rotorApp.swift in Sources */,
 				0DC38E3829EE7671007B4AC5 /* SceneKitView.swift in Sources */,
 				0D8074932A09417C0071EC62 /* CantorDictionary.swift in Sources */,

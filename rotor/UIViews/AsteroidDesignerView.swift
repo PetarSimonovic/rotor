@@ -34,18 +34,18 @@ struct AsteroidDesignerView: View {
     }
     
     func generateLandscape(){
-        sceneKitView.generateLandscape(persistence: persistence, size: size, origin: origin, wireframe: wire, recursions: recursions, radius: Float(radius))
+//        sceneKitView.generateAsteroid(persistence: persistence, size: size, origin: origin, wireframe: wire, recursions: recursions, radius: Float(radius))
     }
     
     func toggleWire(){
         wire = !wire
-        generateLandscape()
+   //     generateLandscape()
         
     }
     
     func handleRecursionsChange() {
         recursions = Int(recursionsSlider)
-        generateLandscape()
+      //  generateLandscape()
     }
     
     var body: some View {

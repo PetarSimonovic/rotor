@@ -7,9 +7,6 @@
 
 import Foundation
 
-// Cantor's pairing function takes two non-negative integers and returns a unique integer
-// This can be used, for example, to build a dictionary of key/indices pairs (eg for generation of icospheres)
-
 class CantorDictionary {
     
     var dictionary: [Int32 : Int32]
@@ -19,6 +16,8 @@ class CantorDictionary {
     }
     
     func getKey(a: Int32, b: Int32) -> Int32 {
+        // Cantor's pairing function  takes two non-negative integers and returns a unique integer
+        // Use this to build a dictionary of key/indices pairs
         
         let min = min(a, b)
         let max = max(a, b)

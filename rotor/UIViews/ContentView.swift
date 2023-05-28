@@ -24,13 +24,18 @@ struct ContentView: View {
 
     var body: some View {
  
-        ZStack {
-            HStack{
-            HStack {
+        VStack {
+            ZStack {
                 sceneKitView
             }
             .zIndex(1)
-        }
+            ZStack {
+                Button(action: sceneKitView.applyThrust) {
+                    Text("Jump")
+                    
+                }
+                
+            }
         }
         .environmentObject(iosConnector)
         .onAppear{workoutManager.start()}
