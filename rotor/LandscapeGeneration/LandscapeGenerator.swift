@@ -72,8 +72,7 @@ struct LandscapeGenerator {
         for x in 1 ... xLength {
             for z in 1 ... zLength {
                 var yPos = map.value(at: [Int32(x), Int32(z)])
-                var step_x = Float(100 / (199))
-                var step_z = Float(zLength / (num_vertices_z - 1))
+              
 
 //                if (yPos > -0.7 && yPos < 0.3) {
 //                    yPos = yPos/6
@@ -97,9 +96,8 @@ struct LandscapeGenerator {
                 var s = min(9 * f, 1.0);
                 let shapedYPos = (k+s) * W;
                 
-                if yPos > 0 {
-                    yPos = yPos * shapedYPos
-                }
+              //      yPos = yPos * shapedYPos
+                
                                 
                 // X shaping
                 
@@ -111,7 +109,7 @@ struct LandscapeGenerator {
 
                 let xPos = Float(x)
                 let zPos = Float(z)
-                vertexList.append(SCNVector3(xPos * 0.08, yPos, zPos * 0.08))
+                vertexList.append(SCNVector3(xPos * 0.04, yPos, zPos * 0.04))
             }
         }
         print(vertexList.count)
@@ -191,15 +189,12 @@ struct LandscapeGenerator {
         
         for vertex in vertexList {
             
-            if vertex.y <= -3
-            {
-                colorList.append(SCNVector3(0.026, vertex.y, 0.408))
-            }
-//            else if vertex.y <= -0.6
+//            if vertex.y <= -0.6
 //            {
-//                colorList.append(SCNVector3(0.94, 0.78, 0.28))
-//            }
-            else if vertex.y > 1
+//                colorList.append(SCNVector3(0.026, vertex.y, 0.408))
+            
+            
+             if vertex.y > 0.2
             {
                 colorList.append(SCNVector3(vertex.y, vertex.y, vertex.y))
 
@@ -216,7 +211,8 @@ struct LandscapeGenerator {
     
     func makeNoiseMap(x: Int, z: Int) -> GKNoiseMap {
         let source = GKPerlinNoiseSource()
-        source.persistence = 0.05 // determines how smooth the noise, ie how likely it is to change. Higher values create rougher terrain. Keep values below 1.0
+        source.persistence = 0.3
+        // determines how smooth the noise, ie how likely it is to change. Higher values create rougher terrain. Keep values below 1.0
 
         let noise = GKNoise(source)
         let size = vector2(15.0, 15.0)
