@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D3D6ADC2A262A37006FE96C /* CollisionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D6ADB2A262A37006FE96C /* CollisionDetector.swift */; };
 		0D80748B2A04F64C0071EC62 /* Ico.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80748A2A04F64C0071EC62 /* Ico.swift */; };
 		0D80748E2A0504630071EC62 /* SCNGeometryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80748D2A0504630071EC62 /* SCNGeometryExtension.swift */; };
 		0D8074902A0530C60071EC62 /* GKNoiseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80748F2A0530C60071EC62 /* GKNoiseExtension.swift */; };
@@ -91,6 +92,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D3D6ADB2A262A37006FE96C /* CollisionDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionDetector.swift; sourceTree = "<group>"; };
 		0D80748A2A04F64C0071EC62 /* Ico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ico.swift; sourceTree = "<group>"; };
 		0D80748D2A0504630071EC62 /* SCNGeometryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNGeometryExtension.swift; sourceTree = "<group>"; };
 		0D80748F2A0530C60071EC62 /* GKNoiseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKNoiseExtension.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 				0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */,
 				0D8D1461298E9A8800396783 /* ContentView.swift */,
 				0D944C1E2A0E2A6F00610724 /* AsteroidDesignerView.swift */,
+				0D3D6ADB2A262A37006FE96C /* CollisionDetector.swift */,
 			);
 			path = UIViews;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				0DC38E3829EE7671007B4AC5 /* SceneKitView.swift in Sources */,
 				0D8074932A09417C0071EC62 /* CantorDictionary.swift in Sources */,
 				0DC0E47B29F6F45D00089EDB /* PhoneWorkoutManager.swift in Sources */,
+				0D3D6ADC2A262A37006FE96C /* CollisionDetector.swift in Sources */,
 				0D80748B2A04F64C0071EC62 /* Ico.swift in Sources */,
 				0D80748E2A0504630071EC62 /* SCNGeometryExtension.swift in Sources */,
 			);

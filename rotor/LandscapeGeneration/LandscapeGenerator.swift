@@ -59,7 +59,7 @@ struct LandscapeGenerator {
         )
             
         let landscapePhysicsShape = SCNPhysicsShape(geometry: landscapeGeometry, options: nil)
-        let landscapePhysicsBody = SCNPhysicsBody(type: .kinematic, shape: landscapePhysicsShape)
+        let landscapePhysicsBody = SCNPhysicsBody(type: .static, shape: landscapePhysicsShape)
         
         landscapeNode.physicsBody = landscapePhysicsBody
         
@@ -106,9 +106,9 @@ struct LandscapeGenerator {
                 
                 
                 // Flatten plains
-                if (yPos > seaLevel && yPos < lowLands) {
-                    yPos = yPos / 2                }
-//
+//                if (yPos > seaLevel && yPos < lowLands) {
+//                    yPos = yPos * 0.7               }
+////
 //
 //                if yPos < -0.95 {
 //                    yPos = -0.7
@@ -254,7 +254,7 @@ struct LandscapeGenerator {
     
     func makeNoiseMap(x: Int, z: Int) -> GKNoiseMap {
         let source = GKPerlinNoiseSource()
-        source.persistence = 0.356
+        source.persistence = 0.34
         // determines how smooth the noise, ie how likely it is to change. Higher values create rougher terrain. Keep values below 1.0
 
         let noise = GKNoise(source)
