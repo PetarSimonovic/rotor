@@ -10,4 +10,9 @@ import SceneKit
 
 class CollisionDetector: NSObject, SCNPhysicsContactDelegate {
     
+    func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
+        print("** Collision!! " + contact.nodeA.name! + " hit " + contact.nodeB.name!)
+
+    }
+    
 }

@@ -19,8 +19,8 @@ struct LandscapeGenerator {
     // resMultiplier is used to calculate resolution when landscape is drawn
     var resolutionMultiplier: Float = 25.00
     
-    var treeLine: Float = 0.3
-    var seaLevel: Float = -0.55
+    var treeLine: Float = 0.5
+    var seaLevel: Float = 0.001
     var lowLands: Float = 0.01
     
     
@@ -75,22 +75,11 @@ struct LandscapeGenerator {
         let resolutionMultiple: Float = xLength/numVertices;
         
         var vertexList: [SCNVector3] = []
-        
-        var cliff: Bool = false
-        var cliffCount: Int = 0
-        var cliffLength: Int = 0
-        
+    
         for x in 1 ... Int(xLength) {
             for z in 1 ... Int(zLength) {
                 var yPos = map.value(at: [Int32(x), Int32(z)])
-                if !cliff {
-                    let cliffChance = Int.random(in: 1...500)
-                    if cliffChance == 1 {
-                        cliff = true
-                        cliffLength = Int.random(in: 1...20)
-                    }
-
-                }
+                
               
                 // Bottom out the sea
 
@@ -114,9 +103,7 @@ struct LandscapeGenerator {
 //                    yPos = -0.7
 //                }
                 
-                // Jagged peaks
-                //                if  yPos < treeLine {
-//                    yPos = yPos * 0.6
+           
 //                    if cliffCount > cliffLength {
 //                        print("Cliff reset")
 //                        cliff = false
@@ -131,16 +118,26 @@ struct LandscapeGenerator {
                 
         
                 
-                // Canyons shaping
-//                var W: Float = 0.6; // width of terracing bands
-//                var k = floor(yPos / W);
-//                var f = (yPos - k*W) / W;
-//                var s = min(9 * f, 1.0);
-//                let shapedYPos = (k+s) * W;
+                // Rivers shaping
                 
-//                yPos = yPos * shapedYPos
+                var W: Float = 0.002; // width of terracing bands
+                var k = floor(yPos / W);
+                var f = (yPos - k * W) / W;
+                var s = min(1.2 * f, 2.0);
+              //  let shapedYPos = sin((k+s) * W)
+                let shapedYPos = (k+s) * W
+
+                yPos = yPos * shapedYPos
                 
+                if  yPos > treeLine + 0.2 {
+                    yPos = yPos + Float.random(in: 0.006...0.03)
+                }
+
                                 
+                // Jagged peaks
+//                if yPos > treeLine  {
+//                    yPos = yPos * 1.03
+//                }
                 // X shaping
                 
                 
@@ -234,16 +231,16 @@ struct LandscapeGenerator {
             
             if vertex.y <= seaLevel
             {
-                colorList.append(SCNVector3(0.026, vertex.y, 0.408))
+                colorList.append(SCNVector3(0.026, 0.203, 0.608))
                 
             }
-            else if vertex.y > 0.3
+            else if vertex.y > treeLine
             {
                 colorList.append(SCNVector3(vertex.y, vertex.y, vertex.y))
 
             }
             else {
-                colorList.append(SCNVector3(0.046, vertex.y + 0.5, 0.308))
+                colorList.append(SCNVector3(0.086, vertex.y + 0.3, 0.308))
 
             }
         }
@@ -253,14 +250,20 @@ struct LandscapeGenerator {
     }
     
     func makeNoiseMap(x: Int, z: Int) -> GKNoiseMap {
+        let seed: Int32 = Int32.random(in: 0...111111)
         let source = GKPerlinNoiseSource()
-        source.persistence = 0.34
+        source.persistence = 0.345
+        source.lacunarity  = 2.08
+//source.octaveCount = 12
         // determines how smooth the noise, ie how likely it is to change. Higher values create rougher terrain. Keep values below 1.0
-
+        
+        source.seed = seed
         let noise = GKNoise(source)
         let size = vector2(15.0, 15.0)
-        let origin = vector2(5.0, 5.0)
+        let origin = vector2(7.0, 7.0)
         let sampleCount = vector2(Int32(x), Int32(z))
+        
+      //  noise.remapValues(toTerracesWithPeaks: [-0.02, 0.00, 0.02, 0.04, 0.06, 0.08, 0.1], terracesInverted: false)
         
 
         return GKNoiseMap(noise, size: size, origin: origin, sampleCount: sampleCount, seamless: true)

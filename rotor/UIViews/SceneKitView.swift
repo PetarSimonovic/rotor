@@ -21,8 +21,11 @@ struct SceneKitView : UIViewRepresentable {
     
     let landscapeGenerator = LandscapeGenerator()
     
-    let test: Bool = false
+    let test: Bool = true
     
+    let playerCategory: Int = 1
+    let landscapeCategory: Int = 2
+
     
     // makeUIVIew and updateUIView are required to conform to the UIViewRepresentable protocol
 
@@ -32,10 +35,9 @@ struct SceneKitView : UIViewRepresentable {
         configurePlayerNode()
 
         let landscapeNode: SCNNode = landscapeGenerator.generate()
-        landscapeNode.scale  = SCNVector3(10, 10, 10)
 
         let lookAtNode = SCNNode()
-        playerNode.position = SCNVector3(10, 2.0, 6.0)
+        playerNode.position = SCNVector3(5, 2.0, 5)
         lookAtNode.position = landscapeNode.boundingBox.max
         
         scene.rootNode.addChildNode(lookAtNode)
@@ -43,15 +45,22 @@ struct SceneKitView : UIViewRepresentable {
         let constraint = SCNLookAtConstraint(target: lookAtNode)
         constraint.isGimbalLockEnabled = true
         playerNode.constraints = [constraint]
-        
+//
         scene.rootNode.addChildNode(landscapeNode)
-        print(landscapeNode.boundingBox)
-        print(scene.physicsWorld)
+        landscapeNode.physicsBody?.friction = 1.0
 
 
         scene.rootNode.addChildNode(playerNode)
-
-                
+        
+//        playerNode.physicsBody?.categoryBitMask = playerCategory
+//      //  playerNode.physicsBody?.collisionBitMask    = 0
+//        playerNode.physicsBody?.contactTestBitMask  = landscapeCategory
+//
+//        landscapeNode.physicsBody?.contactTestBitMask  = playerCategory
+//        landscapeNode.physicsBody?.categoryBitMask = landscapeCategory
+//      //  landscapeNode.physicsBody?.collisionBitMask = 0
+//
+//
         // Create Lights
         
         createAmbientLight()
@@ -67,7 +76,6 @@ struct SceneKitView : UIViewRepresentable {
         let collisionDetector = CollisionDetector()
         print("Contact delegate")
         scene.physicsWorld.contactDelegate = collisionDetector
-        print(scene.physicsWorld.contactDelegate)
         scnView.scene = scene
         return scnView
 
@@ -78,7 +86,7 @@ struct SceneKitView : UIViewRepresentable {
         
         // updates the scnView with the scene
         scnView.scene = scene
-
+        
         // allows the user to manipulate the camera
         
     
@@ -115,25 +123,28 @@ struct SceneKitView : UIViewRepresentable {
     func configurePlayerNode() {
         
         
-        let geometry = SCNBox(width: 0.01, height: 0.01, length: 0.01, chamferRadius: 0.0001)
+        let geometry = SCNBox(width: 0.001, height: 0.001, length: 0.001, chamferRadius: 0.0001)
         let shape = SCNPhysicsShape(geometry: geometry, options: nil)
         if (!test) {
             let physicsBody = SCNPhysicsBody(type: .dynamic, shape: shape)
-            physicsBody.restitution  = 0.9
-            physicsBody.friction  = 0.9
+            physicsBody.restitution  = 0.0
+            physicsBody.friction  = 1.0
+            physicsBody.angularDamping = 1.0
             
 
             playerNode.physicsBody = physicsBody
         }
         playerNode.camera = SCNCamera()
+        playerNode.camera?.zFar = 1500
+        
 
     }
     
     func applyThrust() {
-        let force = SCNVector3(x: 0.05, y: 0.001 , z: 0.0)
+        let force = SCNVector3(x: -0.05, y: 0.05 , z: -0.05)
 
         playerNode.physicsBody?.applyForce(force,
-                                           at: playerNode.position, asImpulse: true)
+                                           at: playerNode.position, asImpulse: false)
 
     }
     
