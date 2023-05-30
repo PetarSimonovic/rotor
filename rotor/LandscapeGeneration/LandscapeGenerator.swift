@@ -13,15 +13,18 @@ import GameKit
 
 struct LandscapeGenerator {
     
+    var xLength: Float = 500.00
+    var zLength: Float = 500.00
     
-    var xLength = 500
-    var zLength = 500
-    var num_vertices_x = 200
-    var num_vertices_z = 200
+    // resMultiplier is used to calculate resolution when landscape is drawn
+    var resolutionMultiplier: Float = 25.00
+    
+    var treeLine: Float = 0.3
+    var seaLevel: Float = -0.6
     
     
     func generate() -> SCNNode {
-        let map: GKNoiseMap = makeNoiseMap(x: xLength, z: zLength)
+        let map: GKNoiseMap = makeNoiseMap(x: Int(xLength), z: Int(zLength))
         let vertexList: [SCNVector3] = createVertices(map)
         let vertices = SCNGeometrySource(vertices: vertexList)
         
@@ -67,10 +70,14 @@ struct LandscapeGenerator {
 
     func createVertices(_ map: GKNoiseMap) ->  [SCNVector3] {
         
+        let numVertices: Float = xLength * resolutionMultiplier;
+        let resolutionMultiple: Float = xLength/numVertices;
+        
         var vertexList: [SCNVector3] = []
         
-        for x in 1 ... xLength {
-            for z in 1 ... zLength {
+        
+        for x in 1 ... Int(xLength) {
+            for z in 1 ... Int(zLength) {
                 var yPos = map.value(at: [Int32(x), Int32(z)])
               
 
@@ -86,17 +93,9 @@ struct LandscapeGenerator {
 //                    yPos = -0.7
 //                }
                 
-                // Cliff-like features
-               
-
-                if yPos > 0.35 {
-                    
-                    yPos = yPos / Float.random(in: 0.89...0.92)
-                }
-                
-                else if yPos > 0.3 {
-                        
-                        yPos = yPos / Float.random(in: 0.89...0.9)
+                // Cliffs
+                if yPos > treeLine {
+                    yPos = yPos / 0.92
                 }
                 
                 // Canyons shaping
@@ -117,9 +116,10 @@ struct LandscapeGenerator {
 
 
 
-                let xPos = Float(x)
-                let zPos = Float(z)
-                vertexList.append(SCNVector3(xPos * 0.04, yPos, zPos * 0.04))
+                let xPos = Float(x) * resolutionMultiple
+                let zPos = Float(z) * resolutionMultiple
+                
+                vertexList.append(SCNVector3(xPos, yPos, zPos))
             }
         }
         print(vertexList.count)
@@ -134,26 +134,26 @@ struct LandscapeGenerator {
     func calculateIndices(_ vertexList: [SCNVector3]) -> [Int32] {
         
         var indices: [Int32] = []
-        var endOfRow = xLength
+        var endOfRow = Int(xLength)
         var startOfRow = 0
         for index in 0...vertexList.count - 1 {
             var canGoEast = true
             var canGoNorth = true
             var canGoSouth = true
             var canGoWest = true
-            let north = index - zLength
+            let north = index - Int(zLength)
             if north < 0 {
                 canGoNorth = false
             }
             
             let east = index + 1
             if east >= endOfRow {
-                endOfRow += xLength
-                startOfRow += xLength
+                endOfRow += Int(xLength)
+                startOfRow += Int(xLength)
                 canGoEast = false
             }
             
-            let south = index + zLength
+            let south = index + Int(zLength)
             if south >= vertexList.count
             {
                 canGoSouth = false
@@ -199,12 +199,12 @@ struct LandscapeGenerator {
         
         for vertex in vertexList {
             
-//            if vertex.y <= -0.6
-//            {
-//                colorList.append(SCNVector3(0.026, vertex.y, 0.408))
-
-            
-             if vertex.y > 0.3
+            if vertex.y <= seaLevel
+            {
+                colorList.append(SCNVector3(0.026, vertex.y, 0.408))
+                
+            }
+            else if vertex.y > 0.3
             {
                 colorList.append(SCNVector3(vertex.y, vertex.y, vertex.y))
 
