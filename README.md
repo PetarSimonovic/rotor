@@ -1,6 +1,6 @@
 
 
-![image](https://github.com/PetarSimonovic/rotor/assets/69108995/f00afcb9-a70d-4edc-8516-3e8ea3f64c20)
+<img width="787" alt="image" src="https://github.com/PetarSimonovic/rotor/assets/69108995/114cc066-f549-442d-afc7-e8d3f707bd06">
 
 Skipping rope fitness game in development for Apple Watch and iPhone
 
