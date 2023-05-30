@@ -20,7 +20,8 @@ struct LandscapeGenerator {
     var resolutionMultiplier: Float = 25.00
     
     var treeLine: Float = 0.3
-    var seaLevel: Float = -0.6
+    var seaLevel: Float = -0.55
+    var lowLands: Float = 0.01
     
     
     func generate() -> SCNNode {
@@ -75,28 +76,60 @@ struct LandscapeGenerator {
         
         var vertexList: [SCNVector3] = []
         
+        var cliff: Bool = false
+        var cliffCount: Int = 0
+        var cliffLength: Int = 0
         
         for x in 1 ... Int(xLength) {
             for z in 1 ... Int(zLength) {
                 var yPos = map.value(at: [Int32(x), Int32(z)])
-              
+                if !cliff {
+                    let cliffChance = Int.random(in: 1...500)
+                    if cliffChance == 1 {
+                        cliff = true
+                        cliffLength = Int.random(in: 1...20)
+                    }
 
-//                if (yPos > -0.7 && yPos < 0.3) {
-//                    yPos = yPos/6
+                }
+              
+                // Bottom out the sea
+
+//                if (yPos < seaLevel) {
+//                    yPos = yPos + 0.2
+//
 //                }
-//                if (yPos > 0.3 && yPos < 0.6) {
-//                    yPos = yPos/4
+                
+                // Set the seabed
+//                if yPos < seaLevel {
+//                    yPos = seaLevel
 //                }
+                
+                
+                // Flatten plains
+                if (yPos > seaLevel && yPos < lowLands) {
+                    yPos = yPos / 2                }
 //
 //
 //                if yPos < -0.95 {
 //                    yPos = -0.7
 //                }
                 
-                // Cliffs
-                if yPos > treeLine {
-                    yPos = yPos / 0.92
-                }
+                // Jagged peaks
+                //                if  yPos < treeLine {
+//                    yPos = yPos * 0.6
+//                    if cliffCount > cliffLength {
+//                        print("Cliff reset")
+//                        cliff = false
+//                        cliffCount = 0
+//                        cliffLength = 0
+//                    }
+//                }
+                
+            //    if yPos < treeLine
+                
+                //Cliff
+                
+        
                 
                 // Canyons shaping
 //                var W: Float = 0.6; // width of terracing bands
@@ -221,7 +254,7 @@ struct LandscapeGenerator {
     
     func makeNoiseMap(x: Int, z: Int) -> GKNoiseMap {
         let source = GKPerlinNoiseSource()
-        source.persistence = 0.3
+        source.persistence = 0.356
         // determines how smooth the noise, ie how likely it is to change. Higher values create rougher terrain. Keep values below 1.0
 
         let noise = GKNoise(source)
