@@ -135,7 +135,9 @@ struct SceneKitView : UIViewRepresentable {
             playerNode.physicsBody = physicsBody
         }
         playerNode.camera = SCNCamera()
-        playerNode.camera?.zFar = 1500
+        playerNode.camera?.zFar = 150000
+        playerNode.scale = SCNVector3(0.05, 0.05, 0.05)
+        
         
 
     }

@@ -13,8 +13,8 @@ import GameKit
 
 struct LandscapeGenerator {
     
-    var xLength: Float = 500
-    var zLength: Float = 500
+    var xLength: Float = 1000
+    var zLength: Float = 1000
     
     // resMultiplier is used to calculate resolution when landscape is drawn
     var resolutionMultiplier: Float = 25
@@ -64,6 +64,7 @@ struct LandscapeGenerator {
         landscapeNode.physicsBody = landscapePhysicsBody
         
         print("Done", landscapeNode)
+        landscapeNode.scale = SCNVector3(1000, 1000, 1000)
         return landscapeNode
         
         
