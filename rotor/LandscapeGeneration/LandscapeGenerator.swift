@@ -13,11 +13,11 @@ import GameKit
 
 struct LandscapeGenerator {
     
-    var xLength: Float = 500.00
-    var zLength: Float = 500.00
+    var xLength: Float = 500
+    var zLength: Float = 500
     
     // resMultiplier is used to calculate resolution when landscape is drawn
-    var resolutionMultiplier: Float = 25.00
+    var resolutionMultiplier: Float = 25
     
     var treeLine: Float = 0.5
     var seaLevel: Float = 0.001
@@ -70,6 +70,8 @@ struct LandscapeGenerator {
     }
 
     func createVertices(_ map: GKNoiseMap) ->  [SCNVector3] {
+        print("Noise")
+        print(map.value(at: [10, 10]))
         
         let numVertices: Float = xLength * resolutionMultiplier;
         let resolutionMultiple: Float = xLength/numVertices;
@@ -259,11 +261,24 @@ struct LandscapeGenerator {
         
         source.seed = seed
         let noise = GKNoise(source)
-        let size = vector2(15.0, 15.0)
-        let origin = vector2(7.0, 7.0)
+        
+        // resolution multipliers allow the resoltion to be changed programatically while
+        // still generating landscapes that look like the initial values (sampleCount: 500, 500, size: 15.00, origin: 7.00, resoultion: 25.00)
+        let sizeResolutionCorrection: Float =  ((resolutionMultiplier/xLength) * 10.00) * 2.0
+        let sizeResolutionBase: Float = 375.00
+        let sizeValue: Float = (sizeResolutionBase / resolutionMultiplier) * (xLength/500)
+        print("Size", sizeValue)
+        
+        let size: SIMD2<Double> = SIMD2<Double>(vector2(sizeValue, sizeValue))
+        let originResolutionBase: Float = 175
+        let originValue: Float = (originResolutionBase / resolutionMultiplier) * (xLength/500)
+        print("origin", originValue)
+        
+        let origin: SIMD2<Double> = SIMD2<Double>(vector2(originValue, originValue))
         let sampleCount = vector2(Int32(x), Int32(z))
         
-      //  noise.remapValues(toTerracesWithPeaks: [-0.02, 0.00, 0.02, 0.04, 0.06, 0.08, 0.1], terracesInverted: false)
+        
+        //  noise.remapValues(toTerracesWithPeaks: [-0.02, 0.00, 0.02, 0.04, 0.06, 0.08, 0.1], terracesInverted: false)
         
 
         return GKNoiseMap(noise, size: size, origin: origin, sampleCount: sampleCount, seamless: true)

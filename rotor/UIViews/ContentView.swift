@@ -27,7 +27,7 @@ struct ContentView: View {
         VStack {
             ZStack {
                 sceneKitView
-                Title()
+           //     Title()
             }
             ZStack {
                 Button(action: sceneKitView.applyThrust) {
