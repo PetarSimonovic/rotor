@@ -12,7 +12,6 @@
 		0D80748E2A0504630071EC62 /* SCNGeometryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80748D2A0504630071EC62 /* SCNGeometryExtension.swift */; };
 		0D8074902A0530C60071EC62 /* GKNoiseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80748F2A0530C60071EC62 /* GKNoiseExtension.swift */; };
 		0D8074932A09417C0071EC62 /* CantorDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8074922A09417C0071EC62 /* CantorDictionary.swift */; };
-		0D821517299191E300267EF8 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D821516299191E300267EF8 /* MotionDetector.swift */; };
 		0D8D1460298E9A8800396783 /* rotorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D145F298E9A8800396783 /* rotorApp.swift */; };
 		0D8D1462298E9A8800396783 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D1461298E9A8800396783 /* ContentView.swift */; };
 		0D8D1464298E9A8900396783 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8D1463298E9A8900396783 /* Assets.xcassets */; };
@@ -20,22 +19,9 @@
 		0D8D1471298E9A8900396783 /* rotorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D1470298E9A8900396783 /* rotorTests.swift */; };
 		0D8D147B298E9A8900396783 /* rotorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D147A298E9A8900396783 /* rotorUITests.swift */; };
 		0D8D147D298E9A8900396783 /* rotorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D147C298E9A8900396783 /* rotorUITestsLaunchTests.swift */; };
-		0D8D1483298E9A8900396783 /* rotor Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 0D8D1482298E9A8900396783 /* rotor Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		0D8D1488298E9A8900396783 /* rotorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D1487298E9A8900396783 /* rotorApp.swift */; };
-		0D8D148A298E9A8900396783 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D1489298E9A8900396783 /* ContentView.swift */; };
-		0D8D148C298E9A8A00396783 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8D148B298E9A8A00396783 /* Assets.xcassets */; };
-		0D8D148F298E9A8A00396783 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8D148E298E9A8A00396783 /* Preview Assets.xcassets */; };
-		0D8D1499298E9A8A00396783 /* rotor_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D1498298E9A8A00396783 /* rotor_Watch_AppTests.swift */; };
-		0D8D14A3298E9A8B00396783 /* rotor_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14A2298E9A8B00396783 /* rotor_Watch_AppUITests.swift */; };
-		0D8D14A5298E9A8B00396783 /* rotor_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14A4298E9A8B00396783 /* rotor_Watch_AppUITestsLaunchTests.swift */; };
-		0D8D14BC298E9BFE00396783 /* iOSConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14BB298E9BFE00396783 /* iOSConnector.swift */; };
-		0D8D14BE298EA6CE00396783 /* WatchConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D14BD298EA6CE00396783 /* WatchConnector.swift */; };
 		0D944C1F2A0E2A6F00610724 /* AsteroidDesignerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D944C1E2A0E2A6F00610724 /* AsteroidDesignerView.swift */; };
 		0D944C212A0E7E4300610724 /* LandscapeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D944C202A0E7E4300610724 /* LandscapeGenerator.swift */; };
 		0DC0E47229EE9F7A00089EDB /* AsteroidGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47129EE9F7A00089EDB /* AsteroidGenerator.swift */; };
-		0DC0E47429F3DD4200089EDB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47329F3DD4200089EDB /* Extensions.swift */; };
-		0DC0E47B29F6F45D00089EDB /* PhoneWorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47929F6D56200089EDB /* PhoneWorkoutManager.swift */; };
-		0DC0E47D29F81D9800089EDB /* WatchWorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47C29F81D9800089EDB /* WatchWorkoutManager.swift */; };
 		0DC38E3829EE7671007B4AC5 /* SceneKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,27 +40,6 @@
 			remoteGlobalIDString = 0D8D145B298E9A8800396783;
 			remoteInfo = rotor;
 		};
-		0D8D1484298E9A8900396783 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0D8D1454298E9A8800396783 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0D8D1481298E9A8900396783;
-			remoteInfo = "rotor Watch App";
-		};
-		0D8D1495298E9A8A00396783 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0D8D1454298E9A8800396783 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0D8D1481298E9A8900396783;
-			remoteInfo = "rotor Watch App";
-		};
-		0D8D149F298E9A8B00396783 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0D8D1454298E9A8800396783 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0D8D1481298E9A8900396783;
-			remoteInfo = "rotor Watch App";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -84,7 +49,6 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				0D8D1483298E9A8900396783 /* rotor Watch App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,9 +61,7 @@
 		0D80748D2A0504630071EC62 /* SCNGeometryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNGeometryExtension.swift; sourceTree = "<group>"; };
 		0D80748F2A0530C60071EC62 /* GKNoiseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKNoiseExtension.swift; sourceTree = "<group>"; };
 		0D8074922A09417C0071EC62 /* CantorDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CantorDictionary.swift; sourceTree = "<group>"; };
-		0D821512299182AE00267EF8 /* rotor-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "rotor-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0D8215132991844B00267EF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		0D821516299191E300267EF8 /* MotionDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
 		0D8D145C298E9A8800396783 /* rotor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rotor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8D145F298E9A8800396783 /* rotorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rotorApp.swift; sourceTree = "<group>"; };
 		0D8D1461298E9A8800396783 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,25 +72,10 @@
 		0D8D1476298E9A8900396783 /* rotorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rotorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8D147A298E9A8900396783 /* rotorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rotorUITests.swift; sourceTree = "<group>"; };
 		0D8D147C298E9A8900396783 /* rotorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rotorUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		0D8D1482298E9A8900396783 /* rotor Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rotor Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0D8D1487298E9A8900396783 /* rotorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rotorApp.swift; sourceTree = "<group>"; };
-		0D8D1489298E9A8900396783 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		0D8D148B298E9A8A00396783 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0D8D148E298E9A8A00396783 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		0D8D1494298E9A8A00396783 /* rotor Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "rotor Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0D8D1498298E9A8A00396783 /* rotor_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rotor_Watch_AppTests.swift; sourceTree = "<group>"; };
-		0D8D149E298E9A8B00396783 /* rotor Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "rotor Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0D8D14A2298E9A8B00396783 /* rotor_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rotor_Watch_AppUITests.swift; sourceTree = "<group>"; };
-		0D8D14A4298E9A8B00396783 /* rotor_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rotor_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		0D8D14BB298E9BFE00396783 /* iOSConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSConnector.swift; sourceTree = "<group>"; };
-		0D8D14BD298EA6CE00396783 /* WatchConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnector.swift; sourceTree = "<group>"; };
 		0D944C1E2A0E2A6F00610724 /* AsteroidDesignerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidDesignerView.swift; sourceTree = "<group>"; };
 		0D944C202A0E7E4300610724 /* LandscapeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeGenerator.swift; sourceTree = "<group>"; };
 		0DC0E47129EE9F7A00089EDB /* AsteroidGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidGenerator.swift; sourceTree = "<group>"; };
-		0DC0E47329F3DD4200089EDB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0DC0E47529F6CEB200089EDB /* rotor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rotor.entitlements; sourceTree = "<group>"; };
-		0DC0E47929F6D56200089EDB /* PhoneWorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneWorkoutManager.swift; sourceTree = "<group>"; };
-		0DC0E47C29F81D9800089EDB /* WatchWorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWorkoutManager.swift; sourceTree = "<group>"; };
 		0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,27 +95,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		0D8D1473298E9A8900396783 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0D8D147F298E9A8900396783 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0D8D1491298E9A8A00396783 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0D8D149B298E9A8B00396783 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -201,9 +127,6 @@
 				0D8D145E298E9A8800396783 /* rotor */,
 				0D8D146F298E9A8900396783 /* rotorTests */,
 				0D8D1479298E9A8900396783 /* rotorUITests */,
-				0D8D1486298E9A8900396783 /* rotor Watch App */,
-				0D8D1497298E9A8A00396783 /* rotor Watch AppTests */,
-				0D8D14A1298E9A8B00396783 /* rotor Watch AppUITests */,
 				0D8D145D298E9A8800396783 /* Products */,
 				0D8D14BF298FB70500396783 /* Frameworks */,
 			);
@@ -215,9 +138,6 @@
 				0D8D145C298E9A8800396783 /* rotor.app */,
 				0D8D146C298E9A8900396783 /* rotorTests.xctest */,
 				0D8D1476298E9A8900396783 /* rotorUITests.xctest */,
-				0D8D1482298E9A8900396783 /* rotor Watch App.app */,
-				0D8D1494298E9A8A00396783 /* rotor Watch AppTests.xctest */,
-				0D8D149E298E9A8B00396783 /* rotor Watch AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -228,8 +148,6 @@
 				0D8074912A054E3C0071EC62 /* Tools */,
 				0D80748C2A0504470071EC62 /* Extensions */,
 				0D99A8D52A0394CE00595434 /* UIViews */,
-				0D99A8D42A0394BF00595434 /* WatchConnectivity */,
-				0D99A8D32A0394AC00595434 /* HealthTools */,
 				0D99A8D22A03949500595434 /* LandscapeGeneration */,
 				0DC0E47529F6CEB200089EDB /* rotor.entitlements */,
 				0D8215132991844B00267EF8 /* Info.plist */,
@@ -265,47 +183,6 @@
 			path = rotorUITests;
 			sourceTree = "<group>";
 		};
-		0D8D1486298E9A8900396783 /* rotor Watch App */ = {
-			isa = PBXGroup;
-			children = (
-				0D821516299191E300267EF8 /* MotionDetector.swift */,
-				0D821512299182AE00267EF8 /* rotor-Watch-App-Info.plist */,
-				0D8D14BD298EA6CE00396783 /* WatchConnector.swift */,
-				0D8D1487298E9A8900396783 /* rotorApp.swift */,
-				0D8D1489298E9A8900396783 /* ContentView.swift */,
-				0D8D148B298E9A8A00396783 /* Assets.xcassets */,
-				0D8D148D298E9A8A00396783 /* Preview Content */,
-				0DC0E47329F3DD4200089EDB /* Extensions.swift */,
-				0DC0E47C29F81D9800089EDB /* WatchWorkoutManager.swift */,
-			);
-			path = "rotor Watch App";
-			sourceTree = "<group>";
-		};
-		0D8D148D298E9A8A00396783 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				0D8D148E298E9A8A00396783 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		0D8D1497298E9A8A00396783 /* rotor Watch AppTests */ = {
-			isa = PBXGroup;
-			children = (
-				0D8D1498298E9A8A00396783 /* rotor_Watch_AppTests.swift */,
-			);
-			path = "rotor Watch AppTests";
-			sourceTree = "<group>";
-		};
-		0D8D14A1298E9A8B00396783 /* rotor Watch AppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				0D8D14A2298E9A8B00396783 /* rotor_Watch_AppUITests.swift */,
-				0D8D14A4298E9A8B00396783 /* rotor_Watch_AppUITestsLaunchTests.swift */,
-			);
-			path = "rotor Watch AppUITests";
-			sourceTree = "<group>";
-		};
 		0D8D14BF298FB70500396783 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,22 +198,6 @@
 				0D944C202A0E7E4300610724 /* LandscapeGenerator.swift */,
 			);
 			path = LandscapeGeneration;
-			sourceTree = "<group>";
-		};
-		0D99A8D32A0394AC00595434 /* HealthTools */ = {
-			isa = PBXGroup;
-			children = (
-				0DC0E47929F6D56200089EDB /* PhoneWorkoutManager.swift */,
-			);
-			path = HealthTools;
-			sourceTree = "<group>";
-		};
-		0D99A8D42A0394BF00595434 /* WatchConnectivity */ = {
-			isa = PBXGroup;
-			children = (
-				0D8D14BB298E9BFE00396783 /* iOSConnector.swift */,
-			);
-			path = WatchConnectivity;
 			sourceTree = "<group>";
 		};
 		0D99A8D52A0394CE00595434 /* UIViews */ = {
@@ -365,7 +226,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				0D8D1485298E9A8900396783 /* PBXTargetDependency */,
 			);
 			name = rotor;
 			productName = rotor;
@@ -408,59 +268,6 @@
 			productReference = 0D8D1476298E9A8900396783 /* rotorUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		0D8D1481298E9A8900396783 /* rotor Watch App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0D8D14A8298E9A8B00396783 /* Build configuration list for PBXNativeTarget "rotor Watch App" */;
-			buildPhases = (
-				0D8D147E298E9A8900396783 /* Sources */,
-				0D8D147F298E9A8900396783 /* Frameworks */,
-				0D8D1480298E9A8900396783 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "rotor Watch App";
-			productName = "rotor Watch App";
-			productReference = 0D8D1482298E9A8900396783 /* rotor Watch App.app */;
-			productType = "com.apple.product-type.application";
-		};
-		0D8D1493298E9A8A00396783 /* rotor Watch AppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0D8D14B5298E9A8B00396783 /* Build configuration list for PBXNativeTarget "rotor Watch AppTests" */;
-			buildPhases = (
-				0D8D1490298E9A8A00396783 /* Sources */,
-				0D8D1491298E9A8A00396783 /* Frameworks */,
-				0D8D1492298E9A8A00396783 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0D8D1496298E9A8A00396783 /* PBXTargetDependency */,
-			);
-			name = "rotor Watch AppTests";
-			productName = "rotor Watch AppTests";
-			productReference = 0D8D1494298E9A8A00396783 /* rotor Watch AppTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		0D8D149D298E9A8B00396783 /* rotor Watch AppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0D8D14B8298E9A8B00396783 /* Build configuration list for PBXNativeTarget "rotor Watch AppUITests" */;
-			buildPhases = (
-				0D8D149A298E9A8B00396783 /* Sources */,
-				0D8D149B298E9A8B00396783 /* Frameworks */,
-				0D8D149C298E9A8B00396783 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0D8D14A0298E9A8B00396783 /* PBXTargetDependency */,
-			);
-			name = "rotor Watch AppUITests";
-			productName = "rotor Watch AppUITests";
-			productReference = 0D8D149E298E9A8B00396783 /* rotor Watch AppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -482,17 +289,6 @@
 						CreatedOnToolsVersion = 14.2;
 						TestTargetID = 0D8D145B298E9A8800396783;
 					};
-					0D8D1481298E9A8900396783 = {
-						CreatedOnToolsVersion = 14.2;
-					};
-					0D8D1493298E9A8A00396783 = {
-						CreatedOnToolsVersion = 14.2;
-						TestTargetID = 0D8D1481298E9A8900396783;
-					};
-					0D8D149D298E9A8B00396783 = {
-						CreatedOnToolsVersion = 14.2;
-						TestTargetID = 0D8D1481298E9A8900396783;
-					};
 				};
 			};
 			buildConfigurationList = 0D8D1457298E9A8800396783 /* Build configuration list for PBXProject "rotor" */;
@@ -511,9 +307,6 @@
 				0D8D145B298E9A8800396783 /* rotor */,
 				0D8D146B298E9A8900396783 /* rotorTests */,
 				0D8D1475298E9A8900396783 /* rotorUITests */,
-				0D8D1481298E9A8900396783 /* rotor Watch App */,
-				0D8D1493298E9A8A00396783 /* rotor Watch AppTests */,
-				0D8D149D298E9A8B00396783 /* rotor Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -542,29 +335,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0D8D1480298E9A8900396783 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0D8D148F298E9A8A00396783 /* Preview Assets.xcassets in Resources */,
-				0D8D148C298E9A8A00396783 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0D8D1492298E9A8A00396783 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0D8D149C298E9A8B00396783 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -576,12 +346,10 @@
 				0D944C1F2A0E2A6F00610724 /* AsteroidDesignerView.swift in Sources */,
 				0D8D1462298E9A8800396783 /* ContentView.swift in Sources */,
 				0DC0E47229EE9F7A00089EDB /* AsteroidGenerator.swift in Sources */,
-				0D8D14BC298E9BFE00396783 /* iOSConnector.swift in Sources */,
 				0D944C212A0E7E4300610724 /* LandscapeGenerator.swift in Sources */,
 				0D8D1460298E9A8800396783 /* rotorApp.swift in Sources */,
 				0DC38E3829EE7671007B4AC5 /* SceneKitView.swift in Sources */,
 				0D8074932A09417C0071EC62 /* CantorDictionary.swift in Sources */,
-				0DC0E47B29F6F45D00089EDB /* PhoneWorkoutManager.swift in Sources */,
 				0D3D6ADC2A262A37006FE96C /* CollisionDetector.swift in Sources */,
 				0D80748B2A04F64C0071EC62 /* Ico.swift in Sources */,
 				0D80748E2A0504630071EC62 /* SCNGeometryExtension.swift in Sources */,
@@ -605,36 +373,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0D8D147E298E9A8900396783 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0DC0E47429F3DD4200089EDB /* Extensions.swift in Sources */,
-				0D8D14BE298EA6CE00396783 /* WatchConnector.swift in Sources */,
-				0D8D148A298E9A8900396783 /* ContentView.swift in Sources */,
-				0D8D1488298E9A8900396783 /* rotorApp.swift in Sources */,
-				0D821517299191E300267EF8 /* MotionDetector.swift in Sources */,
-				0DC0E47D29F81D9800089EDB /* WatchWorkoutManager.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0D8D1490298E9A8A00396783 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0D8D1499298E9A8A00396783 /* rotor_Watch_AppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0D8D149A298E9A8B00396783 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0D8D14A3298E9A8B00396783 /* rotor_Watch_AppUITests.swift in Sources */,
-				0D8D14A5298E9A8B00396783 /* rotor_Watch_AppUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -647,21 +385,6 @@
 			isa = PBXTargetDependency;
 			target = 0D8D145B298E9A8800396783 /* rotor */;
 			targetProxy = 0D8D1477298E9A8900396783 /* PBXContainerItemProxy */;
-		};
-		0D8D1485298E9A8900396783 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0D8D1481298E9A8900396783 /* rotor Watch App */;
-			targetProxy = 0D8D1484298E9A8900396783 /* PBXContainerItemProxy */;
-		};
-		0D8D1496298E9A8A00396783 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0D8D1481298E9A8900396783 /* rotor Watch App */;
-			targetProxy = 0D8D1495298E9A8A00396783 /* PBXContainerItemProxy */;
-		};
-		0D8D14A0298E9A8B00396783 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0D8D1481298E9A8900396783 /* rotor Watch App */;
-			targetProxy = 0D8D149F298E9A8B00396783 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -779,81 +502,9 @@
 			};
 			name = Release;
 		};
-		0D8D14A9298E9A8B00396783 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "rotor Watch App/rotor Watch App.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"rotor Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 6TPWY3BLL8;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "rotor-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = rotor;
-				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Rotor uses HealthKit to access heart rate and calorie burn data";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Rotor uses HealthKit to access heart rate and calorie burn data";
-				INFOPLIST_KEY_NSMotionUsageDescription = "rotor uses Watch motion data to track skips";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.simonovic.rotor;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.simonovic.rotor.watchkit;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Debug;
-		};
-		0D8D14AA298E9A8B00396783 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "rotor Watch App/rotor Watch App.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"rotor Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 6TPWY3BLL8;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "rotor-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = rotor;
-				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Rotor uses HealthKit to access heart rate and calorie burn data";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Rotor uses HealthKit to access heart rate and calorie burn data";
-				INFOPLIST_KEY_NSMotionUsageDescription = "rotor uses Watch motion data to track skips";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.simonovic.rotor;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.simonovic.rotor.watchkit;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Release;
-		};
 		0D8D14AD298E9A8B00396783 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = rotor/rotor.entitlements;
@@ -893,7 +544,6 @@
 		0D8D14AE298E9A8B00396783 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = rotor/rotor.entitlements;
@@ -1015,90 +665,6 @@
 			};
 			name = Release;
 		};
-		0D8D14B6298E9A8B00396783 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6TPWY3BLL8;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "PetarSimonovic.rotor-Watch-AppTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rotor Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/rotor Watch App";
-				WATCHOS_DEPLOYMENT_TARGET = 9.1;
-			};
-			name = Debug;
-		};
-		0D8D14B7298E9A8B00396783 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6TPWY3BLL8;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "PetarSimonovic.rotor-Watch-AppTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rotor Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/rotor Watch App";
-				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 9.1;
-			};
-			name = Release;
-		};
-		0D8D14B9298E9A8B00396783 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6TPWY3BLL8;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "PetarSimonovic.rotor-Watch-AppUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_TARGET_NAME = "rotor Watch App";
-				WATCHOS_DEPLOYMENT_TARGET = 9.1;
-			};
-			name = Debug;
-		};
-		0D8D14BA298E9A8B00396783 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6TPWY3BLL8;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "PetarSimonovic.rotor-Watch-AppUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_TARGET_NAME = "rotor Watch App";
-				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 9.1;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1107,15 +673,6 @@
 			buildConfigurations = (
 				0D8D14A6298E9A8B00396783 /* Debug */,
 				0D8D14A7298E9A8B00396783 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0D8D14A8298E9A8B00396783 /* Build configuration list for PBXNativeTarget "rotor Watch App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0D8D14A9298E9A8B00396783 /* Debug */,
-				0D8D14AA298E9A8B00396783 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1143,24 +700,6 @@
 			buildConfigurations = (
 				0D8D14B3298E9A8B00396783 /* Debug */,
 				0D8D14B4298E9A8B00396783 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0D8D14B5298E9A8B00396783 /* Build configuration list for PBXNativeTarget "rotor Watch AppTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0D8D14B6298E9A8B00396783 /* Debug */,
-				0D8D14B7298E9A8B00396783 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0D8D14B8298E9A8B00396783 /* Build configuration list for PBXNativeTarget "rotor Watch AppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0D8D14B9298E9A8B00396783 /* Debug */,
-				0D8D14BA298E9A8B00396783 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

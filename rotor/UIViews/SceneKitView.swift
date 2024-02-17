@@ -11,7 +11,6 @@ import CoreGraphics
 
 struct SceneKitView : UIViewRepresentable {
     
-    @EnvironmentObject var iosConnector: iOSConnector
     // Base Node
     let scene = SCNScene()
     var playerNode = SCNNode()
@@ -73,9 +72,6 @@ struct SceneKitView : UIViewRepresentable {
         
         let scnView = SCNView()
         scnView.pointOfView = playerNode
-        let collisionDetector = CollisionDetector()
-        print("Contact delegate")
-        scene.physicsWorld.contactDelegate = collisionDetector
         scnView.scene = scene
         return scnView
 
@@ -123,32 +119,12 @@ struct SceneKitView : UIViewRepresentable {
     func configurePlayerNode() {
         
         
-        let geometry = SCNBox(width: 0.001, height: 0.001, length: 0.001, chamferRadius: 0.0001)
-        let shape = SCNPhysicsShape(geometry: geometry, options: nil)
-        if (!test) {
-            let physicsBody = SCNPhysicsBody(type: .dynamic, shape: shape)
-            physicsBody.restitution  = 0.0
-            physicsBody.friction  = 1.0
-            physicsBody.angularDamping = 1.0
-            
-
-            playerNode.physicsBody = physicsBody
-        }
+    
         playerNode.camera = SCNCamera()
         playerNode.camera?.zFar = 150000
-        playerNode.scale = SCNVector3(0.05, 0.05, 0.05)
+       // playerNode.scale = SCNVector3(0.05, 0.05, 0.05)
         
         
-
-    }
-    
-    func applyThrust() {
-        let force = SCNVector3(x: -0.00, y: 0.05 , z: -0.00)
-        var forcePosition = playerNode.position
-        forcePosition.y = playerNode.position.y - 1.0
-
-        playerNode.physicsBody?.applyForce(force,
-                                           at: forcePosition, asImpulse: false)
 
     }
     
