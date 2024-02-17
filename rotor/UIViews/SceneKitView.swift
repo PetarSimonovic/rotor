@@ -122,7 +122,7 @@ struct SceneKitView : UIViewRepresentable {
     
         playerNode.camera = SCNCamera()
         playerNode.camera?.zFar = 150000
-       // playerNode.scale = SCNVector3(0.05, 0.05, 0.05)
+        playerNode.scale = SCNVector3(2, 2, 2)
         
         
 
