@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D03F6972B990FD900B14FA1 /* LandscapeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D03F6962B990FD900B14FA1 /* LandscapeData.swift */; };
 		0D3D6ADC2A262A37006FE96C /* CollisionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D6ADB2A262A37006FE96C /* CollisionDetector.swift */; };
 		0D80748B2A04F64C0071EC62 /* Ico.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80748A2A04F64C0071EC62 /* Ico.swift */; };
 		0D80748E2A0504630071EC62 /* SCNGeometryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80748D2A0504630071EC62 /* SCNGeometryExtension.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D03F6962B990FD900B14FA1 /* LandscapeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeData.swift; sourceTree = "<group>"; };
 		0D3D6ADB2A262A37006FE96C /* CollisionDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionDetector.swift; sourceTree = "<group>"; };
 		0D80748A2A04F64C0071EC62 /* Ico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ico.swift; sourceTree = "<group>"; };
 		0D80748D2A0504630071EC62 /* SCNGeometryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNGeometryExtension.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				0DC0E47129EE9F7A00089EDB /* AsteroidGenerator.swift */,
 				0D80748A2A04F64C0071EC62 /* Ico.swift */,
 				0D944C202A0E7E4300610724 /* LandscapeGenerator.swift */,
+				0D03F6962B990FD900B14FA1 /* LandscapeData.swift */,
 			);
 			path = LandscapeGeneration;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				0D944C212A0E7E4300610724 /* LandscapeGenerator.swift in Sources */,
 				0D8D1460298E9A8800396783 /* rotorApp.swift in Sources */,
 				0DC38E3829EE7671007B4AC5 /* LandscapeView.swift in Sources */,
+				0D03F6972B990FD900B14FA1 /* LandscapeData.swift in Sources */,
 				0D8074932A09417C0071EC62 /* CantorDictionary.swift in Sources */,
 				0D3D6ADC2A262A37006FE96C /* CollisionDetector.swift in Sources */,
 				0D80748B2A04F64C0071EC62 /* Ico.swift in Sources */,

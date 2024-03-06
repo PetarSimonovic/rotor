@@ -28,7 +28,7 @@ struct ContentView: View {
                 Text("Toggle")
             }
             if showLandscape {
-                LandscapeView(size: size)
+                LandscapeView(landscapeData: LandscapeData(size: Float(size)))
             } else {
                 VStack {
                     Text("Size: \(Int(size))")
@@ -37,10 +37,6 @@ struct ContentView: View {
             }
         }
 
-        
-        
-        
-        
     }
     
     

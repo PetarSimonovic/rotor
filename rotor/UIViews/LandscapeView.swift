@@ -21,17 +21,17 @@ struct LandscapeView : UIViewRepresentable {
     
     let allowCameraControl: Bool = true
     
-    var size: Float
+    var landscapeData: LandscapeData
 
     
     // makeUIVIew and updateUIView are required to conform to the UIViewRepresentable protocol
 
     func makeUIView(context: Context) -> SCNView {
                 configurePlayerNode()
-        var landscapeGenerator = LandscapeGenerator()
+        var landscapeGenerator = LandscapeGenerator(landscapeData: landscapeData)
 
 
-        let landscapeNode: SCNNode = landscapeGenerator.generate(size: size)
+        let landscapeNode: SCNNode = landscapeGenerator.generate()
 
         let lookAtNode = SCNNode()
         playerNode.position = SCNVector3(5, 2.0, 5)
