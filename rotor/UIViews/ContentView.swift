@@ -13,13 +13,24 @@ struct ContentView: View {
     
     
     
-    var sceneKitView = SceneKitView()
     
-    
+    @State private var showLandscape = false
     
     var body: some View {
         
-        sceneKitView
+        VStack {
+            Button(action: {
+                self.showLandscape.toggle()
+            }) {
+                Text("Toggle")
+            }
+            if showLandscape {
+                SceneKitView()
+            } else {
+                Text("Settings here")
+            }
+        }
+
         
         
         
