@@ -24,8 +24,10 @@ struct LandscapeGenerator {
     var lowLands: Float = 0.01
     
     
-    func generate() -> SCNNode {
-        let map: GKNoiseMap = makeNoiseMap(x: Int(xLength), z: Int(zLength))
+    mutating func generate(size: Int) -> SCNNode {
+        xLength = Float(size)
+        zLength = Float(size)
+        let map: GKNoiseMap = makeNoiseMap(x: size, z: size)
         let vertexList: [SCNVector3] = createVertices(map)
         let vertices = SCNGeometrySource(vertices: vertexList)
         

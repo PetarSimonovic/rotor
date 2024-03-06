@@ -25,7 +25,7 @@ struct ContentView: View {
                 Text("Toggle")
             }
             if showLandscape {
-                LandscapeView()
+                LandscapeView(size: 500)
             } else {
                 Text("Settings here")
             }
