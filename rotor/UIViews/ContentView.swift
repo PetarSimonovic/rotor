@@ -16,6 +16,9 @@ struct ContentView: View {
     
     @State private var showLandscape = false
     
+    @State private var size: Float = 500
+
+    
     var body: some View {
         
         VStack {
@@ -25,9 +28,12 @@ struct ContentView: View {
                 Text("Toggle")
             }
             if showLandscape {
-                LandscapeView(size: 500)
+                LandscapeView(size: size)
             } else {
-                Text("Settings here")
+                VStack {
+                    Text("Size: \(Int(size))")
+                Slider(value: $size, in: 100...1000, step: 1)
+                }
             }
         }
 
@@ -38,20 +44,7 @@ struct ContentView: View {
     }
     
     
-    
-    struct Counter: View {
-        let jumpCount: String
-        var body: some View {
-            Text(jumpCount)
-                .zIndex(2)
-                .font(.system(size: 56, design: .default))
-                .foregroundColor(.white)
-                .frame(height: 300, alignment: .topLeading)
-            
-        }
-    }
-    
-    
+        
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
             ContentView()
