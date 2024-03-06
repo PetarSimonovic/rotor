@@ -27,7 +27,7 @@ struct ContentView: View {
             Button(action: {
                 self.showLandscape.toggle()
             }) {
-                Text("Toggle")
+                Text(showLandscape ? "Shape Land" : "Create Land")
             }
             if showLandscape {
                 LandscapeView(landscapeData: validateData())
