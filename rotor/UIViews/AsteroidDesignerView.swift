@@ -25,7 +25,7 @@ struct AsteroidDesignerView: View {
     
     @State private var origin: Double = 0.01
     
-    var sceneKitView = SceneKitView()
+    var sceneKitView = LandscapeView()
  
     
     func generateLandscape(){

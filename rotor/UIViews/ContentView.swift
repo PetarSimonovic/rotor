@@ -25,7 +25,7 @@ struct ContentView: View {
                 Text("Toggle")
             }
             if showLandscape {
-                SceneKitView()
+                LandscapeView()
             } else {
                 Text("Settings here")
             }

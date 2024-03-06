@@ -9,7 +9,7 @@ import SwiftUI
 import SceneKit
 import CoreGraphics
 
-struct SceneKitView : UIViewRepresentable {
+struct LandscapeView : UIViewRepresentable {
     
     // Base Node
     let scene = SCNScene()

@@ -22,7 +22,7 @@
 		0D944C1F2A0E2A6F00610724 /* AsteroidDesignerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D944C1E2A0E2A6F00610724 /* AsteroidDesignerView.swift */; };
 		0D944C212A0E7E4300610724 /* LandscapeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D944C202A0E7E4300610724 /* LandscapeGenerator.swift */; };
 		0DC0E47229EE9F7A00089EDB /* AsteroidGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0E47129EE9F7A00089EDB /* AsteroidGenerator.swift */; };
-		0DC38E3829EE7671007B4AC5 /* SceneKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */; };
+		0DC38E3829EE7671007B4AC5 /* LandscapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC38E3729EE7671007B4AC5 /* LandscapeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +76,7 @@
 		0D944C202A0E7E4300610724 /* LandscapeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeGenerator.swift; sourceTree = "<group>"; };
 		0DC0E47129EE9F7A00089EDB /* AsteroidGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidGenerator.swift; sourceTree = "<group>"; };
 		0DC0E47529F6CEB200089EDB /* rotor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rotor.entitlements; sourceTree = "<group>"; };
-		0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitView.swift; sourceTree = "<group>"; };
+		0DC38E3729EE7671007B4AC5 /* LandscapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,7 +203,7 @@
 		0D99A8D52A0394CE00595434 /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
-				0DC38E3729EE7671007B4AC5 /* SceneKitView.swift */,
+				0DC38E3729EE7671007B4AC5 /* LandscapeView.swift */,
 				0D8D1461298E9A8800396783 /* ContentView.swift */,
 				0D944C1E2A0E2A6F00610724 /* AsteroidDesignerView.swift */,
 				0D3D6ADB2A262A37006FE96C /* CollisionDetector.swift */,
@@ -348,7 +348,7 @@
 				0DC0E47229EE9F7A00089EDB /* AsteroidGenerator.swift in Sources */,
 				0D944C212A0E7E4300610724 /* LandscapeGenerator.swift in Sources */,
 				0D8D1460298E9A8800396783 /* rotorApp.swift in Sources */,
-				0DC38E3829EE7671007B4AC5 /* SceneKitView.swift in Sources */,
+				0DC38E3829EE7671007B4AC5 /* LandscapeView.swift in Sources */,
 				0D8074932A09417C0071EC62 /* CantorDictionary.swift in Sources */,
 				0D3D6ADC2A262A37006FE96C /* CollisionDetector.swift in Sources */,
 				0D80748B2A04F64C0071EC62 /* Ico.swift in Sources */,
