@@ -17,6 +17,8 @@ struct ContentView: View {
     @State private var showLandscape = false
     
     @State private var size: Float = 500
+    @State private var treeLine: Float = 0.5
+
 
     
     var body: some View {
@@ -34,6 +36,10 @@ struct ContentView: View {
                     Text("Size: \(Int(size))")
                 Slider(value: $size, in: 100...1000, step: 1)
                 }
+                VStack {
+                    Text("Treeline: \(Double(treeLine))")
+                    Slider(value: $treeLine, in: 0...5, step: 0.1)
+                }
             }
         }
         
@@ -41,7 +47,7 @@ struct ContentView: View {
     }
     
     func validateData() -> LandscapeData {
-        return LandscapeData(size: Float(size))
+        return LandscapeData(size: size, treeLine: treeLine)
     }
 
         

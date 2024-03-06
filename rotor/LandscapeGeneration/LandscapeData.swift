@@ -10,4 +10,5 @@ import Foundation
 
 struct LandscapeData {
     var size: Float
+    var treeLine: Float
 }
