@@ -28,7 +28,7 @@ struct ContentView: View {
                 Text("Toggle")
             }
             if showLandscape {
-                LandscapeView(landscapeData: LandscapeData(size: Float(size)))
+                LandscapeView(landscapeData: validateData())
             } else {
                 VStack {
                     Text("Size: \(Int(size))")
@@ -36,10 +36,14 @@ struct ContentView: View {
                 }
             }
         }
-
+        
+    
     }
     
-    
+    func validateData() -> LandscapeData {
+        return LandscapeData(size: Float(size))
+    }
+
         
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
