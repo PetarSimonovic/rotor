@@ -21,9 +21,7 @@ struct LandscapeView : UIViewRepresentable {
     let landscapeGenerator = LandscapeGenerator()
     
     let test: Bool = true
-    
-    let playerCategory: Int = 1
-    let landscapeCategory: Int = 2
+
 
     
     // makeUIVIew and updateUIView are required to conform to the UIViewRepresentable protocol
@@ -51,15 +49,6 @@ struct LandscapeView : UIViewRepresentable {
 
         scene.rootNode.addChildNode(playerNode)
         
-//        playerNode.physicsBody?.categoryBitMask = playerCategory
-//      //  playerNode.physicsBody?.collisionBitMask    = 0
-//        playerNode.physicsBody?.contactTestBitMask  = landscapeCategory
-//
-//        landscapeNode.physicsBody?.contactTestBitMask  = playerCategory
-//        landscapeNode.physicsBody?.categoryBitMask = landscapeCategory
-//      //  landscapeNode.physicsBody?.collisionBitMask = 0
-//
-//
         // Create Lights
         
         createAmbientLight()
