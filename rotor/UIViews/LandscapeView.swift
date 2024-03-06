@@ -20,7 +20,7 @@ struct LandscapeView : UIViewRepresentable {
     
     let landscapeGenerator = LandscapeGenerator()
     
-    let test: Bool = true
+    let allowCameraControl: Bool = true
 
 
     
@@ -75,7 +75,7 @@ struct LandscapeView : UIViewRepresentable {
         // allows the user to manipulate the camera
         
     
-        scnView.allowsCameraControl = test
+        scnView.allowsCameraControl = allowCameraControl
 
 
         // configure the view
