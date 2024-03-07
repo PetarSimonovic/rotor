@@ -27,9 +27,7 @@ struct LandscapeGenerator {
     
     
     mutating func generate() -> SCNNode {
-        xLength = landscapeData.size
-        zLength = landscapeData.size
-        treeLine = landscapeData.treeLine
+        setLandscapeData()
         let map: GKNoiseMap = makeNoiseMap(x: Int(landscapeData.size), z: Int(landscapeData.size))
         let vertexList: [SCNVector3] = createVertices(map)
         let vertices = SCNGeometrySource(vertices: vertexList)
@@ -73,6 +71,13 @@ struct LandscapeGenerator {
         return landscapeNode
         
         
+    }
+    
+    mutating func setLandscapeData() -> Void {
+        xLength = landscapeData.size
+        zLength = landscapeData.size
+        treeLine = landscapeData.treeLine
+        seaLevel = landscapeData.seaLevel
     }
 
     func createVertices(_ map: GKNoiseMap) ->  [SCNVector3] {
