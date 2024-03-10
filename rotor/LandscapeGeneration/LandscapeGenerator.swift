@@ -25,6 +25,7 @@ struct LandscapeGenerator {
     var seaLevel: Float = 0.001
     var lowLands: Float = 0.01
     var terracing: Bool = false
+    var rockiness: Double = 0.345
     
     
     mutating func generate() -> SCNNode {
@@ -80,6 +81,7 @@ struct LandscapeGenerator {
         treeLine = landscapeData.treeLine
         seaLevel = landscapeData.seaLevel
         terracing = landscapeData.terracing
+        rockiness = landscapeData.rockiness
     }
 
     func createVertices(_ map: GKNoiseMap) ->  [SCNVector3] {
@@ -261,11 +263,12 @@ struct LandscapeGenerator {
     func makeNoiseMap(x: Int, z: Int) -> GKNoiseMap {
         let seed: Int32 = Int32.random(in: 0...111111)
         let source = GKPerlinNoiseSource()
-        source.persistence = 0.345
         source.lacunarity  = 2.08
 //source.octaveCount = 12
         // determines how smooth the noise, ie how likely it is to change. Higher values create rougher terrain. Keep values below 1.0
         
+        source.persistence = rockiness // 0.345
+
         source.seed = seed
         let noise = GKNoise(source)
         
@@ -283,7 +286,6 @@ struct LandscapeGenerator {
         let sampleCount = vector2(Int32(x), Int32(z))
         
         if (terracing) {
-            print("Terracing!")
             noise.remapValues(toTerracesWithPeaks: [-0.1, 0.00, 0.1, 0.2, 0.3, 0.4, 0.6], terracesInverted: false)
         }
 
