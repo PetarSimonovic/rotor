@@ -24,6 +24,7 @@ struct LandscapeGenerator {
     var treeLine: Float = 0.5
     var seaLevel: Float = 0.001
     var lowLands: Float = 0.01
+    var terracing: Bool = false
     
     
     mutating func generate() -> SCNNode {
@@ -78,11 +79,11 @@ struct LandscapeGenerator {
         zLength = landscapeData.size
         treeLine = landscapeData.treeLine
         seaLevel = landscapeData.seaLevel
+        terracing = landscapeData.terracing
     }
 
     func createVertices(_ map: GKNoiseMap) ->  [SCNVector3] {
-        print("Noise")
-        print(map.value(at: [10, 10]))
+     
         
         let numVertices: Float = xLength * resolutionMultiplier;
         let resolutionMultiple: Float = xLength/numVertices;
@@ -133,10 +134,10 @@ struct LandscapeGenerator {
                 
                 // Rivers shaping
                 
-                var W: Float = 0.002; // width of terracing bands
-                var k = floor(yPos / W);
-                var f = (yPos - k * W) / W;
-                var s = min(1.2 * f, 2.0);
+                let W: Float = 0.002; // width of terracing bands
+                let k = floor(yPos / W);
+                let f = (yPos - k * W) / W;
+                let s = min(1.2 * f, 2.0);
               //  let shapedYPos = sin((k+s) * W)
                 let shapedYPos = (k+s) * W
 
@@ -165,11 +166,7 @@ struct LandscapeGenerator {
                 vertexList.append(SCNVector3(xPos, yPos, zPos))
             }
         }
-        print(vertexList.count)
-        print(vertexList[0])
-
-        print(vertexList[1])
-        print(vertexList[2])
+     
 
         return vertexList
     }
@@ -231,7 +228,6 @@ struct LandscapeGenerator {
                 indices.append(contentsOf: [Int32(index), Int32(west), Int32(north)])
             }
         }
-        print(indices[51], indices[52], indices[53])
         return indices
 
     }
@@ -278,19 +274,18 @@ struct LandscapeGenerator {
         let sizeResolutionCorrection: Float =  ((resolutionMultiplier/xLength) * 10.00) * 2.0
         let sizeResolutionBase: Float = 375.00
         let sizeValue: Float = (sizeResolutionBase / resolutionMultiplier) * (xLength/500)
-        print("Size", sizeValue)
         
         let size: SIMD2<Double> = SIMD2<Double>(vector2(sizeValue, sizeValue))
         let originResolutionBase: Float = 175
         let originValue: Float = (originResolutionBase / resolutionMultiplier) * (xLength/500)
-        print("origin", originValue)
         
         let origin: SIMD2<Double> = SIMD2<Double>(vector2(originValue, originValue))
         let sampleCount = vector2(Int32(x), Int32(z))
         
-        
-        //  noise.remapValues(toTerracesWithPeaks: [-0.02, 0.00, 0.02, 0.04, 0.06, 0.08, 0.1], terracesInverted: false)
-        
+        if (terracing) {
+            print("Terracing!")
+            noise.remapValues(toTerracesWithPeaks: [-0.1, 0.00, 0.1, 0.2, 0.3, 0.4, 0.6], terracesInverted: false)
+        }
 
         return GKNoiseMap(noise, size: size, origin: origin, sampleCount: sampleCount, seamless: true)
     }

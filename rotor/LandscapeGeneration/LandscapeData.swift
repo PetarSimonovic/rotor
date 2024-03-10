@@ -12,4 +12,5 @@ struct LandscapeData {
     var size: Float
     var treeLine: Float
     var seaLevel: Float
+    var terracing: Bool
 }

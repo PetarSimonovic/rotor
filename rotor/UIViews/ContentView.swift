@@ -19,6 +19,7 @@ struct ContentView: View {
     @State private var size: Float = 500
     @State private var treeLine: Float = 0.5
     @State private var seaLevel: Float = 5.0
+    @State private var terracing: Bool = false
 
 
 
@@ -46,7 +47,9 @@ struct ContentView: View {
                     Text("Sea Level: \(Double(seaLevel))")
                     Slider(value: $seaLevel, in: 0...30, step: 0.1)
                 }
-
+                Toggle(isOn: $terracing) {
+                            Text("Terracing")
+                    }
             }
         }
         
@@ -54,7 +57,7 @@ struct ContentView: View {
     }
     
     func validateData() -> LandscapeData {
-        return LandscapeData(size: size, treeLine: treeLine, seaLevel: seaLevel/1000)
+        return LandscapeData(size: size, treeLine: treeLine, seaLevel: seaLevel/1000, terracing: terracing)
     }
 
         
