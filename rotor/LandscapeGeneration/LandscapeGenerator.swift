@@ -135,30 +135,30 @@ struct LandscapeGenerator {
         
                 
                 // Rivers shaping
-                
-                let W: Float = 0.002; // width of terracing bands
-                let k = floor(yPos / W);
-                let f = (yPos - k * W) / W;
-                let s = min(1.2 * f, 2.0);
-              //  let shapedYPos = sin((k+s) * W)
-                let shapedYPos = (k+s) * W
-
-                yPos = yPos * shapedYPos
-                
-                if  yPos > treeLine + 0.2 {
-                    yPos = yPos + Float.random(in: 0.006...0.03)
+                if (!terracing) {
+                    let W: Float = 0.002; // width of terracing bands
+                    let k = floor(yPos / W);
+                    let f = (yPos - k * W) / W;
+                    let s = min(1.2 * f, 2.0);
+                    //   let shapedYPos = sin((k+s) * W)
+                    let shapedYPos = (k+s) * W
+                    //
+                    yPos = yPos * shapedYPos
+                    //
+                    if  yPos > treeLine + 0.2 {
+                        yPos = yPos + Float.random(in: 0.006...0.03)
+                    }
+                    
+                    
+                    //  Jagged peaks
+                    if yPos > treeLine  {
+                        yPos = yPos * 1.03
+                    }
+                    // X shaping
+                    
+                    
+                    //let amplifiedX = Float(roundedX + round(x))
                 }
-
-                                
-                // Jagged peaks
-//                if yPos > treeLine  {
-//                    yPos = yPos * 1.03
-//                }
-                // X shaping
-                
-                
-                //let amplifiedX = Float(roundedX + round(x))
-                
 
 
 
@@ -286,10 +286,19 @@ struct LandscapeGenerator {
         let sampleCount = vector2(Int32(x), Int32(z))
         
         if (terracing) {
-            noise.remapValues(toTerracesWithPeaks: [-0.1, 0.00, 0.1, 0.2, 0.3, 0.4, 0.6], terracesInverted: false)
+            noise.remapValues(toTerracesWithPeaks: createTerraceSteps(), terracesInverted: false)
         }
 
         return GKNoiseMap(noise, size: size, origin: origin, sampleCount: sampleCount, seamless: true)
     }
-
+    
+    func createTerraceSteps() -> [NSNumber] {
+        var numbers = [NSNumber]()
+        var value: Float = 0.0
+        for _ in 0..<12 {
+            numbers.append(NSNumber(value: value))
+            value += 0.4
+        }
+        return numbers
+    }
 }
