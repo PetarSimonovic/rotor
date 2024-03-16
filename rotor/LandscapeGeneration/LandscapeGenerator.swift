@@ -240,7 +240,7 @@ struct LandscapeGenerator {
         
         for vertex in vertexList {
             
-            if vertex.y <= seaLevel
+            if vertex.y < seaLevel
             {
                 colorList.append(SCNVector3(0.026, 0.203, 0.608))
                 
@@ -297,7 +297,7 @@ struct LandscapeGenerator {
         var value: Float = 0.0
         for _ in 0..<12 {
             numbers.append(NSNumber(value: value))
-            value += 0.4
+            value += 0.1
         }
         return numbers
     }
