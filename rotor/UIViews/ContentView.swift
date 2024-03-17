@@ -37,35 +37,51 @@ struct ContentView: View {
             if showLandscape {
                 LandscapeView(landscapeData: validateData())
             } else {
-                VStack {
-                    Text("Size: \(Int(size))")
-                Slider(value: $size, in: 100...1000, step: 1)
+                HStack {
+                    VStack {
+                        Text("Size: \(Int(size))")
+                        Slider(value: $size, in: 100...1000, step: 1)
+                    }                
+                    .padding()
+
+                    
+                    VStack {
+                        Text("Rockiness: \(Double(rockiness))")
+                        Slider(value: $rockiness, in: 0...500, step: 1)
+                    }.padding()
+
+                }.padding()
+                HStack {
+                    VStack {
+                        Text("Treeline: \(Double(treeLine))")
+                            .padding()
+                        Slider(value: $treeLine, in: 0...1.5, step: 0.1)
+                            .rotationEffect(.degrees(-90))
+                            .frame(width: 90)
+                    }.padding()
+                    VStack {
+                        Text("Sea Level: \(Double(seaLevel))")
+                            .padding()
+                        Slider(value: $seaLevel, in: 0...10, step: 0.1)
+                            .rotationEffect(.degrees(-90))
+                            .frame(width: 90)
+
+                    }.padding()
                 }
-                VStack {
-                    Text("Treeline: \(Double(treeLine))")
-                    Slider(value: $treeLine, in: 0...5, step: 0.1)
-                }
-                VStack {
-                    Text("Sea Level: \(Double(seaLevel))")
-                    Slider(value: $seaLevel, in: 0...10, step: 0.1)
-                }
-                VStack {
-                    Text("Rockiness: \(Double(rockiness))")
-                    Slider(value: $rockiness, in: 0...500, step: 1)
-                }
-                VStack {
-                            Text("Terrace Step Size: \(terraceStepSize)")
-                    Stepper("Increase or decrease", onIncrement: {
-                        
-                        terraceStepSize += 0.1
-                    }, onDecrement: {
-                        terraceStepSize -= 0.1
-                    })
-                        }
-                        .padding()
-                Toggle(isOn: $terracing) {
-                            Text("Terracing")
+                HStack {
+                    VStack {
+                        Stepper("Terrace Step Size: \(terraceStepSize)", onIncrement: {
+                            
+                            terraceStepSize += 0.1
+                        }, onDecrement: {
+                            terraceStepSize -= 0.1
+                        })
                     }
+                    .padding()
+                    Toggle(isOn: $terracing) {
+                        Text("Terracing")
+                    }
+                }
             }
         }
         
