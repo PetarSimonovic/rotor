@@ -25,8 +25,10 @@ struct LandscapeGenerator {
     var seaLevel: Float = 0.001
     var lowLands: Float = 0.01
     var terracing: Bool = false
-    var rockiness: Double = 0.345
+    var rockiness: Double = 345
     var terraceStepSize: Float = 0.1
+    
+    let sphereMapper = SphereMapper()
     
     
     mutating func generate() -> SCNNode {
@@ -34,7 +36,8 @@ struct LandscapeGenerator {
         let map: GKNoiseMap = makeNoiseMap(x: Int(landscapeData.size), z: Int(landscapeData.size))
         let vertexList: [SCNVector3] = createVertices(map)
         let vertices = SCNGeometrySource(vertices: vertexList)
-        
+//        let vertices = sphereMapper.mapVertices(map: map)
+
         let indices: [Int32] = calculateIndices(vertexList)
         let colorList: [SCNVector3] = calculateColors(vertexList)
         
@@ -71,6 +74,9 @@ struct LandscapeGenerator {
         
         print("Done", landscapeNode)
         landscapeNode.scale = SCNVector3(1000, 1000, 1000)
+        print("Numbner of vertices from map: \(vertexList.count)")
+
+        
         return landscapeNode
         
         

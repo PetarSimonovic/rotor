@@ -20,7 +20,7 @@ struct ContentView: View {
     @State private var treeLine: Float = 0.5
     @State private var seaLevel: Float = 5.0
     @State private var terracing: Bool = false
-    @State private var rockiness: Double = 0.345
+    @State private var rockiness: Double = 345
     @State private var terraceStepSize: Float = 0.1
 
 

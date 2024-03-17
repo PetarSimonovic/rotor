@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0D03F6972B990FD900B14FA1 /* LandscapeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D03F6962B990FD900B14FA1 /* LandscapeData.swift */; };
+		0D1961662BA6F96C0071609D /* SphereMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1961652BA6F96C0071609D /* SphereMapper.swift */; };
+		0D1961682BA702E10071609D /* DiscCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1961672BA702E10071609D /* DiscCreator.swift */; };
 		0D3D6ADC2A262A37006FE96C /* CollisionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D6ADB2A262A37006FE96C /* CollisionDetector.swift */; };
 		0D80748B2A04F64C0071EC62 /* Ico.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80748A2A04F64C0071EC62 /* Ico.swift */; };
 		0D80748E2A0504630071EC62 /* SCNGeometryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D80748D2A0504630071EC62 /* SCNGeometryExtension.swift */; };
@@ -58,6 +60,8 @@
 
 /* Begin PBXFileReference section */
 		0D03F6962B990FD900B14FA1 /* LandscapeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeData.swift; sourceTree = "<group>"; };
+		0D1961652BA6F96C0071609D /* SphereMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereMapper.swift; sourceTree = "<group>"; };
+		0D1961672BA702E10071609D /* DiscCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscCreator.swift; sourceTree = "<group>"; };
 		0D3D6ADB2A262A37006FE96C /* CollisionDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionDetector.swift; sourceTree = "<group>"; };
 		0D80748A2A04F64C0071EC62 /* Ico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ico.swift; sourceTree = "<group>"; };
 		0D80748D2A0504630071EC62 /* SCNGeometryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNGeometryExtension.swift; sourceTree = "<group>"; };
@@ -199,6 +203,8 @@
 				0D80748A2A04F64C0071EC62 /* Ico.swift */,
 				0D944C202A0E7E4300610724 /* LandscapeGenerator.swift */,
 				0D03F6962B990FD900B14FA1 /* LandscapeData.swift */,
+				0D1961652BA6F96C0071609D /* SphereMapper.swift */,
+				0D1961672BA702E10071609D /* DiscCreator.swift */,
 			);
 			path = LandscapeGeneration;
 			sourceTree = "<group>";
@@ -346,9 +352,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D8074902A0530C60071EC62 /* GKNoiseExtension.swift in Sources */,
+				0D1961662BA6F96C0071609D /* SphereMapper.swift in Sources */,
 				0D944C1F2A0E2A6F00610724 /* AsteroidDesignerView.swift in Sources */,
 				0D8D1462298E9A8800396783 /* ContentView.swift in Sources */,
 				0DC0E47229EE9F7A00089EDB /* AsteroidGenerator.swift in Sources */,
+				0D1961682BA702E10071609D /* DiscCreator.swift in Sources */,
 				0D944C212A0E7E4300610724 /* LandscapeGenerator.swift in Sources */,
 				0D8D1460298E9A8800396783 /* rotorApp.swift in Sources */,
 				0DC38E3829EE7671007B4AC5 /* LandscapeView.swift in Sources */,

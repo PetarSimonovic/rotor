@@ -14,7 +14,8 @@ struct LandscapeView : UIViewRepresentable {
     // Base Node
     let scene = SCNScene()
     var playerNode = SCNNode()
-    
+    let discCreator = DiscCreator()
+    let discHeight: Float = 1000
   //  @Binding var jumpCount: Int
 
     
@@ -27,43 +28,62 @@ struct LandscapeView : UIViewRepresentable {
     // makeUIVIew and updateUIView are required to conform to the UIViewRepresentable protocol
 
     func makeUIView(context: Context) -> SCNView {
-                configurePlayerNode()
+        configurePlayerNode()
         var landscapeGenerator = LandscapeGenerator(landscapeData: landscapeData)
 
 
         let landscapeNode: SCNNode = landscapeGenerator.generate()
 
         let lookAtNode = SCNNode()
-        playerNode.position = SCNVector3(5, 2.0, 5)
+        playerNode.position = SCNVector3(5, 6.0, 5)
         lookAtNode.position = landscapeNode.boundingBox.max
-        
+//        
         scene.rootNode.addChildNode(lookAtNode)
+    
         
         let constraint = SCNLookAtConstraint(target: lookAtNode)
         constraint.isGimbalLockEnabled = true
         playerNode.constraints = [constraint]
 //
-        scene.rootNode.addChildNode(landscapeNode)
-        landscapeNode.physicsBody?.friction = 1.0
+//        landscapeNode.physicsBody?.friction = 1.0
 
 
         scene.rootNode.addChildNode(playerNode)
         
+        // Add disc
+
+        let disc = discCreator.generate(radius: landscapeData.size * 30, height: discHeight)
+        landscapeNode.position.y = Float(discHeight / 2.0) + landscapeNode.boundingBox.max.y
+        let minX = landscapeNode.boundingBox.min.x
+        let maxX = landscapeNode.boundingBox.max.x
+     
+        let centerPos = (minX + maxX) / 2.0
+        let discY = disc.position.y
+        disc.position = SCNVector3(centerPos * 1000, discY, centerPos * 1000)
+
+        scene.rootNode.addChildNode(landscapeNode)
+
+        scene.rootNode.addChildNode(disc)
+
+        
+      
+
+
         // Create Lights
         
         createAmbientLight()
         createOmniLight()
         
         // Configure Camera
-     
-
-
         
         let scnView = SCNView()
-        scnView.pointOfView = playerNode
+//        scnView.pointOfView = playerNode
         scnView.scene = scene
+
+
         return scnView
 
+        
        
     }
 
