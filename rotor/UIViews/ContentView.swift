@@ -22,6 +22,7 @@ struct ContentView: View {
     @State private var terracing: Bool = false
     @State private var rockiness: Double = 345
     @State private var terraceStepSize: Float = 0.1
+    @State private var archipelago: Bool = false
 
 
 
@@ -78,9 +79,18 @@ struct ContentView: View {
                         })
                     }
                     .padding()
-                    Toggle(isOn: $terracing) {
-                        Text("Terracing")
+                    VStack {
+                        Toggle(isOn: $terracing) {
+                            Text("Terracing")
+                        }
                     }
+                    .padding()
+                    VStack {
+                        Toggle(isOn: $archipelago) {
+                            Text("Archipelago")
+                        }
+                    }
+                    .padding()
                 }
             }
         }
@@ -89,7 +99,7 @@ struct ContentView: View {
     }
     
     func validateData() -> LandscapeData {
-        return LandscapeData(size: size, treeLine: treeLine, seaLevel: seaLevel/1000, terracing: terracing, rockiness: rockiness/1000, terraceStepSize: terraceStepSize)
+        return LandscapeData(size: size, treeLine: treeLine, seaLevel: seaLevel/1000, terracing: terracing, archipelago: archipelago, rockiness: rockiness/1000, terraceStepSize: terraceStepSize)
     }
 
         

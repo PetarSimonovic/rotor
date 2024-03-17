@@ -27,6 +27,7 @@ struct LandscapeGenerator {
     var terracing: Bool = false
     var rockiness: Double = 345
     var terraceStepSize: Float = 0.1
+    var archipelago: Bool = false
     
     let sphereMapper = SphereMapper()
     
@@ -74,7 +75,6 @@ struct LandscapeGenerator {
         
         print("Done", landscapeNode)
         landscapeNode.scale = SCNVector3(1000, 1000, 1000)
-        print("Numbner of vertices from map: \(vertexList.count)")
 
         
         return landscapeNode
@@ -89,11 +89,14 @@ struct LandscapeGenerator {
         seaLevel = landscapeData.seaLevel
         terracing = landscapeData.terracing
         rockiness = landscapeData.rockiness
+        terraceStepSize = landscapeData.terraceStepSize
+        archipelago = landscapeData.archipelago
     }
 
     func createVertices(_ map: GKNoiseMap) ->  [SCNVector3] {
      
         
+        print("Archipelago \(archipelago)")
         let numVertices: Float = xLength * resolutionMultiplier;
         let resolutionMultiple: Float = xLength/numVertices;
         
@@ -104,45 +107,11 @@ struct LandscapeGenerator {
                 var yPos = map.value(at: [Int32(x), Int32(z)])
                 
               
-                // Bottom out the sea
-
-//                if (yPos < seaLevel) {
-//                    yPos = yPos + 0.2
-//
-//                }
-                
-                // Set the seabed
-//                if yPos < seaLevel {
-//                    yPos = seaLevel
-//                }
-                
-                
-                // Flatten plains
-//                if (yPos > seaLevel && yPos < lowLands) {
-//                    yPos = yPos * 0.7               }
-////
-//
-//                if yPos < -0.95 {
-//                    yPos = -0.7
-//                }
-                
-           
-//                    if cliffCount > cliffLength {
-//                        print("Cliff reset")
-//                        cliff = false
-//                        cliffCount = 0
-//                        cliffLength = 0
-//                    }
-//                }
-                
-            //    if yPos < treeLine
-                
-                //Cliff
-                
+             
         
                 
-                // Rivers shaping
-                if (!terracing) {
+                // Rivers shaping - turn off for archipelago
+                if (!terracing && !archipelago) {
                     let W: Float = 0.002; // width of terracing bands
                     let k = floor(yPos / W);
                     let f = (yPos - k * W) / W;
