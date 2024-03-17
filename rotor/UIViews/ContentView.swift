@@ -21,6 +21,7 @@ struct ContentView: View {
     @State private var seaLevel: Float = 5.0
     @State private var terracing: Bool = false
     @State private var rockiness: Double = 0.345
+    @State private var terraceStepSize: Float = 0.1
 
 
 
@@ -46,12 +47,22 @@ struct ContentView: View {
                 }
                 VStack {
                     Text("Sea Level: \(Double(seaLevel))")
-                    Slider(value: $seaLevel, in: 0...30, step: 0.1)
+                    Slider(value: $seaLevel, in: 0...10, step: 0.1)
                 }
                 VStack {
                     Text("Rockiness: \(Double(rockiness))")
                     Slider(value: $rockiness, in: 0...500, step: 1)
                 }
+                VStack {
+                            Text("Terrace Step Size: \(terraceStepSize)")
+                    Stepper("Increase or decrease", onIncrement: {
+                        
+                        terraceStepSize += 0.1
+                    }, onDecrement: {
+                        terraceStepSize -= 0.1
+                    })
+                        }
+                        .padding()
                 Toggle(isOn: $terracing) {
                             Text("Terracing")
                     }
@@ -62,7 +73,7 @@ struct ContentView: View {
     }
     
     func validateData() -> LandscapeData {
-        return LandscapeData(size: size, treeLine: treeLine, seaLevel: seaLevel/1000, terracing: terracing, rockiness: rockiness/1000)
+        return LandscapeData(size: size, treeLine: treeLine, seaLevel: seaLevel/1000, terracing: terracing, rockiness: rockiness/1000, terraceStepSize: terraceStepSize)
     }
 
         

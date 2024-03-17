@@ -26,6 +26,7 @@ struct LandscapeGenerator {
     var lowLands: Float = 0.01
     var terracing: Bool = false
     var rockiness: Double = 0.345
+    var terraceStepSize: Float = 0.1
     
     
     mutating func generate() -> SCNNode {
@@ -297,7 +298,7 @@ struct LandscapeGenerator {
         var value: Float = 0.0
         for _ in 0..<12 {
             numbers.append(NSNumber(value: value))
-            value += 0.1
+            value += terraceStepSize
         }
         return numbers
     }
